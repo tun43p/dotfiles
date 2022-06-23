@@ -1,0 +1,11 @@
+[pull]
+  rebase = false
+
+[includeIf "gitdir:/home/tun43p/documents/repositories/github.com/"]
+  path = /home/tun43p/documents/repositories/github.com/dotfiles/git/conf.d/default
+
+[includeIf "gitdir:/home/tun43p/documents/repositories/git.labinno.fr/"]
+  path = /home/tun43p/documents/repositories/github.com/dotfiles/git/conf.d/blackfoot
+
+[includeIf "gitdir:/home/tun43p/documents/repositories/git.labinno.fr/"]
+  path = /home/tun43p/documents/repositories/github.com/dotfiles/git/conf.d/blackfoot
