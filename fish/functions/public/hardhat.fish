@@ -1,4 +1,4 @@
-function hh -d "Initialize an Harhat project"
+function hh -d "Initialize an Harhat project."
     if test (count $argv) -lt 1; or test $argv[1] = --help
         echo "Initialize an Hardhat project."
         echo "Usage: hh [name]"

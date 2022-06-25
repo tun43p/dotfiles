@@ -1,6 +1,13 @@
 if status is-interactive
-    source $HOME/.config/fish/conf.d/env.fish
-    source $HOME/.config/fish/conf.d/aliases.fish
+    for f in $HOME/.config/fish/conf.d/*
+        source $f
+    end
 
-    source $HOME/.config/fish/functions/hardhat.fish
+    for f in $HOME/.config/fish/functions/private/*
+        source $f
+    end
+
+    for f in $HOME/.config/fish/functions/public/*
+        source $f
+    end
 end
