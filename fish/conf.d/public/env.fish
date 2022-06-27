@@ -20,7 +20,6 @@ set -gx ANDROID_SDK_ROOT $LOCAL/lib/android/sdk
 
 set -U fish_user_paths \
     $LOCAL/bin \
-    $DOTFILES/scripts \
     $DART/bin \
     $ANDROID_SDK_ROOT/cmdline-tools/latest/bin $ANDROID_SDK_ROOT/platform-tools \
     $FLUTTER/bin \
