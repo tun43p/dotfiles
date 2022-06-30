@@ -9,16 +9,16 @@ end
 vim.g.mapleader = " "
 
 -- split horizontaly and verticaly
-map("n", "<Leader>h", ":split<CR>")
-map("n", "<Leader>v", ":vsplit<CR>")
+map("n", "<leader>h", ":split<cr>")
+map("n", "<leader>v", ":vsplit<cr>")
 
 -- clear highlights with mapping
-map("n", "<Leader>c", ":match none <CR> :noh <CR>h")
+map("n", "<leader>c", ":match none <cr> :noh <cr>h")
 
 -- navigate between tabs
-map('n', "<tab>", "gT")
-map('n', "<Leader><tab>", ":tabnew<CR>")
-map('n', "<Leader>qq", ":tabclose<CR>")
+map("n", "<tab>", "gT")
+map("n", "<leader><tab>", ":tabnew<cr>")
+map("n", "<leader>qq", ":tabclose<cr>")
 
 -- navigate between splits
 map("n", "<c-h>", "<c-w><c-h>")
@@ -31,13 +31,16 @@ map("n", "<c-up>", "<c-w><c-k>")
 map("n", "<c-right>", "<c-w><c-l>")
 
 -- search and replace
-map('n', '<C-g>', ':%s/')
+map("n", "<c-g>", ":%s/")
 
 -- disable help menu
-map('n', '<F1>', '<nop>')
-map('v', '<F1>', '<nop>')
-map('n', 'q:', '<nop>')
+map("n", "<f1>", "<nop>")
+map("v", "<f1>", "<nop>")
+map("n", "q:", "<nop>")
 
--- Map Ctrl + s to :w
-map('n', '<C-s>', ':w<CR>')
-map('i', '<C-s>', '<Esc>:w<CR>')
+-- map ctrl + s to :w
+map("n", "<c-s>", ":w<cr>")
+map("i", "<c-s>", "<esc>:w<cr>")
+
+-- toggle nvim tree
+map("n", "<leader>t", ":NvimTreeToggle<cr>")
