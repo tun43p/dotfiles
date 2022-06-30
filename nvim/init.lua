@@ -2,4 +2,6 @@ require("plugins")
 require("settings")
 require("theme")
 require("maps")
-require("status")
+
+require("plugins/lualine")
+require("plugins/colorizer")
