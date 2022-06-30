@@ -13,7 +13,7 @@ function sol -d "Initialize a new Solidity project."
     set testnet_url https://eth-goerli.alchemyapi.io/v2/
     set token ETH
 
-    if test (count $argv) -lt 2; or test $argv[1] = --help
+    if test (count $argv) -lt 2
         echo "Initialize a new Solidity project."
         echo "Usage: sol [name] [alchemy_api_key]"
     else

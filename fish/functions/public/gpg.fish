@@ -1,5 +1,5 @@
 function gpgex -d "Export private and public GPG keys."
-    if test (count $argv) -lt 1; or test $argv[1] = --help
+    if test (count $argv) -lt 1
         echo "Export private and public GPG keys."
         echo "Usage: gpgex [identifier]"
 		else
