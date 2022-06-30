@@ -23,7 +23,7 @@ opt.mouse = "a"
 opt.completeopt="menuone,noinsert,noselect"
 
 -- set status mode
-opt.laststatus = 2
+opt.laststatus = 3 -- or 2 for all split
 
 -- set scroll line limit
 opt.scrolloff = 5
