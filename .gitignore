@@ -1,4 +1,8 @@
 **/private
-fish/fish_variables
+
+fish/completions
+fish/conf.d
+fish/functions
+
 git/conf.d
 nvim/backups
