@@ -1,0 +1,21 @@
+vim.g.coc_global_extensions = {
+  "coc-css",
+  "coc-deno",
+  "coc-docker",
+  "coc-eslint",
+  "coc-flutter",
+  "coc-git",
+  "coc-go",
+  "coc-html",
+  "coc-json",
+  "coc-markdownlint",
+  "coc-prettier",
+  "coc-python",
+  "coc-solidity",
+  "coc-stylelint",
+  "coc-svelte",
+  "coc-tailwindcss",
+  "coc-tsserver",
+  "coc-vetur",
+  "coc-xml"
+}

@@ -1,111 +1,146 @@
--- alias vim functions
-local cmd = vim.cmd
-local opt = vim.opt
+-- shell, encoding and file options {{{1
 
 -- set filetype
-cmd "filetype plugin indent on"
+vim.cmd "filetype plugin indent on"
 
 -- set default shell
-opt.shell = "/usr/bin/fish"
+vim.opt.shell = "/usr/bin/fish"
 
 -- set encoding
-opt.encoding = "utf-8"
-opt.fileencodings = "utf-8"
-opt.langmenu = "en_US"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencodings = "utf-8"
+vim.opt.langmenu = "en_US"
 
 -- set fileformat
-opt.fileformat = "unix" -- or "dos"
+vim.opt.fileformat = "unix" -- or "dos"
+
+-- }}}
+
+-- misc configuration {{{1
 
 -- enable mouse support
-opt.mouse = "a"
-
--- set autocomplete option
-opt.completeopt="menuone,noinsert,noselect"
-
--- set status mode
-opt.laststatus = 3 -- or 2 for all split
-
--- set scroll line limit
-opt.scrolloff = 5
+vim.opt.mouse = "a"
 
 -- enable global clipboard
-opt.clipboard = "unnamedplus" -- or "unamed"
+vim.opt.clipboard = "unnamedplus" -- or "unamed"
 
 -- configure folding method
-opt.foldmethod = "marker" -- or "indent"
+vim.opt.foldmethod = "marker" -- or "indent"
 
--- set terminal's title according to file name
-opt.title = true
+-- set autocomplete option
+vim.opt.completeopt="menuone,noinsert,noselect"
 
--- configure command bar height
-opt.cmdheight = 1
+-- set backspace option
+vim.opt.backspace = "indent,eol,start"
 
 -- configure update time
-opt.updatetime = 300
-
--- disable default bottom ruler
-opt.ruler = true
-
--- configure number column
-opt.number = true
-opt.relativenumber = true
-
--- set indentation stuff
-opt.backspace = "indent,eol,start"
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 0 -- or 2
-opt.smartindent = true
-opt.expandtab = true
-opt.smarttab = true
-opt.autoindent = true
-
--- set searching stuff
-opt.hlsearch = true
-opt.incsearch = true
-opt.ignorecase = false
-
--- disable backup and swap
-opt.swapfile = false
-opt.writebackup = false
-
--- disable line wrapping
-opt.wrap = false
-
--- disable lazy redraw
-opt.lazyredraw = false
-
--- disable beeping
-opt.errorbells = false
-opt.vb = false
-
--- disable some showings
-opt.showcmd = false
-opt.showmode = false
-
--- configure split method
-opt.splitbelow = true
-opt.splitright = true
+vim.opt.updatetime = 300
 
 -- less input lags
-opt.ttimeoutlen = 100
+vim.opt.ttimeoutlen = 100
 
--- enable cursor line
-opt.cursorline = true
+-- set scroll line limit
+vim.opt.scrolloff = 5
 
 -- autoread file, if the file is changed outside of vim, it will ask you if you Want to reload it
-opt.autoread = true
+vim.opt.autoread = true
 
--- Set undolevel to max
--- opt.undolevels = 9999
+-- set searching stuff
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+vim.opt.ignorecase = false
 
--- set diff panel direction
--- opt.diffopt += "vertical"
+-- }}}
 
--- don't give ins-completion-menu messages
--- opt.shortmess += "c"
+-- status and command line {{{1
 
--- view if is needed 
--- opt.backspace = 2
--- opt.hidden = true
--- opt.signcolumn = "yes
+-- set one status for all splits
+vim.opt.laststatus = 3 -- or 2 for all split
+
+-- configure command bar height
+vim.opt.cmdheight = 1
+
+-- }}}
+
+-- interface stuff {{{1
+
+-- set terminal's title according to file name
+vim.opt.title = true
+
+-- disable default bottom ruler
+vim.opt.ruler = true
+
+-- configure number column
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- enable cursor line
+vim.opt.cursorline = true
+
+-- configure split method
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- }}}
+
+-- disabling stuff {{{1
+
+-- disable backup and swap
+vim.opt.swapfile = false
+vim.opt.writebackup = false
+
+-- disable line wrapping
+vim.opt.wrap = false
+
+-- disable lazy redraw
+vim.opt.lazyredraw = false
+
+-- disable beeping
+vim.opt.errorbells = false
+vim.opt.vb = false
+
+-- disable some showings
+vim.opt.showcmd = false
+vim.opt.showmode = false
+
+-- }}}
+
+-- indentation configuration {{{1
+
+-- configure tab size
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 0 -- or 2
+
+-- configure other indentation stuff
+vim.opt.smartindent = true
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.autoindent = true
+
+-- }}}
+
+-- provider stuff {{{1
+
+-- set python provider path
+vim.g.python3_host_prog = "/usr/bin/python3"
+
+-- disable perl provider
+vim.g.loaded_perl_provider = 0
+
+-- }}}
+
+-- good to know {{{1
+
+-- vim.opt.undolevels = 9999
+-- vim.opt.diffopt += "vertical"
+-- vim.opt.shortmess += "c"
+-- vim.opt.backspace = 2
+-- vim.opt.hidden = true
+-- vim.opt.signcolumn = "yes
+
+-- }}}
+
+
+
+

@@ -1,4 +1,4 @@
--- alias vim functions
+--alias vim functions
 local call = vim.call
 local Plug = vim.fn["plug#"]
 
@@ -19,6 +19,9 @@ Plug "kyazdani42/nvim-tree.lua"
 -- show vim changes in gutter 
 Plug "airblade/vim-gitgutter"
 
+-- intelisense
+Plug("neoclide/coc.nvim", {branch = "release"})
+
 -- better syntax highlights 
 Plug "sheerun/vim-polyglot"
 
@@ -35,7 +38,10 @@ Plug "tpope/vim-commentary"
 -- Plug "tpope/vim-surround" -- TODO: learn
 
 -- show rainbow brackets
--- Plug "luochen1990/rainbow" -- TODO: learn
+Plug "luochen1990/rainbow" -- TODO: learn
+
+-- show tagbar 
+Plug "preservim/tagbar" -- TODO: learn
 
 -- git lens like
 -- Plug "APZelos/blamer.nvim" -- TODO: learn
@@ -46,11 +52,12 @@ Plug "pangloss/vim-javascript"
 call("plug#end")
 
 -- require plugins config
-require("plugins/colorizer")
+require("plugins/coc")
+require("plugins/colorizer") -- replace with coc-highlight ?
 require("plugins/lualine")
 require("plugins/nvim-tree")
+require("plugins/rainbow")
 
--- Plug("neoclide/coc.nvim", {branch = "release"})
 -- Plug "joereynolds/vim-minisnip"
 -- Plug "nvim-lua/plenary.nvim"
 -- Plug "nvim-telescope/telescope.nvim"

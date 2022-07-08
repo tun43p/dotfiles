@@ -9,7 +9,7 @@ end
 vim.g.mapleader = " "
 
 -- split horizontaly and verticaly
-map("n", "<leader>h", ":split<cr>")
+map("n", "<leader>b", ":split<cr>")
 map("n", "<leader>v", ":vsplit<cr>")
 
 -- clear highlights with mapping
@@ -30,6 +30,11 @@ map("n", "<c-down>", "<c-w><c-j>")
 map("n", "<c-up>", "<c-w><c-k>")
 map("n", "<c-right>", "<c-w><c-l>")
 
+map ("n", "<leader>h", ":bp<cr>")
+map ("n", "<leader>l", ":bn<cr>")
+map ("n", "<leader><left>", ":bp<cr>")
+map ("n", "<leader><right>", ":bn<cr>")
+
 -- search and replace
 map("n", "<c-g>", ":%s/")
 
@@ -44,3 +49,12 @@ map("i", "<c-s>", "<esc>:w<cr>")
 
 -- toggle nvim tree
 map("n", "<leader>t", ":NvimTreeToggle<cr>")
+
+-- coc mapping {{{1
+
+map("n", "gd", "<Plug>(coc-definition)")
+map("n", "gy", "<Plug>(coc-type-definition)")
+map("n", "gi", "<Plug>(coc-implementation)")
+map("n", "gr", "<Plug>(coc-references)")
+
+-- }}}
