@@ -20,7 +20,7 @@ set -gx DENO_INSTALL $HOME/.deno
 set -gx FLUTTER $LOCAL/lib/flutter
 set -gx GOROOT /usr/local/go
 set -gx GOPATH $HOME/.go
-set -gx GOBIN $GOPATH/.bin
+set -gx GOBIN $GOPATH/bin
 set -gx PYENV_ROOT $HOME/.pyenv
 
 set -U fish_user_paths \
@@ -32,3 +32,4 @@ set -U fish_user_paths \
     $FLUTTER/bin \
     $GOROOT/bin $GOBIN \
     $PYENV_ROOT/bin
+
