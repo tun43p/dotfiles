@@ -1,0 +1,15 @@
+{
+    "backup": false,
+    "colorscheme": "gruvbox",
+    "ft:fish": {
+        "tabsize": 4
+    },
+    "ft:go": {
+        "tabsize": 4
+    },
+    "ft:python": {
+        "tabsize": 4
+    },
+    "tabsize": 2,
+    "tabstospaces": true
+}
