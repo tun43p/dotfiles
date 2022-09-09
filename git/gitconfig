@@ -7,5 +7,5 @@
 [includeIf "gitdir:/home/tun43p/documents/repositories/git.labinno.fr/"]
   path = /home/tun43p/documents/repositories/github.com/dotfiles/git/conf.d/blackfoot
 
-[includeIf "gitdir:/home/tun43p/documents/repositories/git.labinno.fr/"]
+[includeIf "gitdir:/home/tun43p/documents/repositories/lab.blackfoot.io/"]
   path = /home/tun43p/documents/repositories/github.com/dotfiles/git/conf.d/blackfoot
