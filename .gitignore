@@ -5,4 +5,8 @@ fish/conf.d
 fish/functions
 
 git/conf.d
+
+micro/backups
+micro/buffers
+
 nvim/backups
