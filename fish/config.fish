@@ -4,7 +4,7 @@ if status is-interactive
 	set -gx SHELL /usr/bin/fish
 	set -gx TERMINAL urxvt
 	set -gx EDITOR nvim
-	set -gx VISUAL codium
+	set -gx VISUAL code 
 	set -gx BROWSER firefox
 	set -gx CHROME_EXECUTABLE chromium
 
@@ -20,6 +20,8 @@ if status is-interactive
 	set -gx ANDROID_SDK_ROOT $LOCAL/opt/android-sdk
 	set -gx ANDROID_SDK_BIN $ANDROID_SDK_ROOT/cmdline-tools/latest/bin $ANDROID_SDK_ROOT/platform-tools
 
+	set -gx CARGO_HOME $HOME/.cargo
+
 	set -gx GOPATH $HOME/.go
 	set -gx GOBIN $GOPATH/bin
 
@@ -29,6 +31,7 @@ if status is-interactive
 	set -U fish_user_paths \
 		$LOCAL/bin \
 		$GOBIN \
+		$CARGO_HOME/bin \
 		$ANDROID_SDK_BIN \
 		$PYENV_ROOT/bin \
 		$fish_user_paths
