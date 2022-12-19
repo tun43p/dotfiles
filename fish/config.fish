@@ -36,8 +36,6 @@ if status is-interactive
 		$PYENV_ROOT/bin \
 		$fish_user_paths
 
-	alias code "codium"
-
 	alias dots "cd $DOTS"
 	alias repos "cd $REPOS"
 
