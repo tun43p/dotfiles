@@ -4,8 +4,8 @@
   "editor.fontLigatures": true,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "editor.rulers": [80],
   "editor.suggest.insertMode": "replace",
+  "editor.minimap.enabled": false,
 
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": true,
@@ -31,7 +31,8 @@
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false,
-    "editor.inlayHints.enabled": "offUnlessPressed"
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.rulers": [80]
   },
 
   "[html]": {
@@ -47,22 +48,26 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.maxTokenizationLineLength": 2500
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.rulers": [80]
   },
 
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.rulers": [80]
   },
 
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.rulers": [80]
   },
 
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.rulers": [80]
   },
 
   "[svelte]": {
@@ -104,6 +109,20 @@
     "editor.quickSuggestions": { "strings": true }
   },
 
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.rulers": [100]
+  },
+
+  "[toml]": {
+    "editor.defaultFormatter": "bungcip.better-toml",
+    "editor.formatOnSave": true
+  },
+
   "svelte.enable-ts-plugin": true,
-  "svelte.plugin.svelte.note-new-transformation": false
+  "svelte.plugin.svelte.note-new-transformation": false,
+
+  "redhat.telemetry.enabled": false
 }

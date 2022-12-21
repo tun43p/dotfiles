@@ -26,7 +26,7 @@ if status is-interactive
 	set -gx GOBIN $GOPATH/bin
 
 	set -gx PYENV_ROOT $HOME/.pyenv
-	set -gx PYTHON_BIN "$HOME/.pyenv/versions/3.10.6/bin"
+	set -gx PYTHON_BIN $HOME/.pyenv/versions/3.10.6/bin
 
 	set -U fish_user_paths \
 		$LOCAL/bin \
