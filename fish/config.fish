@@ -4,7 +4,12 @@ if status is-interactive
     set -gx BROWSER firefox
     set -gx CHROME_EXECUTABLE chromium
 
-    set -gx XDG_CONFIG_DIR $HOME/.config
+    # Parse user-dirs.dirs file and export variables
+    for val in (cat $HOME/.config/user-dirs.dirs)
+        set values (string split = $val)
+        set -gx $values[1] (string replace -a '"' '' $values[2])
+        set -e values
+    end
 
     set -gx REPOS $HOME/documents/repositories
     set -gx DOTS $REPOS/github.com/tun43p/dotfiles
