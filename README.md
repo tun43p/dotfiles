@@ -1,5 +1,7 @@
 # Dotfiles
 
+![Screenshot](assets/screenshot.png)
+
 ## Table of contents
 
 - [Dotfiles](#dotfiles)
