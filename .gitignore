@@ -8,3 +8,4 @@ fish/**
 git/conf.d
 
 micro/buffers
+micro/plug
