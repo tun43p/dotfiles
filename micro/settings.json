@@ -1,6 +1,7 @@
 {
     "autosu": true,
     "backupdir": "~/.config/micro/backups",
+    "colorscheme": "code",
     "diffgutter": true,
     "ft:dart": {
         "colorcolumn": 80
