@@ -1,8 +1,18 @@
 # Dotfiles
 
+## Table of contents
+
 - [Dotfiles](#dotfiles)
+  - [Table of contents](#table-of-contents)
+  - [Informations](#informations)
   - [Authors](#authors)
   - [License](#license)
+
+## Informations
+
+- **Device**: Dell XPS
+- **Distribution**: Linux Mint
+- **Window Manager**: Cinnamon
 
 ## Authors
 
