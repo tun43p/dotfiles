@@ -121,7 +121,8 @@
     "editor.defaultFormatter": "bmalehorn.vscode-fish",
     "editor.formatOnSave": true,
     "editor.tabSize": 4
-  }
+  },
+  "workbench.iconTheme": "vscode-icons"
 
   // "[svelte]": {
   //   "editor.defaultFormatter": "svelte.svelte-vscode",

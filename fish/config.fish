@@ -61,4 +61,7 @@ if status is-interactive
     alias mi="micro"
 
     pyenv init - | source
+
+    # Set terminal colors
+    sh $DOTS/scripts/set_colors.sh
 end

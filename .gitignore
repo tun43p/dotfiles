@@ -2,8 +2,11 @@
 
 backups
 
-fish/**
-!fish/config.fish
+fish/completions
+fish/conf.d
+fish/functions
+fish/fish_plugins
+fish/fish_variables
 
 git/conf.d
 
