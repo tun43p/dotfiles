@@ -2,10 +2,8 @@
 
 backups
 
-fish/completions
-fish/conf.d
-fish/functions
-fish/fish_variables
+fish/**
+!fish/config.fish
 
 git/conf.d
 

@@ -25,14 +25,26 @@ if status is-interactive
 
     set -gx PYENV_ROOT $HOME/.pyenv
 
-    set -U fish_user_paths \
+    set -gx FLUTTER $HOME/.flutter
+
+    set -gx ANDROID_SDK_ROOT $HOME/android/sdk
+	set -gx ANDROID_SDK_BIN $ANDROID_SDK_ROOT/cmdline-tools/latest/bin $ANDROID_SDK_ROOT/platform-tools
+
+    set -U fish_user_paths\
         $HOME/.local/bin \
         $CARGO_HOME/bin \
+        $GOROOT/bin \
+        $GOBIN \
         $PYENV_ROOT/bin \
-        $fish_user_paths
+        $ANDROID_SDK_BIN \
+        $FLUTTER/bin \
+        $fish_user_paths 
+    
+    # Override Dart Flutter version
+    alias dart /usr/bin/dart
 
     alias repos "cd $REPOS"
     alias dots "cd $DOTS"
 
-    # pyenv init - | source
+    pyenv init - | source
 end
