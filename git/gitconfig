@@ -10,17 +10,14 @@
 [tag]
 	gpgSign = true
 
-[safe]
-	directory = /opt/flutter
-
 [includeIf "gitdir:~/documents/repositories/github.com/"]
 	path = ~/documents/repositories/github.com/tun43p/dotfiles/git/conf.d/default
 
-[includeIf "gitdir:~/documents/repositories/github.com/blackfoot-makers/private/"]
-	path = ~/documents/repositories/github.com/tun43p/dotfiles/git/conf.d/blackfoot
-
 [includeIf "gitdir:~/documents/repositories/gitlab.com/"]
 	path = ~/documents/repositories/github.com/tun43p/dotfiles/git/conf.d/default
+
+[includeIf "gitdir:~/documents/repositories/github.com/blackfoot-makers/e-ticket-app/"]
+	path = ~/documents/repositories/github.com/tun43p/dotfiles/git/conf.d/blackfoot
 
 [includeIf "gitdir:~/documents/repositories/gitlab.com/yubik/"]
 	path = ~/documents/repositories/github.com/tun43p/dotfiles/git/conf.d/blackfoot
