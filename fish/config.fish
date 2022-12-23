@@ -14,37 +14,49 @@ if status is-interactive
     set -gx REPOS $HOME/documents/repositories
     set -gx DOTS $REPOS/github.com/tun43p/dotfiles
 
-	# set -gx QT_QPA_PLATFORMTHEME qt5ct
-	# set -gx GTK2_RC_FILES $HOME/.gtkrc-2.0
+    # set -gx QT_QPA_PLATFORMTHEME qt5ct
+    # set -gx GTK2_RC_FILES $HOME/.gtkrc-2.0
 
-	set -gx CARGO_HOME $HOME/.cargo
-	
-	set -gx GOROOT /usr/local/go
-	set -gx GOPATH $HOME/.go
-	set -gx GOBIN $GOPATH/bin
-
+    set -gx CARGO_HOME $HOME/.cargo
+    set -gx GOROOT /usr/local/go
+    set -gx GOPATH $HOME/.go
+    set -gx GOBIN $GOPATH/bin
+    set -gx DENO_HOME $HOME/.deno
     set -gx PYENV_ROOT $HOME/.pyenv
-
-    set -gx FLUTTER $HOME/.flutter
-
-    set -gx ANDROID_SDK_ROOT $HOME/android/sdk
-	set -gx ANDROID_SDK_BIN $ANDROID_SDK_ROOT/cmdline-tools/latest/bin $ANDROID_SDK_ROOT/platform-tools
+    set -gx FLUTTER_HOME $HOME/.flutter
+    set -gx ANDROID_SDK_HOME $HOME/android/sdk
+    set -gx ANDROID_SDK_BIN $ANDROID_SDK_HOME/cmdline-tools/latest/bin $ANDROID_SDK_HOME/platform-tools
 
     set -U fish_user_paths\
-        $HOME/.local/bin \
+    $HOME/.local/bin \
         $CARGO_HOME/bin \
         $GOROOT/bin \
         $GOBIN \
+        $DENO_HOME/bin \
         $PYENV_ROOT/bin \
         $ANDROID_SDK_BIN \
-        $FLUTTER/bin \
-        $fish_user_paths 
-    
-    # Override Dart Flutter version
-    alias dart /usr/bin/dart
+        $FLUTTER_HOME/bin \
+        $fish_user_paths
 
-    alias repos "cd $REPOS"
-    alias dots "cd $DOTS"
+    alias rel="source $HOME/.config/fish/config.fish"
+
+    # Override Dart Flutter version
+    alias dart="/usr/bin/dart"
+
+    alias repos="cd $REPOS"
+    alias dots="cd $DOTS"
+
+    function apti
+        sudo apt-get update && sudo apt-get install $argv
+    end
+
+    function aptu
+        sudo apt-get update && sudo apt-get full-upgrade
+    end
+
+    function aptr
+        sudo apt-get autoremove --purge $argv
+    end
 
     pyenv init - | source
 end
