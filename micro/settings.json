@@ -1,1 +1,35 @@
-{}
+{
+    "autosu": true,
+    "backupdir": "~/.config/micro/backups",
+    "diffgutter": true,
+    "ft:dart": {
+        "colorcolumn": 80
+    },
+    "ft:fish": {
+        "tabsize": 4
+    },
+    "ft:go": {
+        "tabsize": 4,
+        "tabtospaces": false
+    },
+    "ft:javascript": {
+        "colorcolumn": 80
+    },
+    "ft:python": {
+        "tabsize": 4
+    },
+    "ft:rust": {
+        "colorcolumn": 100,
+        "tabsize": 4
+    },
+    "ft:typescript": {
+        "colorcolumn": 80
+    },
+    "keepautoindent": true,
+    "relativeruler": true,
+    "savecursor": true,
+    "saveundo": true,
+    "scrollmargin": 5,
+    "statusformatr": "$(bind:ToggleKeyMenu): bindings | $(bind:ToggleHelp): help",
+    "tabsize": 2
+}

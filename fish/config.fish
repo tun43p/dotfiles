@@ -38,14 +38,6 @@ if status is-interactive
         $FLUTTER_HOME/bin \
         $fish_user_paths
 
-    alias rel="source $HOME/.config/fish/config.fish"
-
-    # Override Dart Flutter version
-    alias dart="/usr/bin/dart"
-
-    alias repos="cd $REPOS"
-    alias dots="cd $DOTS"
-
     function apti
         sudo apt-get update && sudo apt-get install $argv
     end
@@ -57,6 +49,16 @@ if status is-interactive
     function aptr
         sudo apt-get autoremove --purge $argv
     end
+
+    alias rel="source $XDG_CONFIG_DIR/fish/config.fish"
+
+    # Override Dart Flutter version
+    alias dart="/usr/bin/dart"
+
+    alias repos="cd $REPOS"
+    alias dots="cd $DOTS"
+
+    alias mi="micro"
 
     pyenv init - | source
 end
