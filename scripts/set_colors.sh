@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     return 2>/dev/null || exit 0
