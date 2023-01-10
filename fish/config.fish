@@ -17,6 +17,8 @@ if status is-interactive
     # set -gx QT_QPA_PLATFORMTHEME qt5ct
     # set -gx GTK2_RC_FILES $HOME/.gtkrc-2.0
 
+    set -gx LV2_PATH $HOME/.lv2
+
     set -gx CARGO_HOME $HOME/.cargo
     set -gx GOROOT /usr/local/go
     set -gx GOPATH $HOME/.go
