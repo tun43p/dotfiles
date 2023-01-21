@@ -54,13 +54,13 @@ if status is-interactive
     # Override Dart Flutter version
     alias dart="/usr/bin/dart"
 
-    alias repos="cd $REPOS"
-    alias dots="cd $DOTS"
+    alias repos="cd $XDG_REPOSITORIES_DIR"
+    alias dots="cd $XDG_DOTFILES_DIR"
 
     alias mi="micro"
 
     pyenv init - | source
 
     # Set terminal colors
-    sh $DOTS/scripts/set_colors.sh
+    sh $XDG_DOTFILES_DIR/scripts/set_colors.sh
 end
