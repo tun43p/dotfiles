@@ -11,9 +11,6 @@ if status is-interactive
         set -e values
     end
 
-    set -gx REPOS $HOME/documents/repositories
-    set -gx DOTS $REPOS/github.com/tun43p/dotfiles
-
     # set -gx QT_QPA_PLATFORMTHEME qt5ct
     # set -gx GTK2_RC_FILES $HOME/.gtkrc-2.0
 

@@ -8,3 +8,5 @@ XDG_PICTURES_DIR="/home/tun43p/pictures"
 XDG_PUBLICSHARE_DIR="/home/tun43p/public"
 XDG_TEMPLATES_DIR="/home/tun43p/templates"
 XDG_VIDEOS_DIR="/home/tun43p/videos"
+
+XDG_REPOSITORIES_DIR="/home/tun43p/documents/repositories"
