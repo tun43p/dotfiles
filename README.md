@@ -9,9 +9,9 @@
   - [Informations](#informations)
   - [Colorscheme](#colorscheme)
     - [VSCode Dark+](#vscode-dark)
-    - [Defaults](#defaults)
-    - [Base 16](#base-16)
-    - [Base 256](#base-256)
+      - [Defaults](#defaults)
+      - [Base 16](#base-16)
+      - [Base 256](#base-256)
   - [Authors](#authors)
   - [License](#license)
 
@@ -25,13 +25,13 @@
 
 ### VSCode Dark+
 
-### Defaults
+#### Defaults
 
 - `#D4D4D4`: `foreground` - `Base 05`
 - `#1E1E1E"`: `background` - `Base 00`
 - `#D4D4D4`: `cursor` - `Base 05`
 
-### Base 16
+#### Base 16
 
 - `#1E1E1E`: `color00` - `Base 00` - **Black**
 - `#D16969`: `color01` - `Base 08` - **Red**
@@ -50,7 +50,7 @@
 - `#9CDCFE`: `color14` - `Base 0C` - **Bright Cyan**
 - `#FFFFFF`: `color15` - `Base 07` - **Bright White**
 
-### Base 256
+#### Base 256
 
 - `#B5CEA8`: `color16` - `Base 09`
 - `#CE9178`: `color17` - `Base 0F`
