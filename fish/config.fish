@@ -1,5 +1,5 @@
 if status is-interactive
-    set -gx EDITOR micro
+    set -gx EDITOR nvim
     set -gx VISUAL code
     set -gx BROWSER firefox
     set -gx CHROME_EXECUTABLE chromium
@@ -25,9 +25,10 @@ if status is-interactive
     set -gx FLUTTER_HOME $HOME/.flutter
     set -gx ANDROID_SDK_HOME $HOME/android/sdk
     set -gx ANDROID_SDK_BIN $ANDROID_SDK_HOME/cmdline-tools/latest/bin $ANDROID_SDK_HOME/platform-tools
+    set -gx JAVA_HOME /var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio/jbr
 
-    set -U fish_user_paths\
-    $HOME/.local/bin \
+    set -U fish_user_paths \
+        $HOME/.local/bin \
         $CARGO_HOME/bin \
         $GOROOT/bin \
         $GOBIN \
@@ -49,17 +50,23 @@ if status is-interactive
         sudo apt-get autoremove --purge $argv
     end
 
+    function commits
+        echo "build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test"
+    end
+
+
     alias rel="source $XDG_CONFIG_DIR/fish/config.fish"
 
     # Override Dart Flutter version
-    alias dart="/usr/bin/dart"
+    alias my_dart="/usr/bin/dart"
 
     alias repos="cd $XDG_REPOSITORIES_DIR"
     alias dots="cd $XDG_DOTFILES_DIR"
 
-    alias mi="micro"
+    alias create-astro="nvm use latest && npm create astro@latest"
 
     pyenv init - | source
+    nvm use latest
 
     # Set terminal colors
     sh $XDG_DOTFILES_DIR/scripts/set_colors.sh
