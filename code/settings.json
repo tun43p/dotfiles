@@ -1,5 +1,5 @@
 {
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
 
   "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace",
   "editor.fontSize": 14,
@@ -22,8 +22,9 @@
 
   "prettier.useEditorConfig": true,
 
-  // "redhat.telemetry.enabled": false
-  // "gitlens.codeLens.scopes": ["document"],
+  "gitlens.codeLens.scopes": ["document"],
+
+  "svelte.enable-ts-plugin": true,
 
   "[dart]": {
     "editor.defaultFormatter": "Dart-Code.dart-code",
@@ -136,5 +137,8 @@
     "editor.formatOnSave": true
   },
 
-  "svelte.enable-ts-plugin": true
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.formatOnSave": true
+  }
 }
