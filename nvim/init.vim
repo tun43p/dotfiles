@@ -1,4 +1,4 @@
-" Active le gestionnaire de plugins vim-plug
+" Activate the vim-plug plugin manager
 call plug#begin()
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'sheerun/vim-polyglot'
@@ -7,181 +7,181 @@ Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
-" Désactive le mode de compatibilité
+" Disable compatibility mode
 if &compatible
   set nocompatible
 endif
 
-" Active la détection automatique du type de fichier, des plugins associés et de l'indentation automatique
+" Enable automatic detection of file type, associated plugins and automatic indentation
 filetype plugin indent on
 
-" Définit l'encodage des fichiers en UTF-8
+" Defines the encoding of files in UTF-8 
 set encoding=utf8
 
-" Configure le menu de langue en français
+" Set the language menu to French
 set langmenu=fr_FR
 let $LANG='fr_FR'
 
-" Définit le format de fichier par défaut en format Unix (LF uniquement)
+"  Defines the default file format in Unix format (LF only)
 set fileformat=unix
 
-" Cache les buffers au lieu de les fermer lors du passage à un autre buffer
+" Hide buffers instead of closing them when switching to another buffer
 set hidden
 
-" Active la prise en charge de la souris dans Vim
+" Enable mouse support in Vim
 set mouse=a
 
-" Définit une marge de défilement de 5 lignes
+" Defines a scroll margin of 5 lines
 set scrolloff=5
 
-" Active le presse-papiers système pour copier/coller avec le presse-papiers universel
+" Active the system clipboard to copy/paste with the universal clipboard
 " set clipboard=unnamedplus
 
-" Active le pliage de code basé sur les marqueurs de début et de fin
+" Enable code folding based on start and end markers
 set foldmethod=marker
 
-" Permet de supprimer les caractères d'espacement, les retours à la ligne et les déplacements du curseur en mode insertion
+" Allows you to delete whitespace characters, line breaks and cursor movements in insert mode
 set backspace=2
 set backspace=indent,eol,start
 
-" Configure les options d'autocomplétion pour afficher un menu déroulant avec une seule option, sans insérer automatiquement le texte et sans sélectionner automatiquement la première option
+" Configure the autocompletion options to display a drop-down menu with a single option, without automatically inserting the text and without automatically selecting the first option
 set completeopt=menuone,noinsert,noselect
 
-" Définit la hauteur de la ligne de commande à 1 ligne
+" Defines the height of the command line to 1 line
 set cmdheight=1
 
-" Définit le délai de mise à jour pour les opérations asynchrones en millisecondes
+" Defines the update delay for asynchronous operations in milliseconds
 set updatetime=300
 
-" Configure la recherche intelligente et insensible à la casse, avec mise en surbrillance des résultats de recherche
+" Configure smart and case insensitive search, with search results highlighted
 set smartcase
 set ignorecase
 set hlsearch
 set incsearch
 
-" Supprime les messages d'informations courts pour certaines opérations
+" Removes short information messages for certain operations
 set shortmess+=c
 
-" Désactive l'affichage du mode et de la commande en bas de l'écran
+" Disable the display of the mode and command at the bottom of the screen
 set noshowmode
 set noshowcmd
 
-" Désactive le retour automatique à la ligne et la mise à jour différée de l'affichage lors du défilement
+" Disable automatic line wrapping and deferred display update when scrolling
 set nowrap
 set nolazyredraw
 
-" Désactive la création de fichiers de sauvegarde et de fichiers d'échange
+" Disable the creation of backup files and swap files
 set noswapfile
 set nowritebackup
 
-" Ouvre les nouvelles fenêtres en dessous et à droite de la fenêtre active
+" Opens new windows below and to the right of the active window
 set splitbelow splitright
 
-" Active l'indentation automatique lors de la création de nouvelles lignes
+" Enable automatic indentation when creating new lines
 set autoindent
 
-" Définit la largeur des tabulations à 2 caractères, la largeur de l'indentation souple à 2 caractères et la largeur du décalage automatique à 2 caractères
+" Defines the tab width to 2 characters, the soft indentation width to 2 characters and the automatic offset width to 2 characters
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-" Affiche une règle en bas de l'écran indiquant le numéro de ligne et la colonne du curseur
+" Displays a ruler at the bottom of the screen indicating the line number and cursor column
 set ruler
 
-" Active l'affichage des numéros de ligne
+" Displays line numbers
 set number
 
-" Active l'affichage des numéros de ligne relatifs par rapport à la ligne courante
+" Displays relative line numbers relative to the current line
 set relativenumber
 
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Affiche une colonne de signes avec des numéros si la version de Neovim est supérieure ou égale à 0.5.0 ou si le patch 8.1.1564 est appliqué
+  " Displays a column of signs with numbers if the Neovim version is greater than or equal to 0.5.0 or if patch 8.1.1564 is applied
   set signcolumn=number
 else
-  " Affiche une colonne de signes sans numéros
+  " Displays a column of signs without numbers
   set signcolumn=yes
 endif
 
-" Active la vue verticale lors de l'utilisation de la commande diff pour comparer des fichiers
+" Enable vertical view when using the diff command to compare files
 set diffopt+=vertical
 
-" Active la coloration syntaxique
+" Enable syntax highlighting
 syntax on
 
-" Définit le thème de couleur pour un fond sombre
+" Defines the color scheme for a dark background
 set background=dark
 
-" Active la prise en charge des couleurs TrueColor (24 bits) si le terminal le permet, et définit le nombre de couleurs du terminal à 256
+" Enable TrueColor (24-bit) color support if the terminal supports it, and set the terminal color count to 256
 set notermguicolors
 set t_Co=256
 
-" Définit le thème de couleur "dim"
+" Defines the "dim" color scheme
 colorscheme dim 
 
-" Définit la couleur d'arrière-plan en mode Normal sans couleur de fond dans l'interface graphique et dans le terminal
+" Defines the background color in Normal mode without background color in the graphical interface and in the terminal
 " hi Normal guibg=NONE ctermbg=NONE
 
-" Définit le caractère utilisé pour le leader des raccourcis clavier
+" Defines the character used for the leader of keyboard shortcuts
 let mapleader=' '
 
-" Désactive la bannière netrw
+" Disable the netrw banner
 " let g:netrw_banner=0
 
-" Associe la touche <tab> à la commande :bn pour passer au buffer suivant
+" Associate the <tab> key with the :bn command to switch to the next buffer
 nmap <tab> :bn<cr>
 
-" Associe la combinaison <s-tab> à la commande :bp pour passer au buffer précédent
+" Associate the <s-tab> key with the :bp command to switch to the previous buffer
 nmap <s-tab> :bp<cr>
 
-" Associe la combinaison <leader>qq à la commande :bd pour fermer le buffer courant
+" Associate the <leader>qq combination with the :bd command to close the current buffer
 nmap <leader>qq :bd<cr>
 
-" Associe la combinaison <leader>b à la commande :split pour ouvrir un nouveau split horizontal
+" Associate the <leader>b combination with the :split command to open a new horizontal split
 map <leader>b :split<cr>
 
-" Associe la combinaison <leader>v à la commande :vsplit pour ouvrir un nouveau split vertical
+" Associate the <leader>v combination with the :vsplit command to open a new vertical split
 map <leader>v :vsplit<cr>
 
-" Associe la combinaison de touches <c-h> à la commande <c-w><c-h> pour basculer vers la fenêtre de gauche
+" Associate the <c-h> key combination with the <c-w><c-h> command to switch to the left window
 nnoremap <c-h> <c-w><c-h>
 
-" Associe la combinaison de touches <c-j> à la commande <c-w><c-j> pour basculer vers la fenêtre du bas
+" Associate the <c-j> key combination with the <c-w><c-j> command to switch to the bottom window
 nnoremap <c-j> <c-w><c-j>
 
-" Associe la combinaison de touches <c-k> à la commande <c-w><c-k> pour basculer vers la fenêtre du haut
+" Associate the <c-k> key combination with the <c-w><c-k> command to switch to the top window
 nnoremap <c-k> <c-w><c-k>
 
-" Associe la combinaison de touches <c-l> à la commande <c-w><c-l> pour basculer vers la fenêtre de droite
+" Associate the <c-l> key combination with the <c-w><c-l> command to switch to the right window
 nnoremap <c-l> <c-w><c-l>
 
-" Associe la combinaison de touches <c-left> à la commande <c-w><c-h> pour basculer vers la fenêtre de gauche
+" Associate the <c-left> key combination with the <c-w><c-h> command to switch to the left window
 nnoremap <c-left> <c-w><c-h>
 
-" Associe la combinaison de touches <c-down> à la commande <c-w><c-j> pour basculer vers la fenêtre du bas
+" Associate the <c-down> key combination with the <c-w><c-j> command to switch to the bottom window
 nnoremap <c-down> <c-w><c-j>
 
-" Associe la combinaison de touches <c-up> à la commande <c-w><c-k> pour basculer vers la fenêtre du haut
+" Associate the <c-up> key combination with the <c-w><c-k> command to switch to the top window
 nnoremap <c-up> <c-w><c-k>
 
-" Associe la combinaison de touches <c-right> à la commande <c-w><c-l> pour basculer vers la fenêtre de droite
+" Associate the <c-right> key combination with the <c-w><c-l> command to switch to the right window
 nnoremap <c-right> <c-w><c-l>
 
-" Redéfinit la commande 'x' pour supprimer le caractère sous le curseur et le placer dans le registre '_' (black hole)
+" Redefines the 'x' command to delete the character under the cursor and place it in the '_' register (black hole)
 noremap x "_x
 
-" Redéfinit la commande 'X' pour supprimer le caractère précédent et le placer dans le registre '_' (black hole)
+" Redefines the 'X' command to delete the previous character and place it in the '_' register (black hole)
 noremap X "_x
 
-" Redéfinit la commande '(' pour insérer une paire de parenthèses et positionner le curseur entre elles
+" Redefines the '(' command to insert a pair of parentheses and position the cursor between them
 " inoremap ( ()<left>
 
-" Redéfinit la commande '{' pour insérer une paire d'accolades et positionner le curseur entre elles
+" Redefines the '{' command to insert a pair of braces and position the cursor between them
 " inoremap { {}<left>
 
-" Redéfinit la commande '[' pour insérer une paire de crochets et positionner le curseur entre eux
+" Redefines the '[' command to insert a pair of brackets and position the cursor between them
 " inoremap [ []<left>
 
-" Configuration de Lightline (à décommenter et personnaliser selon vos besoins)
+" Defines the configuration of the Lightline plugin
 " let g:lightline = {
 "   \ 'active': {
 "   \   'left': [ [ 'mode', 'paste' ],
@@ -193,21 +193,21 @@ noremap X "_x
 "   \ 'colorscheme': 'codedark',
 "   \ }
 
-" Configuration du plugin Colorizer (à décommenter si le plugin est installé)
+" Defines the configuration of the Colorizer plugin
 " lua require 'colorizer'.setup()
 
-" Associe la touche <leader>m à la commande :MaximizerToggle! pour basculer l'état de maximisation de la fenêtre
+" Associate the <leader>m key to the :MaximizerToggle! command to toggle the window maximization state
 nnoremap <leader>m :MaximizerToggle!<cr>
 
-" Configuration du plugin Neoterm (à décommenter et personnaliser selon vos besoins)
+" Defines the configuration of the Neoterm plugin
 " let g:neoterm_default_mod='vertical'
 " let g:neoterm_size=60
 " let g:neoterm_autoinsert=1
 
-" Redéfinition des touches de basculement pour le plugin Ttoggle (à décommenter si le plugin est installé)
+" Redefines the toggle keys for the Ttoggle plugin (to be uncommented if the plugin is installed)
 " nnoremap <c-w> :Ttoggle<cr>
 " inoremap <c-w> <esc>:Ttoggle<cr>
 " tnoremap <c-w> <c-\><c-n>:Ttoggle<cr>
 
-" Associe la combinaison <leader>gg à la commande :G (utilisé par le plugin Git)
+" Associate the <leader>gg combination with the :G command (used by the Git plugin)
 " nnoremap <leader>gg :G<cr>
