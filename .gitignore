@@ -1,14 +1,5 @@
-**/private
-
-backups
-
-fish/completions
-fish/conf.d
-fish/functions
-fish/fish_plugins
+fish/**/*nvm*
+fish/**/*fisher*
 fish/fish_variables
 
 git/conf.d
-
-micro/buffers
-micro/plug

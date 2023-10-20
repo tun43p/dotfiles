@@ -1,73 +1,56 @@
 if status is-interactive
+    set -gx GPG_TTY $(tty)
+
     set -gx EDITOR nvim
     set -gx VISUAL code
-    set -gx BROWSER firefox
-    set -gx CHROME_EXECUTABLE chromium
+    set -gx BROWSER /Applications/Arc.app/Contents/MacOS/Arc
+    set -gx CHROME_EXECUTABLE $BROWSER
 
-    # Parse user-dirs.dirs file and export variables
-    for val in (cat $HOME/.config/user-dirs.dirs)
-        set values (string split = $val)
-        set -gx $values[1] (string replace -a '"' '' $values[2])
-        set -e values
-    end
+    set -gx HOMEBREW /opt/homebrew
 
-    # set -gx QT_QPA_PLATFORMTHEME qt5ct
-    # set -gx GTK2_RC_FILES $HOME/.gtkrc-2.0
+    set -gx ANDROID_SDK $HOME/Library/Android/sdk
 
-    set -gx LV2_PATH $HOME/.lv2
+    set -gx PUB_CACHE $HOME/.pub-cache
 
-    set -gx CARGO_HOME $HOME/.cargo
-    set -gx GOROOT /usr/local/go
-    set -gx GOPATH $HOME/.go
-    set -gx GOBIN $GOPATH/bin
-    set -gx DENO_HOME $HOME/.deno
-    set -gx PYENV_ROOT $HOME/.pyenv
-    set -gx FLUTTER_HOME $HOME/.flutter
-    set -gx ANDROID_SDK_HOME $HOME/android/sdk
-    set -gx ANDROID_SDK_BIN $ANDROID_SDK_HOME/cmdline-tools/latest/bin $ANDROID_SDK_HOME/platform-tools
-    set -gx JAVA_HOME /var/lib/flatpak/app/com.google.AndroidStudio/current/active/files/extra/android-studio/jbr
+    set -gx CARGO_DIR $HOME/.cargo
 
-    set -U fish_user_paths \
-        $HOME/.local/bin \
-        $CARGO_HOME/bin \
-        $GOROOT/bin \
-        $GOBIN \
-        $DENO_HOME/bin \
+    set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+    set -gx OPENJDK_DIR $HOMEBREW/opt/openjdk
+
+    set -gx GEMS_PATH $HOME/.gem/ruby/2.6.0
+
+    set -gx CPPFLAGS "-I/$OPENJDK_DIR/include"
+
+    set -gx DESKTOP $HOME/Desktop
+    set -gx DOCUMENTS $HOME/Documents
+    set -gx DOWNLOADS $HOME/Downloads
+    set -gx LIBRARY $HOME/Library
+    set -gx MOVIES $HOME/Movies
+    set -gx MUSIC $HOME/Music
+    set -gx PICTURES $HOME/Pictures
+    set -gx PUBLIC $HOME/Public
+
+    set -gx ARCHIVES $DOCUMENTS/Archives
+    set -gx CODE $DOCUMENTS/Code
+    set -gx DOTFILES $CODE/github.com/tun43p/dotfiles
+
+    fish_add_path \
+        $HOMEBREW/bin \
+        $ANDROID_SDK/cmdline-tools/latest \
+        $ANDROID_SDK/platform-tools \
+        $PUB_CACHE/bin \
+        $CARGO_DIR/bin \
+        $OPENJDK_DIR/bin \
+        $GEMS_PATH/bin \
         $PYENV_ROOT/bin \
-        $ANDROID_SDK_BIN \
-        $FLUTTER_HOME/bin \
-        $fish_user_paths
+        $SQLITE_DIR/bin
 
-    function apti
-        sudo apt-get update && sudo apt-get install $argv
+    alias reload "source $HOME/.config/fish/config.fish"
+
+    alias pinentry pinentry-mac
+
+    # Ajout des complétions pour ngrok
+    if command -v ngrok &>/dev/null
+        eval "$(ngrok completion)"
     end
-
-    function aptu
-        sudo apt-get update && sudo apt-get full-upgrade
-    end
-
-    function aptr
-        sudo apt-get autoremove --purge $argv
-    end
-
-    function commits
-        echo "build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test"
-    end
-
-
-    alias rel="source $XDG_CONFIG_DIR/fish/config.fish"
-
-    # Override Dart Flutter version
-    alias my_dart="/usr/bin/dart"
-
-    alias repos="cd $XDG_REPOSITORIES_DIR"
-    alias dots="cd $XDG_DOTFILES_DIR"
-
-    alias create-astro="nvm use latest && npm create astro@latest"
-
-    pyenv init - | source
-    nvm use latest
-
-    # Set terminal colors
-    sh $XDG_DOTFILES_DIR/scripts/set_colors.sh
 end
