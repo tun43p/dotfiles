@@ -11,7 +11,7 @@ function bf -d "Utils for Blackfoot"
             echo $help
 
         case ssh s
-            let -l ssh_help "Usage: bf ssh [macmini]"
+            set -l ssh_help "Usage: bf ssh [macmini]"
 
             if test (count $argv) -eq 1
                 echo $ssh_help
