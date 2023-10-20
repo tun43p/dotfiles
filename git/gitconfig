@@ -1,0 +1,29 @@
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+
+[gpg]
+  program = /opt/homebrew/bin/gpg 
+
+[commit]
+	gpgSign = true 
+
+[tag]
+	gpgSign = true
+
+[includeIf "gitdir:~/Documents/Code/github.com/tun43p/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
+
+[includeIf "gitdir:~/Documents/Code/gitlab.com/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
+
+[includeIf "gitdir:~/Documents/Code/github.com/blackfoot-makers/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
+
+[includeIf "gitdir:~/Documents/Code/git.labinno.fr/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot

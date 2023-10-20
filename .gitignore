@@ -1,0 +1,5 @@
+fish/**/*nvm*
+fish/**/*fisher*
+fish/fish_variables
+
+git/conf.d
