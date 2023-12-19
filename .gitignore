@@ -1,3 +1,5 @@
+.DS_Store
+
 fish/**/*nvm*
 fish/**/*fisher*
 fish/fish_variables

@@ -1,0 +1,102 @@
+{
+  "window.titleBarStyle": "custom",
+
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 12,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "editor.suggest.insertMode": "replace",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "editor.largeFileOptimizations": false,
+
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false
+  },
+
+  "terminal.integrated.fontSize": 12,
+  "workbench.iconTheme": "vs-seti",
+
+  "redhat.telemetry.enabled": false,
+
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnType": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggestSelection": "first",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.maxTokenizationLineLength": 2500
+  },
+
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.autoIndent": "keep",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+
+  "[fish]": {
+    "editor.defaultFormatter": "bmalehorn.vscode-fish",
+    "editor.tabSize": 4
+  },
+
+  "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+
+  "solidity.telemetry": false,
+  "githubPullRequests.pullBranch": "never",
+
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "kotlin.languageServer.enabled": false,
+  "kotlin.debugAdapter.enabled": false
+}
