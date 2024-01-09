@@ -142,29 +142,29 @@ map <leader>b :split<cr>
 " Associate the <leader>v combination with the :vsplit command to open a new vertical split
 map <leader>v :vsplit<cr>
 
-" Associate the <c-h> key combination with the <c-w><c-h> command to switch to the left window
-nnoremap <c-h> <c-w><c-h>
+" Associate the <leader>h key combination with the <c-w><c-h> command to switch to the left window
+nnoremap <leader>h <c-w><c-h>
 
-" Associate the <c-j> key combination with the <c-w><c-j> command to switch to the bottom window
-nnoremap <c-j> <c-w><c-j>
+" Associate the <leader>j key combination with the <c-w><c-j> command to switch to the bottom window
+nnoremap <leader>j <c-w><c-j>
 
-" Associate the <c-k> key combination with the <c-w><c-k> command to switch to the top window
-nnoremap <c-k> <c-w><c-k>
+" Associate the <leader>k key combination with the <c-w><c-k> command to switch to the top window
+nnoremap <leader>k <c-w><c-k>
 
-" Associate the <c-l> key combination with the <c-w><c-l> command to switch to the right window
-nnoremap <c-l> <c-w><c-l>
+" Associate the <leader>l key combination with the <c-w><c-l> command to switch to the right window
+nnoremap <leader>l <c-w><c-l>
 
-" Associate the <c-left> key combination with the <c-w><c-h> command to switch to the left window
-nnoremap <c-left> <c-w><c-h>
+" Associate the <leader>left key combination with the <c-w><c-h> command to switch to the left window
+nnoremap <leader><left> <c-w><c-h>
 
-" Associate the <c-down> key combination with the <c-w><c-j> command to switch to the bottom window
-nnoremap <c-down> <c-w><c-j>
+" Associate the <leader>down key combination with the <c-w><c-j> command to switch to the bottom window
+nnoremap <leader><down> <c-w><c-j>
 
-" Associate the <c-up> key combination with the <c-w><c-k> command to switch to the top window
-nnoremap <c-up> <c-w><c-k>
+" Associate the <leader>up key combination with the <c-w><c-k> command to switch to the top window
+nnoremap <leader><up> <c-w><c-k>
 
-" Associate the <c-right> key combination with the <c-w><c-l> command to switch to the right window
-nnoremap <c-right> <c-w><c-l>
+" Associate the <leader>right key combination with the <c-w><c-l> command to switch to the right window
+nnoremap <leader><right> <c-w><c-l>
 
 " Redefines the 'x' command to delete the character under the cursor and place it in the '_' register (black hole)
 noremap x "_x
