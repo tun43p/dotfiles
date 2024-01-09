@@ -124,9 +124,85 @@
   "kotlin.languageServer.enabled": false,
   "kotlin.debugAdapter.enabled": false,
 
-  "tidalcycles.sounds.paths": [
-    "/Users/tun43p/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples"
+  "vim.leader": "<Space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Tab>"],
+      "commands": [":bnext"]
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": ["leader", "h"],
+      "commands": [":split"]
+    },
+    {
+      "before": ["leader", "v"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "left"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "down"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "up"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["leader", "right"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["leader", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    { "before": ["leader", "w"], "commands": ["workbench.action.files.save"] },
+    {
+      "before": ["leader", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["leader", "d"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["leader", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
   ],
-
-  "supercollider.sclang.cmd": "/Applications/SuperCollider.app/Contents/MacOS/sclang"
+  "vim.visualModeKeyBindings": [
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    {
+      "before": ["<S-down>"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    { "before": ["<S-Up>"], "commands": ["editor.action.moveLinesUpAction"] },
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+  ]
 }
