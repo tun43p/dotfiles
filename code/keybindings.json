@@ -56,5 +56,9 @@
   {
     "key": "ctrl+shift+d",
     "command": "workbench.debug.action.toggleRepl"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "workbench.view.scm"
   }
 ]
