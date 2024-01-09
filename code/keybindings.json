@@ -1,5 +1,9 @@
 [
   {
+    "key": "ctrl+shift+e",
+    "command": "workbench.view.explorer"
+  },
+  {
     "key": "ctrl+n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus"
@@ -55,7 +59,8 @@
   },
   {
     "key": "ctrl+shift+d",
-    "command": "workbench.debug.action.toggleRepl"
+    "command": "workbench.debug.action.toggleRepl",
+    "when": "!explorerViewletFocus"
   },
   {
     "key": "ctrl+shift+g",
