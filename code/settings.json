@@ -40,6 +40,21 @@
   "dart.debugExternalPackageLibraries": false,
   "dart.debugSdkLibraries": false,
 
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.insertMode": "replace"
+  },
+
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.maxTokenizationLineLength": 2500
@@ -89,6 +104,15 @@
     "editor.tabSize": 4
   },
 
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell",
+    "editor.tabSize": 2
+  },
+
+  "files.associations": {
+    "*.tidal": "haskell"
+  },
+
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
 
   "solidity.telemetry": false,
@@ -98,5 +122,11 @@
   "diffEditor.ignoreTrimWhitespace": false,
 
   "kotlin.languageServer.enabled": false,
-  "kotlin.debugAdapter.enabled": false
+  "kotlin.debugAdapter.enabled": false,
+
+  "tidalcycles.sounds.paths": [
+    "/Users/tun43p/Library/Application Support/SuperCollider/downloaded-quarks/Dirt-Samples"
+  ],
+
+  "supercollider.sclang.cmd": "/Applications/SuperCollider.app/Contents/MacOS/sclang"
 }

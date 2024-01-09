@@ -1,5 +1,10 @@
 .DS_Store
 
+code/**/globalStorage
+code/History
+code/workspaceStorage
+code/sync
+
 fish/**/*nvm*
 fish/**/*fisher*
 fish/fish_variables
