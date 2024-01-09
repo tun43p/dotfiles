@@ -16,12 +16,16 @@ if status is-interactive
 
     set -gx CARGO_DIR $HOME/.cargo
 
+    set -gx GHCUP $HOME/.ghcup
+
     set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
     set -gx OPENJDK_DIR $HOMEBREW/opt/openjdk
 
     set -gx GEMS_PATH $HOME/.gem/ruby/2.6.0
 
     set -gx CPPFLAGS "-I/$OPENJDK_DIR/include"
+
+    set -gx SUPERCOLLIDER /Applications/SuperCollider.app/Contents/MacOS
 
     set -gx DESKTOP $HOME/Desktop
     set -gx DOCUMENTS $HOME/Documents
@@ -42,16 +46,17 @@ if status is-interactive
         $ANDROID_SDK/platform-tools \
         $PUB_CACHE/bin \
         $CARGO_DIR/bin \
+        $GHCUP/bin \
         $OPENJDK_DIR/bin \
         $GEMS_PATH/bin \
         $PYENV_ROOT/bin \
-        $SQLITE_DIR/bin
+        $SQLITE_DIR/bin \
+        $SUPERCOLLIDER
 
     alias reload "source $HOME/.config/fish/config.fish"
 
     alias pinentry pinentry-mac
 
-    # Ajout des complétions pour ngrok
     if command -v ngrok &>/dev/null
         eval "$(ngrok completion)"
     end

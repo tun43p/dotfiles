@@ -1,0 +1,2 @@
+// Start SuperDirt
+SuperDirt.start;
