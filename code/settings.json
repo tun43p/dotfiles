@@ -125,6 +125,8 @@
   "kotlin.debugAdapter.enabled": false,
 
   "vim.leader": "<Space>",
+  "vim.useSystemClipboard": true,
+
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<Tab>"],
@@ -201,6 +203,7 @@
     },
     { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
   ],
+
   "vim.visualModeKeyBindings": [
     { "before": ["<"], "commands": ["editor.action.outdentLines"] },
     { "before": [">"], "commands": ["editor.action.indentLines"] },
