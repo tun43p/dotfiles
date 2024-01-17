@@ -1,5 +1,9 @@
 [
   {
+    "key": "ctrl+r",
+    "command": "workbench.action.openRecent"
+  },
+  {
     "key": "ctrl+shift+e",
     "command": "workbench.view.explorer"
   },
@@ -65,5 +69,9 @@
   {
     "key": "ctrl+shift+g",
     "command": "workbench.view.scm"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "command": "workbench.action.findinfiles"
   }
 ]

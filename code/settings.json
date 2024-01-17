@@ -180,8 +180,12 @@
     },
     { "before": ["leader", "w"], "commands": ["workbench.action.files.save"] },
     {
-      "before": ["leader", "q"],
+      "before": ["leader", "q", "q"],
       "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["leader", "q", "a"],
+      "commands": ["workbench.action.closeAllEditors"]
     },
     {
       "before": ["leader", "f"],
