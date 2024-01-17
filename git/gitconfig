@@ -27,3 +27,9 @@
 
 [includeIf "gitdir:~/Documents/Code/git.labinno.fr/"]
 	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
