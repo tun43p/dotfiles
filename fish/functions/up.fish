@@ -1,5 +1,5 @@
 function up -d "Update the system"
-    set -l help "Usage: update"
+    set -l help "Usage: up"
 
     if test -d "$HOME/tmp"
         rm -rf "$HOME/tmp"
