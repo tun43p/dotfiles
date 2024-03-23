@@ -21,7 +21,11 @@
   },
 
   "terminal.integrated.fontSize": 12,
-  "workbench.iconTheme": "vs-seti",
+  "workbench.iconTheme": "vscode-icons",
+
+  "projectManager.git.baseFolders": ["/Users/tun43p/Documents/Code"],
+
+  "git.confirmSync": false,
 
   "redhat.telemetry.enabled": false,
 

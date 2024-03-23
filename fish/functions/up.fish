@@ -5,5 +5,9 @@ function up -d "Update the system"
         rm -rf "$HOME/tmp"
     end
 
+    echo "Updating brew..."
     brew update && brew upgrade && brew cleanup
+
+    echo "Updating mail..."
+    t43 ssh mail update
 end

@@ -8,10 +8,10 @@
 	autoSetupRemote = true
 
 [gpg]
-  program = /opt/homebrew/bin/gpg 
+  program = /opt/homebrew/bin/gpg
 
 [commit]
-	gpgSign = true 
+	gpgSign = true
 
 [tag]
 	gpgSign = true
@@ -21,6 +21,9 @@
 
 [includeIf "gitdir:~/Documents/Code/gitlab.com/"]
 	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
+
+[includeIf "gitdir:~/Documents/Code/epitech.eu/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
 
 [includeIf "gitdir:~/Documents/Code/github.com/blackfoot-makers/"]
 	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
@@ -33,3 +36,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[user]
+	name = Alex
+	email = git@tun43p.com

@@ -1,9 +1,15 @@
 " Activate the vim-plug plugin manager
 call plug#begin()
-Plug 'jeffkreeftmeijer/vim-dim'
+" A collection of language packs for Vim
 Plug 'sheerun/vim-polyglot'
+
+" Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
+
+" Comment stuff out
 Plug 'tpope/vim-commentary'
+
+" A Vim plugin which shows a git diff in the sign column
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
@@ -15,7 +21,7 @@ endif
 " Enable automatic detection of file type, associated plugins and automatic indentation
 filetype plugin indent on
 
-" Defines the encoding of files in UTF-8 
+" Defines the encoding of files in UTF-8
 set encoding=utf8
 
 " Set the language menu to French
@@ -115,8 +121,8 @@ set background=dark
 set notermguicolors
 set t_Co=256
 
-" Defines the "dim" color scheme
-colorscheme dim 
+" Defines the color scheme
+" colorscheme codedark
 
 " Defines the background color in Normal mode without background color in the graphical interface and in the terminal
 " hi Normal guibg=NONE ctermbg=NONE
@@ -197,7 +203,7 @@ noremap X "_x
 " lua require 'colorizer'.setup()
 
 " Associate the <leader>m key to the :MaximizerToggle! command to toggle the window maximization state
-nnoremap <leader>m :MaximizerToggle!<cr>
+" nnoremap <leader>m :MaximizerToggle!<cr>
 
 " Defines the configuration of the Neoterm plugin
 " let g:neoterm_default_mod='vertical'

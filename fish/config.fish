@@ -6,11 +6,12 @@ if status is-interactive
     set -gx EDITOR nvim
     set -gx VISUAL code
     set -gx BROWSER /Applications/Arc.app/Contents/MacOS/Arc
-    set -gx CHROME_EXECUTABLE $BROWSER
+    set -gx CHROME_EXECUTABLE "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
     set -gx HOMEBREW /opt/homebrew
 
     set -gx ANDROID_SDK $HOME/Library/Android/sdk
+    set -gx ANDROID_HOME $ANDROID_SDK
 
     set -gx PUB_CACHE $HOME/.pub-cache
 
@@ -26,6 +27,9 @@ if status is-interactive
     set -gx CPPFLAGS "-I/$OPENJDK_DIR/include"
 
     set -gx SUPERCOLLIDER /Applications/SuperCollider.app/Contents/MacOS
+
+    set -gx PICO8_APP_DIR /Applications/PICO-8/PICO-8.app/Contents/MacOS
+    set -gx PICO8_DAT_DIR "$HOME/Library/Application Support/pico-8"
 
     set -gx DESKTOP $HOME/Desktop
     set -gx DOCUMENTS $HOME/Documents
