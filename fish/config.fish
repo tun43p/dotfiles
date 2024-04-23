@@ -17,14 +17,19 @@ if status is-interactive
 
     set -gx CARGO_DIR $HOME/.cargo
 
-    set -gx GHCUP $HOME/.ghcup
-
     set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
     set -gx OPENJDK_DIR $HOMEBREW/opt/openjdk
 
     set -gx GEMS_PATH $HOME/.gem/ruby/2.6.0
 
+    set -gx GHCUP $HOME/.ghcup
+
     set -gx CPPFLAGS "-I/$OPENJDK_DIR/include"
+
+    # How to add this to ?
+    # set -gx LDFLAGS "-L/opt/homebrew/opt/zlib/lib"
+    # set -gx CPPFLAGS "-I/opt/homebrew/opt/zlib/include"
+    # set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig"
 
     set -gx SUPERCOLLIDER /Applications/SuperCollider.app/Contents/MacOS
 
@@ -40,12 +45,12 @@ if status is-interactive
     set -gx PICTURES $HOME/Pictures
     set -gx PUBLIC $HOME/Public
 
-    set -gx ARCHIVES $DOCUMENTS/Archives
     set -gx CODE $DOCUMENTS/Code
     set -gx DOTFILES $CODE/github.com/tun43p/dotfiles
 
     fish_add_path \
         $HOMEBREW/bin \
+        $HOMEBREW/sbin \
         $ANDROID_SDK/cmdline-tools/latest \
         $ANDROID_SDK/platform-tools \
         $PUB_CACHE/bin \
@@ -53,15 +58,11 @@ if status is-interactive
         $GHCUP/bin \
         $OPENJDK_DIR/bin \
         $GEMS_PATH/bin \
-        $PYENV_ROOT/bin \
         $SQLITE_DIR/bin \
         $SUPERCOLLIDER
 
     alias reload "source $HOME/.config/fish/config.fish"
-
     alias pinentry pinentry-mac
 
-    if command -v ngrok &>/dev/null
-        eval "$(ngrok completion)"
-    end
+    alias vim nvim
 end
