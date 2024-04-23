@@ -1,17 +1,20 @@
 " Activate the vim-plug plugin manager
-call plug#begin()
+" call plug#begin()
+" VSCode Modern colorscheme
+" Plug 'gmr458/vscode_modern_theme.nvim' 
+
 " A collection of language packs for Vim
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 " Comment stuff out
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
 
 " A Vim plugin which shows a git diff in the sign column
-Plug 'airblade/vim-gitgutter'
-call plug#end()
+" Plug 'airblade/vim-gitgutter'
+" call plug#end()
 
 " Disable compatibility mode
 if &compatible
@@ -119,10 +122,10 @@ set background=dark
 
 " Enable TrueColor (24-bit) color support if the terminal supports it, and set the terminal color count to 256
 set notermguicolors
-set t_Co=256
+" set t_Co=256
 
 " Defines the color scheme
-" colorscheme codedark
+" colorscheme vscode_modern 
 
 " Defines the background color in Normal mode without background color in the graphical interface and in the terminal
 " hi Normal guibg=NONE ctermbg=NONE
