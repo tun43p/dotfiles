@@ -23,8 +23,6 @@
   "terminal.integrated.fontSize": 12,
   "workbench.iconTheme": "vscode-icons",
 
-  "projectManager.git.baseFolders": ["/Users/tun43p/Documents/Code"],
-
   "git.confirmSync": false,
 
   "redhat.telemetry.enabled": false,
@@ -108,22 +106,9 @@
     "editor.tabSize": 4
   },
 
-  "[haskell]": {
-    "editor.defaultFormatter": "haskell.haskell",
-    "editor.tabSize": 2
-  },
-
-  "files.associations": {
-    "*.tidal": "haskell"
-  },
-
-  "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-
-  "solidity.telemetry": false,
   "githubPullRequests.pullBranch": "never",
 
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
-  "diffEditor.ignoreTrimWhitespace": false,
 
   "kotlin.languageServer.enabled": false,
   "kotlin.debugAdapter.enabled": false,
@@ -219,5 +204,8 @@
     { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
     { "before": ["<S-Up>"], "commands": ["editor.action.moveLinesUpAction"] },
     { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
-  ]
+  ],
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false
 }
