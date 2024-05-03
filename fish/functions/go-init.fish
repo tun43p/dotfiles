@@ -6,7 +6,7 @@ function go-init -d "Create a new Golang project"
     # TODO(tun43p): Add a flag to specify the project path
     set -l tag github.com/tun43p
     set -l name $argv[1]
-    set -l dir $CODE/$name
+    set -l dir $CODE/$tag/$name
     set -l src $GOPATH/src
 
     if test (count $argv) -eq 0
