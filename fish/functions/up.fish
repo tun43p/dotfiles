@@ -7,6 +7,10 @@ function up -d "Update the system"
         rm -rf "$HOME/tmp"
     end
 
+    if test -d "$HOME/ai_overlay_tmp"
+        rm -rf "$HOME/ai_overlay_tmp"
+    end
+
     echo "Updating brew..."
     brew update && brew upgrade && brew cleanup
 
