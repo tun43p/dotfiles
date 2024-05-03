@@ -14,13 +14,23 @@ function go-init -d "Create a new Golang project"
         return 1
     end
 
+    if test (count $argv) -eq 2
+        if test $argv[2] = -d
+            trash $dir
+            trash $src/$tag/$name
+            echo "Project deleted"
+            return 0
+        end
+    end
+
+
     if test -d $dir
         echo "Project already exists"
         return 1
     end
 
     mkdir $dir && cd $dir
-    go mod init $name
+    go mod init $tag/$name
     git init
 
     if not test -d $src/$tag
