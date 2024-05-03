@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function hgrep -d "Grep for a string in Fish history file"
     set -l help "Usage: hgrep <string>"
 

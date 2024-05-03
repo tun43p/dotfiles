@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function t43 -d "Utils for tun43p"
     set -l help "Usage: t43 <script> [option]"
 

@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function repo -d "Go to a repository"
     set -l help "Usage: repo <source> [folder]"
 

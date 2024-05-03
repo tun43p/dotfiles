@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function www -d "Open an internet page"
     set -l help "Usage: www <link>"
 

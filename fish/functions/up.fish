@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function up -d "Update the system"
     set -l help "Usage: up"
 

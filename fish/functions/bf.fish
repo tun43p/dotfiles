@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function bf -d "Utils for Blackfoot"
     set -l help "Usage: bf <script> [option]"
 

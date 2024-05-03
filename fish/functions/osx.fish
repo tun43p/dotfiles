@@ -1,3 +1,5 @@
+# TODO(tun43p): Explain the purpose of this script
+
 function osx -d "Some utils for OSX"
     set -l help "Usage: osx <string>"
 
