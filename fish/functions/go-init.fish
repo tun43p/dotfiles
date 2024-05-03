@@ -21,6 +21,7 @@ function go-init -d "Create a new Golang project"
 
     mkdir $dir && cd $dir
     go mod init $name
+    git init
 
     if not test -d $src/$tag
         mkdir -p $src/$tag
