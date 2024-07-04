@@ -25,7 +25,7 @@ function bf -d "Utils for Blackfoot"
                         case help h
                             echo "Usage: bf ssh macmini [prune]"
                         case prune p
-                            ssh macmini.blackfoot.io "~/Scripts/prune"
+                            ssh macmini.blackfoot.io "~/Scripts/prune_and_unlock"
                         case '*'
                             ssh macmini.blackfoot.io
                     end
