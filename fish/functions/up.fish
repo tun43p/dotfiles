@@ -11,11 +11,13 @@ function update_system_and_servers -d "Update system and servers"
         rm -rf "$HOME/ai_overlay_tmp"
     end
 
-    echo "Updating brew..."
+    echo "Updating system..."
     brew update && brew upgrade && brew cleanup
+    echo "System updated"
 
-    echo "Updating mail..."
-    t43 ssh mail update
+    echo "Updating mail server..."
+    ssh mail.tun43p.com -t "sudo apt-get update && sudo apt-get full-upgrade -y"
+    echo "Mail server updated"
 end
 
-alias up "update_system_and_servers"
+alias up update_system_and_servers
