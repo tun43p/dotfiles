@@ -16,26 +16,15 @@
 [tag]
 	gpgSign = true
 
-[includeIf "gitdir:~/Documents/Code/github.com/tun43p/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
-
-[includeIf "gitdir:~/Documents/Code/gitlab.com/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
-
-[includeIf "gitdir:~/Documents/Code/epitech.eu/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
-
-[includeIf "gitdir:~/Documents/Code/github.com/blackfoot-makers/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
+[includeIf "gitdir:~/Documents/Code/github.com/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/default
 
 [includeIf "gitdir:~/Documents/Code/git.labinno.fr/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/blackfoot
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/shopbbox
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = Alex
-	email = git@tun43p.com
+
