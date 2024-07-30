@@ -8,7 +8,7 @@ if status is-interactive
     # Set some default application variables
     set -gx EDITOR nvim
     set -gx VISUAL code
-    set -gx BROWSER /Applications/Arc.app/Contents/MacOS/Arc
+    set -gx BROWSER /Applications/Sarafi.app/Contents/MacOS/Safari
     set -gx CHROME_EXECUTABLE "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
     # Set Homebrew path and configure flags 
@@ -57,17 +57,22 @@ if status is-interactive
     set -gx MUSIC $HOME/Music
     set -gx PICTURES $HOME/Pictures
     set -gx PUBLIC $HOME/Public
+    set -gx LOCAL $HOME/.local
 
     # Set custom directories
     set -gx CODE $DOCUMENTS/Code
     set -gx DOTFILES $CODE/github.com/tun43p/dotfiles
 
+    # Set iOS variables
+    set -gx IPHONE_NETWORK_IDENTIFIER "00008110-000A79500A11801E"
+
     # Set environment variables
     fish_add_path \
+        $LOCAL/bin \
         $HOMEBREW/bin \
         $HOMEBREW/sbin \
         $OPENJDK_DIR/bin \
-        $ANDROID_SDK/cmdline-tools/latest \
+        $ANDROID_SDK/cmdline-tools/latest/bin \
         $ANDROID_SDK/platform-tools \
         $PUB_CACHE/bin \
         $CARGO_DIR/bin \
@@ -86,10 +91,12 @@ if status is-interactive
     alias vim nvim
 
     # Create some aliases for Git
+    alias ga "git add"
+    alias gc "git commit -m"
     alias gp "git pull $1"
     alias gpo "git pull origin $1"
-    alias gc "git pull; git checkout $1"
-    alias gcb "git pull; git checkout -b $1"
+    alias gch "git pull; git checkout $1"
+    alias gchb "git pull; git checkout -b $1"
 
     # Create some aliases for Docker
     alias dc "docker compose"
@@ -97,4 +104,8 @@ if status is-interactive
     alias dcub "docker compose up --build"
     alias dcd "docker compose down"
     alias dcdv "docker compose down -v"
+
+    # Go to code directories
+    alias cdgit "cd $CODE/github.com/tun43p"
+    alias cdlab "cd $CODE/git.labinno.fr/cloud/maryse/stack-dev"
 end

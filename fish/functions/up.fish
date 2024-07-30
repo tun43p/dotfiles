@@ -13,6 +13,7 @@ function update_system_and_servers -d "Update system and servers"
 
     echo "Updating system..."
     brew update && brew upgrade && brew cleanup
+    brew upgrade --cask $(brew list --cask)
     echo "System updated"
 
     echo "Updating mail server..."

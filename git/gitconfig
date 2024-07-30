@@ -28,3 +28,6 @@
 	process = git-lfs filter-process
 	required = true
 
+[user]
+	name = tun43p
+	email = git@tun43p.com
