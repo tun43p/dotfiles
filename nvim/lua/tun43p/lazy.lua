@@ -22,3 +22,7 @@ require("lazy").setup( {{ import = "tun43p.plugins" }}, {
 		notify = false,
 	},
 })
+
+require("notify").setup({
+  background_colour = "#000000",
+})

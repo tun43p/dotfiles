@@ -67,3 +67,8 @@ vim.opt.showbreak = "↳"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 15
 vim.opt.sidescroll = 5
+
+-- disable netrw
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+

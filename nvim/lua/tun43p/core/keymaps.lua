@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>v", "<c-w>v", { desc = "Open vertical split" })
 
 -- jump between splits with space + vim or arrow keys
 vim.keymap.set("n", "<leader>h", "<c-w>h", { desc = "Jump to left split" })
-vim.keymap.set("n", "<leader><left>", "<c-w>h", { desc = "Jump to selft split" })
+vim.keymap.set("n", "<leader><left>", "<c-w>h", { desc = "Jump to left split" })
 vim.keymap.set("n", "<leader>j", "<c-w>j", { desc = "Jump to bottom split"})
 vim.keymap.set("n", "<leader><down>", "<c-w>j", { desc = "Jump to bottom split"})
 vim.keymap.set("n", "<leader>k", "<c-w>k", { desc = "Jump to upper split"})
@@ -46,3 +46,6 @@ vim.keymap.set("n", "<leader>c", ":noh<cr>", { silent = true, desc = "Clean sear
 
 -- fixes pasting after visual selection
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
+
+-- open terminal in a split with space + t
+vim.keymap.set("n", "<leader>t", ":term<cr>", { silent = true, desc = "Open terminal" })
