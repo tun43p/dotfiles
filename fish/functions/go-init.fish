@@ -1,9 +1,6 @@
-# TODO(tun43p): Explain the purpose of this script
-
 function go-init -d "Create a new Golang project"
     set -l help "Usage: go-init <project-name>"
 
-    # TODO(tun43p): Add a flag to specify the project path
     set -l tag github.com/tun43p
     set -l name $argv[1]
     set -l dir $CODE/$tag/$name

@@ -13,9 +13,9 @@ if status is-interactive
 
     # Set Homebrew path and configure flags 
     set -gx HOMEBREW /opt/homebrew
-    # set -gx LDFLAGS "-L/opt/homebrew/opt/zlib/lib"
-    # set -gx CPPFLAGS "-I/opt/homebrew/opt/zlib/include"
-    # set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig"
+    set -gx LDFLAGS "-L/opt/local/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/openssl/lib"
+    set -gx CPPFLAGS "-I/opt/local/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/openssl/include"
+    set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/openssl/lib/pkgconfig"
 
     # Set Java path and configure flags
     set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
@@ -28,6 +28,10 @@ if status is-interactive
 
     # Set cache path for Dart and Flutter dependencies 
     set -gx PUB_CACHE $HOME/.pub-cache
+
+    # Set PyEnv path for Python
+    set -gx PYENV_ROOT $HOME/.pyenv
+    set -gx PYTHON_CONFIGURE_OPTS "--enable-shared --with-openssl=$(brew --prefix openssl)"
 
     # Set Cargo path for Rust 
     set -gx CARGO_DIR $HOME/.cargo
@@ -52,7 +56,6 @@ if status is-interactive
     set -gx DESKTOP $HOME/Desktop
     set -gx DOCUMENTS $HOME/Documents
     set -gx DOWNLOADS $HOME/Downloads
-    set -gx LIBRARY $HOME/Library
     set -gx MOVIES $HOME/Movies
     set -gx MUSIC $HOME/Music
     set -gx PICTURES $HOME/Pictures
@@ -63,9 +66,6 @@ if status is-interactive
     set -gx CODE $DOCUMENTS/Code
     set -gx DOTFILES $CODE/github.com/tun43p/dotfiles
 
-    # Set iOS variables
-    set -gx IPHONE_NETWORK_IDENTIFIER "00008110-000A79500A11801E"
-
     # Set environment variables
     fish_add_path \
         $LOCAL/bin \
@@ -75,6 +75,7 @@ if status is-interactive
         $ANDROID_SDK/cmdline-tools/latest/bin \
         $ANDROID_SDK/platform-tools \
         $PUB_CACHE/bin \
+        $PYENV_ROOT/bin \
         $CARGO_DIR/bin \
         $GOPATH/bin \
         $GEMS_PATH/bin \
@@ -89,6 +90,11 @@ if status is-interactive
 
     # Get rid of default Vim
     alias vim nvim
+
+    alias ls "ls --color=always"
+    alias ll "ls -l --color=always"
+    alias la "ls -lA --color=always"
+    alias l "ls -CF --color=always"
 
     # Create some aliases for Git
     alias ga "git add"
@@ -105,7 +111,13 @@ if status is-interactive
     alias dcd "docker compose down"
     alias dcdv "docker compose down -v"
 
-    # Go to code directories
-    alias cdgit "cd $CODE/github.com/tun43p"
-    alias cdlab "cd $CODE/git.labinno.fr/cloud/maryse/stack-dev"
+    # Use the latest Node.js version
+    nvm use latest
+
+    # Initialize PyEnv
+    pyenv init - | source
+    pyenv virtualenv-init - | source
+
+    # Source private configuration file
+    source $HOME/.config/fish/config.private.fish
 end
