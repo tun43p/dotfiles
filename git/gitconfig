@@ -17,17 +17,13 @@
 	gpgSign = true
 
 [includeIf "gitdir:~/Documents/Code/github.com/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/default
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
 
-[includeIf "gitdir:~/Documents/Code/git.labinno.fr/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/shopbbox
+[includeIf "gitdir:~/Documents/Code/gitlab.innolab.fr/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/innolab
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
-[user]
-	name = tun43p
-	email = git@tun43p.com

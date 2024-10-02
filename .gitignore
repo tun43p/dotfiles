@@ -5,6 +5,7 @@ code/History
 code/workspaceStorage
 code/sync
 
+fish/**/*.private.fish
 fish/**/*nvm*
 fish/**/*fisher*
 fish/fish_variables
