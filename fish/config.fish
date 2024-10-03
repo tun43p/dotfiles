@@ -11,20 +11,16 @@ if status is-interactive
     set -gx BROWSER /Applications/Sarafi.app/Contents/MacOS/Safari
     set -gx CHROME_EXECUTABLE "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
-    # Set Homebrew path and configure flags 
+    # Set Homebrew path 
     set -gx HOMEBREW /opt/homebrew
-    set -gx LDFLAGS "-L/opt/local/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/openssl/lib"
-    set -gx CPPFLAGS "-I/opt/local/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/openssl/include"
-    set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/openssl/lib/pkgconfig"
 
-    # Set Java path and configure flags
+    # Set Java path 
+    set -gx OPENJDK_DIR $HOMEBREW/opt/openjdk@17
     set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
-    set -gx OPENJDK_DIR $HOMEBREW/opt/openjdk
-    set -gx CPPFLAGS "-I/$OPENJDK_DIR/include"
 
     # Set Android SDK path 
-    set -gx ANDROID_SDK $HOME/Library/Android/sdk
-    set -gx ANDROID_HOME $ANDROID_SDK
+    set -gx ANDROID_HOME $HOME/Library/Android/sdk
+    set -gx ANDROID_SDK_ROOT $ANDROID_HOME
 
     # Set cache path for Dart and Flutter dependencies 
     set -gx PUB_CACHE $HOME/.pub-cache
@@ -65,6 +61,11 @@ if status is-interactive
     # Set custom directories
     set -gx CODE $DOCUMENTS/Code
     set -gx DOTFILES $CODE/github.com/tun43p/dotfiles
+
+    # Configure flags 
+    set -gx LDFLAGS "-L/opt/local/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/openssl/lib"
+    set -gx CPPFLAGS "-I/opt/local/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/openssl/include -I/$OPENJDK_DIR/include"
+    set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/openssl/lib/pkgconfig"
 
     # Set environment variables
     fish_add_path \
