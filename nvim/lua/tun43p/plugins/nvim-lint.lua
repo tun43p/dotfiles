@@ -8,19 +8,25 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			javascript = { "eslint_d" },
-			javascriptreact = { "eslint_d" },
-			typescript = { "eslint_d" },
-			typescriptreact = { "eslint_d" },
-			svelte = { "eslint_d" },
-			html = { "htmlhint" },
-			css = { "stylelint" },
-			scss = { "stylelint" },
-			python = { "pylint" },
-			lua = { "luacheck" },
-			yaml = { "yamllint" },
-			json = { "jsonlint" },
-			markdown = { "markdownlint" },
+      astro = { "eslint_d" },
+      c = { "cpplint" },
+      cmake = { "cmakelint" },
+      cpp = { "cpplint" },
+      css = { "stylelint" },
+      go = { "golangci-lint" },
+      html = { "htmlhint" },
+      json = { "jsonlint" },
+      javascript = { "eslint_d" },
+      javascriptreact = { "eslint_d" },
+      kotlin = { "ktlint" },
+      lua = { "luacheck" },
+      markdown = { "markdownlint" },
+      python = { "pylint" },
+      scss = { "stylelint" },
+      svelte = { "eslint_d" },
+      typescript = { "eslint_d" },
+      typescriptreact = { "eslint_d" },
+      yaml = { "yamllint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -31,9 +37,5 @@ return {
 				lint.try_lint()
 			end,
 		})
-
-		-- vim.keymap.set("n", "<leader>ll", function()
-		-- 	lint.try_lint()
-		-- end, { desc = "Trigger linting for current file" })
 	end,
 }
