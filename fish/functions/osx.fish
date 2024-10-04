@@ -1,5 +1,4 @@
 function osx -d "Some utils for OSX"
-
     function help
         set -l lines "Usage: osx <string>" "- help, h: Get the IP address if the current machine" "- ip: Get the IP address of the current machine" "- hide: Hide a file from Finder" "- unhide: Unhide a file from Finder"
 
@@ -25,6 +24,10 @@ function osx -d "Some utils for OSX"
         case unhide
             # Unhide a file from Finder
             chflags nohidden $argv[2]
+        case refresh-dock:
+            # Refresh the Dock
+            defaults write com.apple.dock ResetLaunchPad -bool true
+            killall Dock
         case update
             if test -d "$HOME/tmp"
                 rm -rf "$HOME/tmp"
