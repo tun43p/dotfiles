@@ -112,6 +112,9 @@ if status is-interactive
     alias dcd "docker compose down"
     alias dcdv "docker compose down -v"
 
+    # Edit configuration files
+    alias dots "nvim $DOTFILES"
+
     # Use the latest Node.js version
     nvm use latest
 
