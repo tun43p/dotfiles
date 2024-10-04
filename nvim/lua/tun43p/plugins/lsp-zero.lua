@@ -3,12 +3,7 @@ return {
 	branch = "v2.x",
 	dependencies = {
 		{ "neovim/nvim-lspconfig" },
-		{
-			"williamboman/mason.nvim",
-			build = function()
-				pcall(vim.cmd, "MasonUpdate")
-			end,
-		},
+		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "hrsh7th/nvim-cmp" },
 		{ "hrsh7th/cmp-nvim-lsp" },
@@ -22,7 +17,7 @@ return {
 	config = function()
 		local lsp = require("lsp-zero")
 
-		lsp.on_attach(function(client, bufnr)
+		lsp.on_attach(function(_, bufnr)
 			local opts = { buffer = bufnr, remap = false }
 
 			vim.keymap.set("n", "gr", function()
@@ -61,33 +56,33 @@ return {
 		end)
 
 		require("mason").setup({})
-
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"astro-language-server", -- Astro
-				"bash-language-server", -- Bash
-				"clangd", -- C/C++
-				"cmake-language-server", -- CMake
-				"css-lsp", -- CSS
-				"deno", -- Deno
-				"dockerfile-language-server", -- Dockefile
-				"docker-compose-language-server", -- Docker Compose
-				"eslint-lsp", -- Eslint
-				"gitlab-ci-ls", -- Gitlab CI
-				"golangci-lint-langserver", -- Golang
-				"gradle-language-server", -- Gradle
-				"html-lsp", -- HTML
-				"json-lsp", -- JSON
-				"kotlin-language-server", -- Kotlin
-				"lua-language-server", -- Lua
-				"marksman", -- Markdown
-				"prisma-language-server", -- Prisma
-				"python-language-server", -- Python
-				"taplo", -- TOML
-				"solidity", -- Solidity
-				"tailwindcss-language-server", -- Tailwind CSS
-				"vue-language-server", -- Vue
-				"yaml-language-server", -- YAML
+				-- TODO(tun43p): Fix ensure_installed error
+				-- "astro-language-server", -- Astro
+				-- "bash-language-server", -- Bash
+				-- "clangd", -- C/C++
+				-- "cmake-language-server", -- CMake
+				-- "css-lsp", -- CSS
+				-- "deno", -- Deno
+				-- "dockerfile-language-server", -- Dockefile
+				-- "docker-compose-language-server", -- Docker Compose
+				-- "eslint-lsp", -- Eslint
+				-- "gitlab-ci-ls", -- Gitlab CI
+				-- "golangci-lint-langserver", -- Golang
+				-- "gradle-language-server", -- Gradle
+				-- "html-lsp", -- HTML
+				-- "json-lsp", -- JSON
+				-- "kotlin-language-server", -- Kotlin
+				-- "lua-language-server", -- Lua
+				-- "marksman", -- Markdown
+				-- "prisma-language-server", -- Prisma
+				-- "python-language-server", -- Python
+				-- "taplo", -- TOML
+				-- "solidity", -- Solidity
+				-- "tailwindcss-language-server", -- Tailwind CSS
+				-- "vue-language-server", -- Vue
+				-- "yaml-language-server", -- YAML
 			},
 			handlers = {
 				lsp.default_setup,
