@@ -20,7 +20,7 @@
 	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
 
 [includeIf "gitdir:~/Documents/Code/gitlab.innolab.fr/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/innolab
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/bytel
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
