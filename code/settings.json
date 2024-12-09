@@ -1,5 +1,6 @@
 {
   "window.titleBarStyle": "custom",
+
   "editor.detectIndentation": false,
   "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 12,
@@ -14,15 +15,58 @@
   "editor.unicodeHighlight.nonBasicASCII": false,
   "editor.unicodeHighlight.invisibleCharacters": false,
   "editor.unicodeHighlight.ambiguousCharacters": false,
+
+  "terminal.integrated.fontSize": 12,
+
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+
+  "git.confirmSync": false,
+
+  "githubPullRequests.pullBranch": "never",
+
+  "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
     "plaintext": true,
     "markdown": true,
     "scminput": false
   },
-  "terminal.integrated.fontSize": 12,
-  "git.confirmSync": false,
+
   "redhat.telemetry.enabled": false,
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggest.insertMode": "replace"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.maxTokenizationLineLength": 2500
+  },
+
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
   "[dart]": {
     "editor.defaultFormatter": "Dart-Code.dart-code",
     "editor.formatOnType": true,
@@ -34,37 +78,44 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": "off"
   },
+
   "dart.debugExternalPackageLibraries": false,
   "dart.debugSdkLibraries": false,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.suggest.insertMode": "replace"
+
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
   },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.suggest.insertMode": "replace"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.suggest.insertMode": "replace"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.maxTokenizationLineLength": 2500
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
   "[python]": {
     "editor.tabSize": 4,
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.rulers": [88],
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
+
+  "ruff.enable": true,
+  "ruff.fixAll": true,
+  "ruff.lint.enable": true,
+  "ruff.lint.run": "onType",
+
+  "[solidity]": {
+    "editor.defaultFormatter": "JuanBlanco.solidity",
+    "editor.rulers": [80],
+    "editor.tabSize": 4
+  },
+
+  "solidity.formatter": "forge",
+
+  "[fish]": {
+    "editor.defaultFormatter": "bmalehorn.vscode-fish",
+    "editor.tabSize": 4
+  },
+
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
@@ -72,6 +123,7 @@
     },
     "editor.suggest.insertMode": "replace"
   },
+
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
@@ -79,6 +131,7 @@
     },
     "editor.suggest.insertMode": "replace"
   },
+
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
     "editor.autoIndent": "keep",
@@ -89,19 +142,28 @@
       "strings": true
     }
   },
-  "[fish]": {
-    "editor.defaultFormatter": "bmalehorn.vscode-fish",
-    "editor.tabSize": 4
+
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
   },
-  "[solidity]": {
-    "editor.defaultFormatter": "NomicFoundation.hardhat-solidity",
-    "editor.rulers": [80],
-    "editor.tabSize": 4
+
+  "markdownlint.config": {
+    "default": true,
+    "MD041": false
   },
-  "githubPullRequests.pullBranch": "never",
-  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
-  "kotlin.languageServer.enabled": false,
+
   "kotlin.debugAdapter.enabled": false,
+  "kotlin.languageServer.enabled": false,
+
   "vim.leader": "<Space>",
   "vim.useSystemClipboard": true,
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -216,13 +278,7 @@
       "commands": ["editor.action.commentLine"]
     }
   ],
-  "markdownlint.config": {
-    "default": true,
-    "MD041": false
-  },
-  "github.copilot.editor.enableAutoCompletions": true,
-  "diffEditor.hideUnchangedRegions.enabled": true,
-  "workbench.iconTheme": "icons",
-  "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
-  "lldb.launch.expressions": "native"
+  "ruff.format.preview": true,
+  "ruff.lint.preview": true,
+  "githubPullRequests.terminalLinksHandler": "github"
 }

@@ -27,3 +27,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[user]
+	name = tun43p
+	email = tun43p@icloud.com

@@ -13,6 +13,7 @@ if status is-interactive
 
     # Set Homebrew path 
     set -gx HOMEBREW /opt/homebrew
+    set -gx ICU4C $HOMEBREW/opt/icu4c@76
 
     # Set Java path 
     set -gx OPENJDK_DIR $HOMEBREW/opt/openjdk@17
@@ -22,8 +23,12 @@ if status is-interactive
     set -gx ANDROID_HOME $HOME/Library/Android/sdk
     set -gx ANDROID_SDK_ROOT $ANDROID_HOME
 
+    # Set Flutter path
+    # set -gx FVM_CACHE_PATH $HOME/.fvm
+    # set -gx FLUTTER_GIT_URL "https://github.com/Flutter-Foundation/flutter.git"
+
     # Set cache path for Dart and Flutter dependencies 
-    set -gx PUB_CACHE $HOME/.pub-cache
+    # set -gx PUB_CACHE $HOME/.pub-cache
 
     # Set PyEnv path for Python
     set -gx PYENV_ROOT $HOME/.pyenv
@@ -63,19 +68,21 @@ if status is-interactive
     set -gx DOTFILES $CODE/github.com/tun43p/dotfiles
 
     # Configure flags 
-    set -gx LDFLAGS "-L/opt/local/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/readline/lib -L/opt/homebrew/opt/openssl/lib"
-    set -gx CPPFLAGS "-I/opt/local/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/readline/include -I/opt/homebrew/opt/openssl/include -I/$OPENJDK_DIR/include"
-    set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/openssl/lib/pkgconfig"
+    set -gx LDFLAGS "-L/opt/local/lib -L$HOMEBREW/opt/zlib/lib -L$HOMEBREW/opt/readline/lib -L$HOMEBREW/opt/openssl/lib -L$ICU4C/lib"
+    set -gx CPPFLAGS "-I/opt/local/include -I$HOMEBREW/opt/zlib/include -I$HOMEBREW/opt/readline/include -I$HOMEBREW/opt/openssl/include -I$OPENJDK_DIR/include -I$ICU4C/include"
+    set -gx PKG_CONFIG_PATH "$HOMEBREW/opt/zlib/lib/pkgconfig:$HOMEBREW/opt/openssl/lib/pkgconfig:$ICU4C/lib/pkgconfig"
 
     # Set environment variables
     fish_add_path \
         $LOCAL/bin \
         $HOMEBREW/bin \
         $HOMEBREW/sbin \
+        $ICU4C/bin \
+        $ICU4C/sbin \
         $OPENJDK_DIR/bin \
         $ANDROID_SDK/cmdline-tools/latest/bin \
         $ANDROID_SDK/platform-tools \
-        $PUB_CACHE/bin \
+        #$PUB_CACHE/bin \
         $PYENV_ROOT/bin \
         $CARGO_DIR/bin \
         $GOPATH/bin \
@@ -92,35 +99,18 @@ if status is-interactive
     # Get rid of default Vim
     alias vim nvim
 
+    # Set default color for ls command
     alias ls "ls --color=always"
     alias ll "ls -l --color=always"
     alias la "ls -lA --color=always"
     alias l "ls -CF --color=always"
 
-    # Create some aliases for Git
-    alias ga "git add"
-    alias gc "git commit -m"
-    alias gp "git pull $1"
-    alias gpo "git pull origin $1"
-    alias gch "git pull; git checkout $1"
-    alias gchb "git pull; git checkout -b $1"
-
-    # Create some aliases for Docker
-    alias dc "docker compose"
-    alias dcu "docker compose up"
-    alias dcub "docker compose up --build"
-    alias dcd "docker compose down"
-    alias dcdv "docker compose down -v"
-
     # Edit configuration files
     alias dots "nvim $DOTFILES"
 
-    # Use the latest Node.js version
-    nvm use latest
-
     # Initialize PyEnv
-    pyenv init - | source
-    pyenv virtualenv-init - | source
+    status --is-interactive; and . (pyenv init -|psub)
+    status --is-interactive; and pyenv virtualenv-init - | source
 
     # Source private configuration file
     source $HOME/.config/fish/config.private.fish
