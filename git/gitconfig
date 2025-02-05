@@ -16,7 +16,14 @@
 [tag]
 	gpgSign = true
 
+[user]
+	name = tun43p
+	email = tun43p@icloud.com
+
 [includeIf "gitdir:~/Documents/Code/github.com/"]
+	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
+
+[includeIf "gitdir:~/Documents/Code/gitlab.com/"]
 	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p
 
 [includeIf "gitdir:~/Documents/Code/gitlab.innolab.fr/"]
@@ -27,6 +34,4 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = tun43p
-	email = tun43p@icloud.com
+
