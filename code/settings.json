@@ -17,8 +17,6 @@
   "editor.unicodeHighlight.ambiguousCharacters": false,
 
   "terminal.integrated.fontSize": 12,
-
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
 
   "git.confirmSync": false,
@@ -91,13 +89,19 @@
   "[python]": {
     "editor.tabSize": 4,
     "editor.rulers": [88],
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "always",
+      "source.organizeImports.ruff": "always"
+    }
   },
 
   "ruff.enable": true,
   "ruff.fixAll": true,
   "ruff.lint.enable": true,
   "ruff.lint.run": "onType",
+  "ruff.lint.args": ["--config=ruff.toml"],
+  "ruff.format.args": ["--config=ruff.toml"],
 
   "[solidity]": {
     "editor.defaultFormatter": "JuanBlanco.solidity",
@@ -280,5 +284,7 @@
   ],
   "ruff.format.preview": true,
   "ruff.lint.preview": true,
-  "githubPullRequests.terminalLinksHandler": "github"
+  "githubPullRequests.terminalLinksHandler": "github",
+  "notebook.lineNumbers": "on",
+  "go.toolsManagement.autoUpdate": true
 }
