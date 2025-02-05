@@ -23,12 +23,8 @@ if status is-interactive
     set -gx ANDROID_HOME $HOME/Library/Android/sdk
     set -gx ANDROID_SDK_ROOT $ANDROID_HOME
 
-    # Set Flutter path
-    # set -gx FVM_CACHE_PATH $HOME/.fvm
-    # set -gx FLUTTER_GIT_URL "https://github.com/Flutter-Foundation/flutter.git"
-
     # Set cache path for Dart and Flutter dependencies 
-    # set -gx PUB_CACHE $HOME/.pub-cache
+    set -gx PUB_CACHE $HOME/.pub-cache
 
     # Set PyEnv path for Python
     set -gx PYENV_ROOT $HOME/.pyenv
@@ -82,7 +78,7 @@ if status is-interactive
         $OPENJDK_DIR/bin \
         $ANDROID_SDK/cmdline-tools/latest/bin \
         $ANDROID_SDK/platform-tools \
-        #$PUB_CACHE/bin \
+        $PUB_CACHE/bin \
         $PYENV_ROOT/bin \
         $CARGO_DIR/bin \
         $GOPATH/bin \
