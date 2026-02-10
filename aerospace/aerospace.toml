@@ -1,0 +1,137 @@
+# Place a copy of this config to ~/.aerospace.toml
+# After that, you can edit ~/.aerospace.toml to your liking
+
+# Config version for compatibility and deprecations
+# Fallback value (if you omit the key): config-version = 1
+config-version = 2
+
+# You can use it to add commands that run after AeroSpace startup.
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = [
+  # Start SKHD service to handle keybinds
+  'exec-and-forget skhd --start-service',
+  # JankyBorders has a built-in detection of already running process,
+  # so it won't be run twice on AeroSpace restart
+  'exec-and-forget borders active_color=0xffffffff inactive_color=0xff202020 width=5.0',
+]
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 30
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Move mouse to window center when focus changes
+# Fallback value: on-focus-changed = ["move-mouse window-lazy-center"]
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+on-focus-changed = []
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = false
+
+# List of workspaces that should stay alive even when they contain no windows,
+# even when they are invisible.
+# This config version is only available since 'config-version = 2'
+# Fallback value (if you omit the key): persistent-workspaces = []
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+
+# Assign workspaces to monitors
+# This config version is only available since 'config-version = 2'
+# Fallback value (if you omit the key): workspace-to-monitor-force-assignment = []
+[workspace-to-monitor-force-assignment]
+1 = ["secondary", "main"]
+2 = ["secondary", "main"]
+3 = ["secondary", "main"]
+4 = ["secondary", "main"]
+5 = ["secondary", "main"]
+6 = "main"
+7 = "main"
+8 = "main"
+9 = "main"
+10 = "main"
+
+# A callback that runs every time binding mode changes
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+on-mode-changed = []
+
+# You can use it to add commands that run when a window is detected.
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+# Fallback value (if you omit the key): on-window-detected = []
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.QuickTimePlayerX'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.docker.docker'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Passwords'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.MobileSMS'
+run = 'layout floating'
+
+# Possible values: (qwerty|dvorak|colemak)
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+[key-mapping]
+preset = 'qwerty'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See:
+#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[gaps]
+inner.horizontal = 20
+inner.vertical = 20
+outer.left = 20
+outer.bottom = 20
+outer.top = 10
+outer.right = 20
+
+# 'main' binding mode declaration
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# 'main' binding mode must be always presented
+# Fallback value (if you omit the key): mode.main.binding = {}
+#
+# NOTE: All AeroSpace keybinds are now managed by skhd to allow differentiation
+#       between left alt and right alt (AltGr) for AZERTY keyboards
+#       See: https://github.com/nikitabobko/AeroSpace/issues/28
+[mode.main.binding]
+
+cmd-h = []     # Disable "hide application"
+cmd-alt-h = [] # Disable "hide others"
