@@ -1,0 +1,149 @@
+#!/bin/sh
+
+help() {
+    if [ -n "$1" ]; then
+        echo "Error: $1"
+        echo ""
+    fi
+
+    echo "OSX Utils"
+    echo ""
+    echo "Usage: osx <help | app-id | dock | file | ip | update>"
+    echo ""
+    echo "Commands:"
+    echo "  help, h        Show this help"
+    echo "  app-id, a      Get application id"
+    echo "  dock, d        Update the Dock settings"
+    echo "  file, f        Hide or unhide a file from Finder"
+    echo "  ip, i          Get the IP address"
+    echo "  update, u      Update Homebrew, casks, and system"
+}
+
+help_dock() {
+    if [ -n "$1" ]; then
+        echo "Error: $1"
+        echo ""
+    fi
+
+    echo "OSX Dock Utils"
+    echo ""
+    echo "Usage: osx dock <kill | show | reset | size>"
+    echo ""
+    echo "Commands:"
+    echo "  kill, k      Hide the Dock"
+    echo "  show, s      Show the Dock"
+    echo "  reset, r     Reset the Dock"
+    echo "  size, si     Set the Dock size"
+}
+
+help_file() {
+    if [ -n "$1" ]; then
+        echo "Error: $1"
+        echo ""
+    fi
+
+    echo "OSX File Utils"
+    echo ""
+    echo "Usage: osx file <hide | unhide> <file>"
+    echo ""
+    echo "Commands:"
+    echo "  hide, h      Hide a file from Finder"
+    echo "  unhide, u    Unhide a file from Finder"
+}
+
+if [ $# -eq 0 ]; then
+    help
+    exit 1
+fi
+
+case "$1" in
+    help | h)
+        help
+        ;;
+    app-id | a)
+        if [ -z "$2" ]; then
+            help "Usage: osx app-id <app-name>"
+            exit 1
+        fi
+
+        osascript -e 'id of app "'"$2"'"'
+        ;;
+    dock | d)
+        if [ -z "$2" ]; then
+            help_dock
+            exit 1
+        fi
+
+        case "$2" in
+            kill | k)
+                defaults write com.apple.dock autohide -bool true && killall Dock
+                defaults write com.apple.dock autohide-delay -float 1000 && killall Dock
+                defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock
+                ;;
+            show | s)
+                defaults write com.apple.dock autohide -bool false && killall Dock
+                defaults delete com.apple.dock autohide-delay && killall Dock
+                defaults write com.apple.dock no-bouncing -bool FALSE && killall Dock
+                ;;
+            reset | r)
+                defaults delete com.apple.dock && killall Dock
+                ;;
+            size | si)
+                if [ -z "$3" ]; then
+                    help_dock "Usage: osx dock size <size>"
+                    exit 1
+                fi
+
+                defaults write com.apple.dock tilesize -int "$3" && killall Dock
+                ;;
+            *)
+                help_dock "Unknown command"
+                exit 1
+                ;;
+        esac
+        ;;
+    file | f)
+        if [ -z "$2" ]; then
+            help_file
+            exit 1
+        fi
+
+        case "$2" in
+            hide | h)
+                if [ -z "$3" ]; then
+                    help_file "Usage: osx file hide <file>"
+                    exit 1
+                fi
+
+                chflags hidden "$3"
+                ;;
+            unhide | u)
+                if [ -z "$3" ]; then
+                    help_file "Usage: osx file unhide <file>"
+                    exit 1
+                fi
+
+                chflags nohidden "$3"
+                ;;
+            *)
+                help_file "Unknown command"
+                exit 1
+                ;;
+        esac
+        ;;
+    ip | i)
+        ipconfig getifaddr en0
+        ;;
+    update | u)
+        if [ -d "$HOME/tmp" ]; then rm -rf "$HOME/tmp"; fi
+        if [ -d "$HOME/ai_overlay_tmp" ]; then rm -rf "$HOME/ai_overlay_tmp"; fi
+
+        brew update && brew upgrade && brew cleanup
+        brew upgrade --cask $(brew list --cask)
+        sudo softwareupdate -i -a
+        ;;
+    *)
+        help "Unknown command"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+SHELL_HISTORY="$HOME/.local/share/fish/fish_history"
+
+help() {
+    if [ -n "$1" ]; then
+        echo "Error: $1"
+        echo ""
+    fi
+
+    echo "Shell History Search"
+    echo ""
+    echo "Usage: hgrep <help | string>"
+    echo ""
+    echo "Commands:"
+    echo "  help, h        Show this help"
+    echo "  <string>       Search in shell history"
+}
+
+if [ $# -eq 0 ]; then
+    help
+    exit 1
+fi
+
+case "$1" in
+    help | h)
+        help
+        ;;
+    *)
+        grep "$@" "$SHELL_HISTORY" 2>/dev/null
+        ;;
+esac
