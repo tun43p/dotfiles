@@ -57,7 +57,6 @@ if status is-interactive
     set -gx MUSIC $HOME/Music
     set -gx PICTURES $HOME/Pictures
     set -gx PUBLIC $HOME/Public
-    set -gx LOCAL $HOME/.local
 
     # Set custom directories
     set -gx CODE $DOCUMENTS/Code
@@ -70,7 +69,7 @@ if status is-interactive
 
     # Set environment variables
     fish_add_path \
-        $LOCAL/bin \
+        $HOME/.local/bin \
         $DOTFILES/bin \
         $DOTFILES/local/bin \
         $HOMEBREW/bin \
