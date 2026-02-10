@@ -1,0 +1,116 @@
+# Open terminal - new window in same app instance
+lalt - return : osascript -e 'tell application "Terminal" to do script ""' && open -a Terminal
+
+# Open browser 
+lalt - b: open -na "/Applications/Google Chrome.app"
+
+# Open code editor
+lalt - e: open -na "/Applications/Windsurf.app" --args --new-window
+
+# Open terminal app with nvim launched
+lalt + shift - e: osascript -e 'tell application "Terminal" to do script "nvim"'
+
+# Floating window toggle
+lalt - f: aerospace layout floating tiling
+
+# Close current window
+lalt + shift - q: aerospace close
+lalt + shift - backspace: aerospace close-all-windows-but-current
+
+# Layout toggles
+lalt - m: aerospace layout tiles horizontal vertical
+lalt + shift - m: aerospace layout accordion horizontal vertical
+
+# Fullscreen toggles
+lalt + shift - f: aerospace fullscreen
+lalt + ctrl - f: aerospace macos-native-fullscreen
+
+# Focus left
+lalt - h: aerospace focus left
+lalt - left: aerospace focus left
+
+# Focus down
+lalt - j: aerospace focus down
+lalt - down: aerospace focus down
+
+# Focus up
+lalt - k: aerospace focus up
+lalt - up: aerospace focus up
+
+# Focus right
+lalt - l: aerospace focus right
+lalt - right: aerospace focus right
+
+# Move left
+lalt + shift - h: aerospace move left
+lalt + shift - left: aerospace move left
+
+# Move down
+lalt + shift - j: aerospace move down
+lalt + shift - down: aerospace move down
+
+# Move up
+lalt + shift - k: aerospace move up
+lalt + shift - up: aerospace move up
+
+# Move right
+lalt + shift - l: aerospace move right
+lalt + shift - right: aerospace move right
+
+# Move window to workspace
+lalt + shift - 0x12: aerospace move-node-to-workspace 1 # 1
+lalt + shift - 0x13: aerospace move-node-to-workspace 2 # 2
+lalt + shift - 0x14: aerospace move-node-to-workspace 3 # 3
+lalt + shift - 0x15: aerospace move-node-to-workspace 4 # 4
+lalt + shift - 0x17: aerospace move-node-to-workspace 5 # 5
+lalt + shift - 0x16: aerospace move-node-to-workspace 6 # 6
+lalt + shift - 0x1A: aerospace move-node-to-workspace 7 # 7
+lalt + shift - 0x1C: aerospace move-node-to-workspace 8 # 8
+lalt + shift - 0x19: aerospace move-node-to-workspace 9 # 9
+lalt + shift - 0x1D: aerospace move-node-to-workspace 10 # 0
+
+lalt - 0x1B: aerospace resize smart -50 # minus
+lalt - 0x18: aerospace resize smart +50 # right parenthesis
+
+# Switch to workspace
+lalt - 0x12: aerospace workspace 1 # 1
+lalt - 0x13: aerospace workspace 2 # 2
+lalt - 0x14: aerospace workspace 3 # 3
+lalt - 0x15: aerospace workspace 4 # 4
+lalt - 0x17: aerospace workspace 5 # 5
+lalt - 0x16: aerospace workspace 6 # 6
+lalt - 0x1A: aerospace workspace 7 # 7
+lalt - 0x1C: aerospace workspace 8 # 8
+lalt - 0x19: aerospace workspace 9 # 9
+lalt - 0x1D: aerospace workspace 10 # 0
+
+# Workspace back and forth
+lalt - tab: aerospace workspace-back-and-forth
+
+# Move workspace to next monitor
+lalt + shift - tab: aerospace move-workspace-to-monitor --wrap-around next
+
+# Join with left
+lalt + ctrl - h: aerospace join-with left
+lalt + ctrl - left: aerospace join-with left
+
+# Join with down
+lalt + ctrl - j: aerospace join-with down
+lalt + ctrl - down: aerospace join-with down
+
+# Join with up
+lalt + ctrl - k: aerospace join-with up
+lalt + ctrl - up: aerospace join-with up
+
+# Join with right
+lalt + ctrl - l: aerospace join-with right
+lalt + ctrl - right: aerospace join-with right
+
+# Reload config
+lalt + shift - r: aerospace reload-config && skhd --reload
+
+# Flatten workspace tree
+lalt + shift - t: aerospace flatten-workspace-tree
+
+# Balance sizes
+lalt + shift - b: aerospace balance-sizes
