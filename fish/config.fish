@@ -8,8 +8,8 @@ if status is-interactive
     # Set some default application variables
     set -gx EDITOR nvim
     set -gx VISUAL windsurf 
-    set -gx BROWSER /Applications/Sarafi.app/Contents/MacOS/Safari
-    set -gx CHROME_EXECUTABLE "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    set -gx BROWSER "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    set -gx CHROME_EXECUTABLE $BROWSER
 
     # Set Homebrew path 
     set -gx HOMEBREW /opt/homebrew
@@ -72,6 +72,7 @@ if status is-interactive
     fish_add_path \
         $LOCAL/bin \
         $DOTFILES/bin \
+        $DOTFILES/local/bin \
         $HOMEBREW/bin \
         $HOMEBREW/sbin \
         $ICU4C/bin \

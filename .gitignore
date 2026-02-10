@@ -1,5 +1,7 @@
 .DS_Store
 
+local/
+
 fish/**/*.private.fish
 fish/completions
 fish/conf.d
