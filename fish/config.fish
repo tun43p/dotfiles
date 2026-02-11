@@ -70,6 +70,9 @@ if status is-interactive
     # Set Google Cloud SDK Python path
     set -gx CLOUDSDK_PYTHON $PYENV_ROOT/shims/python
 
+    # Set Bun path
+    set --gx BUN_INSTALL "$HOME/.bun"
+
     # Set environment variables
     fish_add_path \
         $HOME/.local/bin \
@@ -88,10 +91,10 @@ if status is-interactive
         $CARGO_DIR/bin \
         $GOPATH/bin \
         $GEMS_PATH/bin \
+        $BUN_INSTALL/bin \
         $SOLANA_ACTIVE_RELEASE/bin \
-
-    # Add Windsurf path
-    fish_add_path /Users/tun43p/.codeium/windsurf/bin
+        /opt/homebrew/share/google-cloud-sdk/bin \
+        $HOME/.codeium/windsurf/bin
 
     # Reload the shell
     alias reload "source $HOME/.config/fish/config.fish"
@@ -126,10 +129,6 @@ if status is-interactive
 
     # Set global Node version
     set --universal nvm_default_version latest 
-
-    # Add bun to PATH
-    set --export BUN_INSTALL "$HOME/.bun"
-    set --export PATH $BUN_INSTALL/bin $PATH
 
     # Source Google Cloud SDK
     source /opt/homebrew/share/google-cloud-sdk/path.fish.inc
