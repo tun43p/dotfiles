@@ -71,7 +71,7 @@ if status is-interactive
     set -gx CLOUDSDK_PYTHON $PYENV_ROOT/shims/python
 
     # Set Bun path
-    set --gx BUN_INSTALL "$HOME/.bun"
+    set -gx BUN_INSTALL "$HOME/.bun"
 
     # Set environment variables
     fish_add_path \
