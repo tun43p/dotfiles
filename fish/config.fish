@@ -67,6 +67,9 @@ if status is-interactive
     set -gx CPPFLAGS "-I/opt/local/include -I$HOMEBREW/opt/zlib/include -I$HOMEBREW/opt/readline/include -I$HOMEBREW/opt/openssl/include -I$OPENJDK_DIR/include -I$ICU4C/include"
     set -gx PKG_CONFIG_PATH "$HOMEBREW/opt/zlib/lib/pkgconfig:$HOMEBREW/opt/openssl/lib/pkgconfig:$ICU4C/lib/pkgconfig"
 
+    # Set Google Cloud SDK Python path
+    set -gx CLOUDSDK_PYTHON $PYENV_ROOT/shims/python
+
     # Set environment variables
     fish_add_path \
         $HOME/.local/bin \
