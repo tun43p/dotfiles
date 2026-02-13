@@ -1,4 +1,7 @@
-# this file is both a valid
+# starship.nu — Starship prompt integration
+# Install: brew install starship
+
+# This file is both a valid
 # - overlay which can be loaded with `overlay use starship.nu`
 # - module which can be used with `use starship.nu`
 # - script which can be used with `source starship.nu`
