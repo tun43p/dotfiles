@@ -1,11 +1,11 @@
 # Open terminal - new window in same app instance
-lalt - return : osascript -e 'tell application "Terminal" to do script ""' && open -a Terminal
+lalt - return: osascript -e 'tell application "/Applications/Utilities/Terminal.app" to do script ""' && /usr/bin/open -a "/Applications/Utilities/Terminal.app"
 
 # Open browser 
-lalt - b: open -na "/Applications/Google Chrome.app"
+lalt - b: /usr/bin/open -na "/Applications/Google Chrome.app"
 
 # Open code editor
-lalt - e: open -na "/Applications/Windsurf.app" --args --new-window
+lalt - e: /usr/bin/open -na "/Applications/Windsurf.app" --args --new-window
 
 # Open terminal app with nvim launched
 lalt + shift - e: osascript -e 'tell application "Terminal" to do script "nvim"'
