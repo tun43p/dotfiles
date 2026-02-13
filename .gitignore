@@ -9,3 +9,6 @@ fish/functions
 fish/fish_variables
 
 git/conf.d
+
+nushell/history*
+nushell/**/*.private.nu
