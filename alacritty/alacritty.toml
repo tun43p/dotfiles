@@ -9,25 +9,33 @@ size = 14
 padding = { x = 10, y = 10 }
 
 [colors.primary]
-foreground = "#cccccc"
-background = "#1e1e1e"
+foreground = "#c0caf5"
+background = "#1a1b26"
+
+[colors.cursor]
+text = "#1a1b26"
+cursor = "#c0caf5"
+
+[colors.selection]
+text = "#c0caf5"
+background = "#283457"
 
 [colors.normal]
-black = "#000000"
-red = "#cd3131"
-green = "#0dbc79"
-yellow = "#e5e510"
-blue = "#2472c8"
-magenta = "#bc3fbc"
-cyan = "#11a8cd"
-white = "#e5e5e5"
+black = "#15161e"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#a9b1d6"
 
 [colors.bright]
-black = "#666666"
-red = "#f14c4c"
-green = "#23d18b"
-yellow = "#f5f543"
-blue = "#3b8eea"
-magenta = "#d670d6"
-cyan = "#29b8db"
-white = "#e5e5e5"
+black = "#414868"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#c0caf5"
