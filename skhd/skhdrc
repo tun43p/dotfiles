@@ -1,5 +1,5 @@
 # Open terminal - new window in same app instance
-lalt - return: osascript -e 'tell application "/Applications/Utilities/Terminal.app" to do script ""' && /usr/bin/open -a "/Applications/Utilities/Terminal.app"
+alt - return : sh -c '/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window || /Applications/Alacritty.app/Contents/MacOS/alacritty'
 
 # Open browser 
 lalt - b: /usr/bin/open -na "/Applications/Google Chrome.app"
@@ -8,7 +8,7 @@ lalt - b: /usr/bin/open -na "/Applications/Google Chrome.app"
 lalt - e: /usr/bin/open -na "/Applications/Windsurf.app" --args --new-window
 
 # Open terminal app with nvim launched
-lalt + shift - e: osascript -e 'tell application "Terminal" to do script "nvim"'
+lalt + shift - e : sh -c '/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window -e nvim || /Applications/Alacritty.app/Contents/MacOS/alacritty -e nvim'
 
 # Floating window toggle
 lalt - f: aerospace layout floating tiling
