@@ -74,12 +74,14 @@ vim.keymap.set("n", "<leader>c", ":noh<cr>", { silent = true, desc = "Clean sear
 -- fixes pasting after visual selection
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
 
--- open terminal in a split with space + t
-vim.keymap.set("n", "<leader>t", ":term<cr>", { silent = true, desc = "Open terminal" })
+-- open terminal with snacks (space + t)
+vim.keymap.set("n", "<leader>t", function()
+	Snacks.terminal()
+end, { desc = "Open terminal" })
 
--- autocomplete copilot suggestions with ctrl + l
-vim.keymap.set("i", "<C-L>", 'copilot#Accept("\\<CR>")', {
-	expr = true,
-	replace_keycodes = false,
-	desc = "Accept copilot suggestion",
-})
+-- NOTE: copilot desactive, utilisation de Claude Code / Codeium
+-- vim.keymap.set("i", "<C-L>", 'copilot#Accept("\\<CR>")', {
+-- 	expr = true,
+-- 	replace_keycodes = false,
+-- 	desc = "Accept copilot suggestion",
+-- })
