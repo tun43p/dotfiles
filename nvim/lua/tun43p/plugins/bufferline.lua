@@ -32,7 +32,7 @@ return {
         end,
         offsets = {
           {
-            filetype = "neo-tree",
+            filetype = "snacks_layout_box",
             text = "File Explorer",
             text_align = "center",
             separator = true,
