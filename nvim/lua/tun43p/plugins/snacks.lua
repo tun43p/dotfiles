@@ -4,43 +4,43 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	opts = {
-		-- Gros fichiers : desactive les features lourdes
+		-- Big files: disable heavy features
 		bigfile = { enabled = true },
 
-		-- Rendu rapide quand on ouvre un fichier depuis le shell
+		-- Fast rendering when opening a file from the shell
 		quickfile = { enabled = true },
 
-		-- Explorateur de fichiers (remplace neo-tree)
+		-- File explorer (replaces neo-tree)
 		explorer = { enabled = true },
 
-		-- Picker (remplace telescope)
+		-- Picker (replaces telescope)
 		picker = { enabled = true },
 
-		-- Notifications (remplace noice + nvim-notify)
+		-- Notifications (replaces noice + nvim-notify)
 		notifier = { enabled = true },
 
-		-- Meilleur vim.ui.input (remplace noice pour les inputs)
+		-- Better vim.ui.input (replaces noice for inputs)
 		input = { enabled = true },
 
-		-- Terminal (utilise par claudecode.nvim)
+		-- Terminal (used by claudecode.nvim)
 		terminal = {},
 
-		-- Guides d'indentation
+		-- Indent guides
 		indent = { enabled = true },
 
-		-- Detection de scope (treesitter/indent)
+		-- Scope detection (treesitter/indent)
 		scope = { enabled = true },
 
-		-- Navigation rapide entre les references LSP
+		-- Navigation quick between LSP references
 		words = { enabled = true },
 
-		-- Suppression de buffers sans casser le layout
+		-- Buffer deletion without breaking layout
 		bufdelete = {},
 
-		-- Ouvrir fichier/branche/commit dans le navigateur
+		-- Open file/branch/commit in browser
 		gitbrowse = {},
 
-		-- Utilitaires git
+		-- Git utilities
 		git = {},
 
 		-- Smooth scrolling
@@ -49,17 +49,17 @@ return {
 		-- Status column
 		statuscolumn = { enabled = true },
 
-		-- Toggle keymaps integres avec which-key
+		-- Toggle keymaps integrated with which-key
 		toggle = {},
 
-		-- Dim les scopes inactifs
+		-- Dim inactive scopes
 		dim = {},
 
 		-- Zen mode
 		zen = {},
 	},
 	keys = {
-		-- Picker : fichiers (memes raccourcis que telescope)
+		-- Picker : files
 		{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find files" },
 		{ "<leader>fg", function() Snacks.picker.grep() end, desc = "Live grep" },
 		{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
@@ -72,7 +72,7 @@ return {
 		{ "<leader>fs", function() Snacks.picker.lsp_symbols() end, desc = "LSP symbols" },
 		{ "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Grep word under cursor", mode = { "n", "x" } },
 
-		-- Explorateur de fichiers (remplace neo-tree)
+		-- File explorer
 		{ "<leader>e", function() Snacks.explorer() end, desc = "File explorer" },
 
 		-- Git
@@ -93,7 +93,7 @@ return {
 		-- Zen mode
 		{ "<leader>z", function() Snacks.zen() end, desc = "Zen mode" },
 
-		-- Words (navigation references LSP)
+		-- Words (reference navigation LSP)
 		{ "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference", mode = { "n", "t" } },
 		{ "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Previous reference", mode = { "n", "t" } },
 	},

@@ -72,5 +72,5 @@ vim.opt.sidescroll = 5
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
--- disable tab completion for copilot
-vim.g.copilot_no_tab_map = true
+-- NOTE: copilot desactive, utilisation de Claude Code
+-- vim.g.copilot_no_tab_map = true
