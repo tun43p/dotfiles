@@ -95,6 +95,9 @@ $env.PATH = (
     $env.PATH
     | split row (char esep)
     | prepend [
+        # System
+        "/usr/local/bin"
+    
         # User local
         ($env.HOME | path join ".local" "bin")
         ($env.DOTS | path join "bin")
