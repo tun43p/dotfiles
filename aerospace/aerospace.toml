@@ -91,7 +91,7 @@ if.app-id = 'com.apple.QuickTimePlayerX'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.docker.docker'
+if.app-name-regex-substring = 'docker'
 run = 'layout floating'
 
 [[on-window-detected]]
