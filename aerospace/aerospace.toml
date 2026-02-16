@@ -102,6 +102,10 @@ run = 'layout floating'
 if.app-id = 'com.apple.MobileSMS'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.macpaw.CleanMyMac5'
+run = 'layout floating'
+
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
