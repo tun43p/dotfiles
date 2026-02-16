@@ -3,54 +3,61 @@ return {
 	build = ":TSUpdate",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"astro",
-				"bash",
-				"c",
-				"cmake",
-				"cpp",
-				"css",
-				"dockerfile",
-				"go",
-				"gomod",
-				"graphql",
-				"html",
-				"javascript",
-				"json",
-				"kotlin",
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"prisma",
-				"python",
-				"regex",
-				"scss",
-				"svelte",
-				"toml",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"yaml",
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-			},
-			indent = {
-				enable = true,
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
+		local parsers = {
+			"astro",
+			"bash",
+			"c",
+			"cmake",
+			"cpp",
+			"css",
+			"dockerfile",
+			"go",
+			"gomod",
+			"graphql",
+			"html",
+			"javascript",
+			"json",
+			"kotlin",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"prisma",
+			"python",
+			"regex",
+			"scss",
+			"svelte",
+			"toml",
+			"tsx",
+			"typescript",
+			"vim",
+			"vimdoc",
+			"yaml",
+		}
+
+		-- Install missing parsers at startup
+		vim.api.nvim_create_autocmd("VimEnter", {
+			once = true,
+			callback = function()
+				local install = require("nvim-treesitter.install")
+				for _, lang in ipairs(parsers) do
+					local ok = pcall(vim.treesitter.language.inspect, lang)
+					if not ok then
+						install.install(lang)
+					end
+				end
+			end,
 		})
+
+		-- Enable treesitter highlight + indent on each buffer
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(args)
+				pcall(vim.treesitter.start, args.buf)
+			end,
+		})
+
+		-- Folding via treesitter (disabled by default)
+		vim.opt.foldmethod = "expr"
+		vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.opt.foldenable = false
 	end,
 }
