@@ -1,1 +1,8 @@
-# Override default starship config
+# starship.toml — Main configuration file
+#
+# This file is used to override default starship settings, define
+# (or import) custom commands, or run any other startup tasks.
+# See https://starship.rs/config
+#
+# You can open this file in your default editor using:
+#     starship config
