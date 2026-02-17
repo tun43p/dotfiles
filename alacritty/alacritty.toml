@@ -1,3 +1,11 @@
+# alacritty.toml — Main configuration file
+#
+# This file is used to override default alacritty settings, define
+# (or import) custom commands, or run any other startup tasks.
+# See https://alacritty.org/#configuration
+#
+# Colors - Tokyo Night
+
 [general]
 ipc_socket = true
 
