@@ -1,14 +1,14 @@
 # Open terminal - new window in same app instance
-alt - return : sh -c '/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window || /Applications/Alacritty.app/Contents/MacOS/alacritty'
+alt - return: sh -c '/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window || /Applications/Alacritty.app/Contents/MacOS/alacritty'
 
 # Open browser 
 lalt - b: /usr/bin/open -na "/Applications/Google Chrome.app"
 
-# Open code editor
-lalt - e: /usr/bin/open -na "/Applications/Windsurf.app" --args --new-window
+# Open code editor (execute with nushell to pass environment state to Windsurf)
+lalt - e: nu -c '/usr/bin/open -na "/Applications/Windsurf.app" --args --new-window'
 
 # Open terminal app with nvim launched
-lalt + shift - e : sh -c '/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window -e nvim || /Applications/Alacritty.app/Contents/MacOS/alacritty -e nvim'
+lalt + shift - e: sh -c '/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window -e nvim || /Applications/Alacritty.app/Contents/MacOS/alacritty -e nvim'
 
 # Floating window toggle
 lalt - f: aerospace layout floating tiling
