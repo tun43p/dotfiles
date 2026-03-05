@@ -1,5 +1,8 @@
 .DS_Store
 
+.env*
+!.env.example
+
 local/
 
 fish/**/*.private.fish
