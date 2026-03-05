@@ -1,0 +1,36 @@
+#!/bin/sh
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DOCKER_DIR="$SCRIPT_DIR/../docker/n8n"
+
+if [ "$1" = "stop" ]; then
+    echo "Stopping n8n..."
+    docker compose -f "$DOCKER_DIR/docker-compose.yml" down
+    exit 0
+fi
+
+if [ "$1" = "restart" ]; then
+    echo "Restarting n8n..."
+    docker compose -f "$DOCKER_DIR/docker-compose.yml" restart -d
+    exit 0
+fi
+
+if [ "$1" = "logs" ]; then
+    docker compose -f "$DOCKER_DIR/docker-compose.yml" logs -f
+    exit 0
+fi
+
+if [ "$1" = "build" ]; then
+    echo "Building n8n Docker image..."
+    docker compose -f "$DOCKER_DIR/docker-compose.yml" build
+    exit 0
+fi
+
+docker ps | grep n8n > /dev/null 2>&1 && {
+    echo "n8n is already running"
+    echo "Use 'n8n stop' to stop it or 'n8n restart' to restart it"
+    exit 1
+}
+
+echo "Starting n8n with Docker Compose..."
+docker compose -f "$DOCKER_DIR/docker-compose.yml" up -d
