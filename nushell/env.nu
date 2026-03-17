@@ -127,6 +127,9 @@ $env.PATH = (
         ($env.ANDROID_HOME | path join "platform-tools")
         ($env.HOMEBREW | path join "share" "google-cloud-sdk" "bin")
 
+        # PostgreSQL (libpq)
+        ($env.HOMEBREW | path join "opt" "libpq" "bin")
+
         # Specialized tools
         ($env.SOLANA_ACTIVE_RELEASE | path join "bin")
 
