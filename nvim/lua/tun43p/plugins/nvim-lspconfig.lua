@@ -18,7 +18,9 @@ return {
         "lua_ls",                          -- Lua
         "marksman",                        -- Markdown
         -- "ruff",                         -- Python (installed with pip)
+        "rust_analyzer",                   -- Rust
         "yamlls",                          -- YAML
+        "zls",                             -- Zig
 
         -- TODO(tun43p): https://mason-registry.dev/registry/list
         -- "astro-language-server", -- Astro
@@ -141,14 +143,20 @@ return {
       group = vim.api.nvim_create_augroup('UserLspConfig', {}),
       callback = function(ev)
         local opts = { buffer = ev.buf, remap = false }
-        
+
         vim.keymap.set("n", "K", function()
           vim.lsp.buf.hover()
         end, vim.tbl_deep_extend("force", opts, { desc = "LSP Hover Documentation" }))
-        
+
         vim.keymap.set("i", "<C-k>", function()
           vim.lsp.buf.signature_help()
         end, vim.tbl_deep_extend("force", opts, { desc = "LSP Signature Help" }))
+
+        -- enable inlay hints if the LSP supports it
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client and client.supports_method("textDocument/inlayHint") then
+          vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+        end
       end,
     })
 

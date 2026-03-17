@@ -24,6 +24,7 @@ return {
 			"prisma",
 			"python",
 			"regex",
+			"rust",
 			"scss",
 			"svelte",
 			"toml",
@@ -32,19 +33,22 @@ return {
 			"vim",
 			"vimdoc",
 			"yaml",
+			"zig",
 		}
 
-		-- Install missing parsers at startup
+		-- Auto-install missing parsers without blocking startup
 		vim.api.nvim_create_autocmd("VimEnter", {
 			once = true,
 			callback = function()
-				local install = require("nvim-treesitter.install")
-				for _, lang in ipairs(parsers) do
-					local ok = pcall(vim.treesitter.language.inspect, lang)
-					if not ok then
-						install.install(lang)
+				vim.defer_fn(function()
+					local install = require("nvim-treesitter.install")
+					for _, lang in ipairs(parsers) do
+						local ok = pcall(vim.treesitter.language.inspect, lang)
+						if not ok then
+							install.install(lang)
+						end
 					end
-				end
+				end, 500)
 			end,
 		})
 
