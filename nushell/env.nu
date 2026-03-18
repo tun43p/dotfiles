@@ -20,7 +20,7 @@
 use std 'path add'
 
 # GPG
-$env.GPG_TTY = (^tty)
+$env.GPG_TTY = (try { ^tty | str trim } catch { "" })
 
 # Default directories
 $env.DESKTOP = ($env.HOME | path join "Desktop")
@@ -37,7 +37,7 @@ $env.DOTS = ($env.CODE | path join "github.com" "tun43p" "dotfiles")
 
 # Editors
 $env.EDITOR = "nvim"
-$env.VISUAL = "windsurf"
+$env.VISUAL = "code"
 
 # Browser
 $env.BROWSER = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -132,9 +132,6 @@ $env.PATH = (
 
         # Specialized tools
         ($env.SOLANA_ACTIVE_RELEASE | path join "bin")
-
-        # IDE / Editors
-        ($env.HOME | path join ".codeium" "windsurf" "bin")
     ]
     | uniq
 )
