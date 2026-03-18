@@ -80,5 +80,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TermOpen" }, {
 	end,
 })
 
+-- colorcolumn at 80 for files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function()
+		vim.opt_local.colorcolumn = "80"
+	end,
+})
+
 -- NOTE: copilot desactive, utilisation de Claude Code
 -- vim.g.copilot_no_tab_map = true

@@ -1,3 +1,6 @@
+[core]
+	editor = code --wait
+
 [init]
 	defaultBranch = main
 
@@ -34,3 +37,4 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+

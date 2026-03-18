@@ -19,8 +19,8 @@ return {
 		-- Notifications (replaces noice + nvim-notify)
 		notifier = { enabled = true },
 
-		-- Better vim.ui.input (replaces noice for inputs)
-		input = { enabled = true },
+		-- Disabled: noice.nvim handles inputs
+		input = { enabled = false },
 
 		-- Terminal (used by claudecode.nvim)
 		terminal = {},
