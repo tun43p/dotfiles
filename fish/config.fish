@@ -7,7 +7,7 @@ if status is-interactive
 
     # Set some default application variables
     set -gx EDITOR nvim
-    set -gx VISUAL windsurf 
+    set -gx VISUAL code 
     set -gx BROWSER "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     set -gx CHROME_EXECUTABLE $BROWSER
 
@@ -94,7 +94,6 @@ if status is-interactive
         $BUN_INSTALL/bin \
         $SOLANA_ACTIVE_RELEASE/bin \
         /opt/homebrew/share/google-cloud-sdk/bin \
-        $HOME/.codeium/windsurf/bin
 
     # Reload the shell
     alias reload "source $HOME/.config/fish/config.fish"
