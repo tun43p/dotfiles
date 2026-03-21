@@ -1,0 +1,168 @@
+{
+  "chat.agent.enabled": false,
+  "chat.agentsControl.enabled": false,
+
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Hack Nerd Font",
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": true,
+  "editor.suggest.insertMode": "replace",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "editor.largeFileOptimizations": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+
+  "terminal.integrated.fontSize": 14,
+
+  "remote.autoForwardPortsSource": "hybrid",
+
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+
+  "git.confirmSync": false,
+  "git.ignoreRebaseWarning": true,
+
+  "files.exclude": {
+    "**/__pycache__": true
+  },
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnType": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggestSelection": "first",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.rulers": [100],
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "always",
+      "source.organizeImports.ruff": "always"
+    }
+  },
+
+  "ruff.enable": true,
+  "ruff.fixAll": true,
+  "ruff.lint.enable": true,
+  "ruff.lint.preview": true,
+  "ruff.format.preview": true,
+  "ruff.configuration": "pyproject.toml",
+
+  "notebook.defaultFormatter": "charliermarsh.ruff",
+  "notebook.formatOnSave.enabled": true,
+  "notebook.lineNumbers": "on",
+  "notebook.output.wordWrap": true,
+  "notebook.output.scrolling": true,
+
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.tabSize": 4
+  },
+
+  "go.toolsManagement.autoUpdate": true,
+
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+
+  "[zig]": {
+    "editor.defaultFormatter": "ziglang.vscode-zig",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+
+  "zig.zls.enabled": "on",
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.autoIndent": "keep",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+
+  "redhat.telemetry.enabled": false,
+
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+
+  "markdownlint.config": {
+    "default": true,
+    "MD041": false
+  },
+
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.selectedModel": "claude-opus-4-6"
+}
