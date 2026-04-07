@@ -7,7 +7,6 @@ Dotfiles for my macOS environment.
 - [Dotfiles](#dotfiles)
   - [Table of contents](#table-of-contents)
   - [Download](#download)
-  - [Setup](#setup)
   - [Authors](#authors)
   - [License](#license)
 
@@ -15,12 +14,6 @@ Dotfiles for my macOS environment.
 
 ```bash
 git clone https://github.com/tun43p/dotfiles.git
-```
-
-## Setup
-
-```bash
-./setup.sh
 ```
 
 ## Authors

@@ -1,0 +1,199 @@
+# bashrc — Main bash configuration file
+# Author: tun43p
+
+# ============================================================================
+# Shell Options
+# ============================================================================
+
+# Enable vi mode
+set -o vi
+
+# Vi mode cursor shapes (line for insert, block for normal)
+bind 'set show-mode-in-prompt on'
+bind 'set vi-ins-mode-string \1\e[6 q\2'
+bind 'set vi-cmd-mode-string \1\e[2 q\2'
+
+# Vi mode keybindings
+bind -m vi-insert "\C-l":clear-screen
+bind -m vi-command "\C-l":clear-screen
+
+# Don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Set history size
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+# Check the window size after each command
+shopt -s checkwinsize
+
+# Enable extended pattern matching
+shopt -s extglob
+
+# Enable recursive globbing with **
+shopt -s globstar
+
+# Case-insensitive globbing
+shopt -s nocaseglob
+
+# Correct minor spelling errors in cd commands
+shopt -s cdspell
+
+# ============================================================================
+# Environment Variables
+# ============================================================================
+
+# Set default editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Enable color support
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+# Homebrew (macOS)
+if [[ -d "/opt/homebrew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# ============================================================================
+# Prompt Configuration
+# ============================================================================
+
+# Use Starship prompt if available
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+else
+    parse_git_branch() {
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    }
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;33m\]$(parse_git_branch)\[\033[00m\]\$ '
+fi
+
+# ============================================================================
+# Aliases
+# ============================================================================
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# ls aliases
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias l='ls -CF'
+
+# Safety nets
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Shortcuts
+alias vim='nvim'
+alias v='nvim'
+
+# Git shortcuts
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+alias gd='git diff'
+
+# Reload bashrc
+alias reload='source ~/.bashrc'
+
+# macOS specific
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias finder='open -R'
+    alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+fi
+
+# ============================================================================
+# Functions
+# ============================================================================
+
+# Create directory and cd into it
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Extract various archive formats
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)   tar xjf "$1"     ;;
+            *.tar.gz)    tar xzf "$1"     ;;
+            *.bz2)       bunzip2 "$1"     ;;
+            *.rar)       unrar x "$1"     ;;
+            *.gz)        gunzip "$1"      ;;
+            *.tar)       tar xf "$1"      ;;
+            *.tbz2)      tar xjf "$1"     ;;
+            *.tgz)       tar xzf "$1"     ;;
+            *.zip)       unzip "$1"       ;;
+            *.Z)         uncompress "$1"  ;;
+            *.7z)        7z x "$1"        ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Find process using a port
+port() {
+    lsof -i :"$1"
+}
+
+# ============================================================================
+# Completion
+# ============================================================================
+
+# Enable programmable completion features
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# macOS bash completion via Homebrew
+if [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
+    . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+fi
+
+# ============================================================================
+# Additional Tools
+# ============================================================================
+
+# fzf — fuzzy finder
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
+
+# direnv
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
+# zoxide — smarter cd
+if command -v zoxide &> /dev/null; then
+    eval "$(zoxide init bash)"
+    alias cd='z'
+fi
+
+# ============================================================================
+# Local Configuration
+# ============================================================================
+
+# Source local bashrc if it exists (for machine-specific settings)
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi

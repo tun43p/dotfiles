@@ -1,0 +1,133 @@
+# bash_profile — Configuration for login shells
+# Author: tun43p
+#
+# This file is sourced by login shells.
+# Environment variables and PATH configuration go here.
+
+# ============================================================================
+# Environment Variables
+# ============================================================================
+
+# GPG
+export GPG_TTY=$(tty 2>/dev/null || echo "")
+
+# Default directories
+export DESKTOP="$HOME/Desktop"
+export DOCUMENTS="$HOME/Documents"
+export DOWNLOADS="$HOME/Downloads"
+export MOVIES="$HOME/Movies"
+export MUSIC="$HOME/Music"
+export PICTURES="$HOME/Pictures"
+export PUBLIC="$HOME/Public"
+
+# Custom directories
+export CODE="$DOCUMENTS/Code"
+export DOTS="$CODE/github.com/tun43p/dotfiles"
+
+# Editors
+export EDITOR="nvim"
+export VISUAL="code"
+
+# Browser
+export BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+export CHROME_EXECUTABLE="$BROWSER"
+
+# Homebrew
+export HOMEBREW="/opt/homebrew"
+
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+export PYTHON_CONFIGURE_OPTS="--enable-shared --with-openssl=/opt/homebrew/opt/openssl"
+export CLOUDSDK_PYTHON="$PYENV_ROOT/shims/python"
+
+# Rust
+export CARGO_DIR="$HOME/.cargo"
+
+# Go
+export GOPATH="$HOME/.go"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+
+# Dart / Flutter
+export PUB_CACHE="$HOME/.pub-cache"
+
+# Java
+export OPENJDK_DIR="$HOMEBREW/opt/openjdk@17"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"
+
+# Android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+
+# Ruby
+export GEMS_PATH="$HOME/.gem/ruby/2.6.0"
+
+# Solana
+export SOLANA_ACTIVE_RELEASE="$HOME/.local/share/solana/install/active_release"
+
+# PICO-8
+export PICO8_APP_DIR="/Applications/PICO-8/PICO-8.app/Contents/MacOS"
+export PICO8_DAT_DIR="$HOME/Library/Application Support/pico-8"
+
+# GNU Tar
+export GNU_TAR="$HOMEBREW/opt/gnu-tar/libexec"
+
+# Library paths (compilation)
+export ICU4C="$HOMEBREW/opt/icu4c@76"
+export LDFLAGS="-L/opt/local/lib -L$HOMEBREW/opt/zlib/lib -L$HOMEBREW/opt/readline/lib -L$HOMEBREW/opt/openssl/lib -L$ICU4C/lib"
+export CPPFLAGS="-I/opt/local/include -I$HOMEBREW/opt/zlib/include -I$HOMEBREW/opt/readline/include -I$HOMEBREW/opt/openssl/include -I$OPENJDK_DIR/include -I$ICU4C/include"
+export PKG_CONFIG_PATH="$HOMEBREW/opt/zlib/lib/pkgconfig:$HOMEBREW/opt/openssl/lib/pkgconfig:$ICU4C/lib/pkgconfig"
+
+# ============================================================================
+# PATH Configuration
+# ============================================================================
+
+# Build PATH with all necessary directories
+# Order matters: earlier entries take precedence
+
+# Start with system paths
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+# Add custom paths (prepend so they take precedence)
+PATH="$HOME/.local/bin:$PATH"
+PATH="$DOTS/bin:$PATH"
+PATH="$DOTS/local/bin:$PATH"
+PATH="$HOMEBREW/bin:$PATH"
+PATH="$HOMEBREW/sbin:$PATH"
+PATH="$GNU_TAR/gnubin:$PATH"
+PATH="$ICU4C/bin:$PATH"
+PATH="$ICU4C/sbin:$PATH"
+PATH="$PYENV_ROOT/bin:$PATH"
+PATH="$PYENV_ROOT/shims:$PATH"
+PATH="$CARGO_DIR/bin:$PATH"
+PATH="$GOPATH/bin:$PATH"
+PATH="$BUN_INSTALL/bin:$PATH"
+PATH="$PUB_CACHE/bin:$PATH"
+PATH="$GEMS_PATH/bin:$PATH"
+PATH="$OPENJDK_DIR/bin:$PATH"
+PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+PATH="$ANDROID_HOME/platform-tools:$PATH"
+PATH="$HOMEBREW/share/google-cloud-sdk/bin:$PATH"
+PATH="$HOMEBREW/opt/libpq/bin:$PATH"
+PATH="$SOLANA_ACTIVE_RELEASE/bin:$PATH"
+
+export PATH
+
+# ============================================================================
+# Private Environment Variables
+# ============================================================================
+
+# Source private environment variables if they exist (for API keys, tokens, etc.)
+if [ -f ~/.bash_profile.local ]; then
+    source ~/.bash_profile.local
+fi
+
+# ============================================================================
+# Interactive Shell Configuration
+# ============================================================================
+
+# Source bashrc if it exists
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi

@@ -1,12 +1,12 @@
 {
   "chat.agent.enabled": false,
-  "chat.agentsControl.enabled": false,
+  "chat.agentsControl.enabled": "hidden",
 
   "workbench.secondarySideBar.defaultVisibility": "hidden",
 
   "editor.detectIndentation": false,
   "editor.fontFamily": "Hack Nerd Font",
-  "editor.fontSize": 14,
+  "editor.fontSize": 12,
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.insertSpaces": true,
@@ -19,7 +19,15 @@
   "editor.unicodeHighlight.invisibleCharacters": false,
   "editor.unicodeHighlight.ambiguousCharacters": false,
 
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "path": "/opt/homebrew/bin/bash",
+      "args": ["-l"],
+      "icon": "terminal-bash"
+    }
+  },
 
   "remote.autoForwardPortsSource": "hybrid",
 
@@ -132,6 +140,17 @@
     }
   },
 
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/DavidAnson/markdownlint/v0.40.0/schema/markdownlint-config-schema.json": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  },
+
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
     "editor.autoIndent": "keep",
@@ -164,5 +183,9 @@
   },
 
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.selectedModel": "claude-opus-4-6"
+  "claudeCode.selectedModel": "claude-opus-4-6",
+
+  "vim.handleKeys": {
+    "<C-r>": false
+  }
 }

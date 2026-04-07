@@ -4,6 +4,7 @@
 !.env.example
 
 local/
+*.local
 
 fish/**/*.private.fish
 fish/completions
