@@ -16,3 +16,9 @@ git/conf.d
 
 nushell/history*
 nushell/**/*.private.nu
+
+claude/**/*
+!claude/skills/
+!claude/settings.json
+!claude/CLAUDE.md
+!claude/RTK.md
