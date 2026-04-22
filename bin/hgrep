@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SHELL_HISTORY="$HOME/.local/share/fish/fish_history"
+SHELL_HISTORY="$HOME/.bash_history"
 
 help() {
     if [ -n "$1" ]; then
