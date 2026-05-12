@@ -6,19 +6,13 @@
 local/
 *.local
 
-fish/**/*.private.fish
-fish/completions
-fish/conf.d
-fish/functions
-fish/fish_variables
-
 git/conf.d
-
-nushell/history*
-nushell/**/*.private.nu
 
 claude/**/*
 !claude/skills/
 !claude/settings.json
 !claude/CLAUDE.md
 !claude/RTK.md
+
+opencode/**/*
+!opencode/opencode.json
