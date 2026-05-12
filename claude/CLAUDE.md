@@ -7,6 +7,7 @@
 - No explanations unless explicitly asked.
 - Prefer bullet points. No prose unless necessary.
 - Omit anything non-essential.
+- Never use git write commands like "git add", "git commit", "git push", etc.
 
 ## Uncertainty Handling
 
