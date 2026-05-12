@@ -20,7 +20,7 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
       "headers": {
-        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+        "CONTEXT7_API_KEY": "{env:UPSTASH_CONTEXT7_API_KEY}"
       },
       "enabled": true
     },
