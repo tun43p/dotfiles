@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # Enable vi mode
-set -o vi
+# set -o vi
 
 # Vi mode cursor shapes (line for insert, block for normal)
-bind 'set show-mode-in-prompt on'
-bind 'set vi-ins-mode-string \1\e[6 q\2'
-bind 'set vi-cmd-mode-string \1\e[2 q\2'
+# bind 'set show-mode-in-prompt on'
+# bind 'set vi-ins-mode-string \1\e[6 q\2'
+# bind 'set vi-cmd-mode-string \1\e[2 q\2'
 
 # Vi mode keybindings
-bind -m vi-insert "\C-l":clear-screen
-bind -m vi-command "\C-l":clear-screen
+# bind -m vi-insert "\C-l":clear-screen
+# bind -m vi-command "\C-l":clear-screen
 
 # Don't put duplicate lines or lines starting with space in the history
 HISTCONTROL=ignoreboth
@@ -68,9 +68,9 @@ if [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
 fi
 
 # ble.sh — Bash Line Editor with autosuggestions (install: brew install blesh)
-if [[ -f ~/.local/share/blesh/ble.sh ]]; then
-    source ~/.local/share/blesh/ble.sh
-fi
+# if [[ -f ~/.local/share/blesh/ble.sh ]]; then
+#     source ~/.local/share/blesh/ble.sh
+# fi
 
 # fzf — fuzzy finder with improved keybindings
 if [ -f ~/.fzf.bash ]; then
@@ -103,3 +103,6 @@ fi
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
+
+# opencode
+export PATH=/Users/tun43p/.opencode/bin:$PATH
