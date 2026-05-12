@@ -1,8 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "claude-sonnet-4-6",
   "env": {
-    "ENABLE_PROMPT_CACHING_1H": "1",
     "ENABLE_TOOL_SEARCH": "auto:5",
     "BASH_MAX_OUTPUT_LENGTH": "150000"
   },
@@ -16,12 +14,7 @@
       "WebSearch"
     ]
   },
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true
-  },
+  "model": "claude-opus-4-7",
   "hooks": {
     "PreToolUse": [
       {
@@ -34,5 +27,13 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true
+  },
+  "theme": "dark-ansi",
+  "effortLevel": "medium"
 }
