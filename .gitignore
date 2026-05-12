@@ -7,12 +7,3 @@ local/
 *.local
 
 git/conf.d
-
-claude/**/*
-!claude/skills/
-!claude/settings.json
-!claude/CLAUDE.md
-!claude/RTK.md
-
-opencode/**/*
-!opencode/opencode.json
