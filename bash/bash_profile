@@ -89,6 +89,9 @@ export OLLAMA_NUM_PARALLEL=2
 export OLLAMA_MAX_LOADED_MODELS=2
 export OLLAMA_FLASH_ATTENTION=1
 
+# Disable nvim logs
+export NVIM_LOG_FILE="/dev/null"
+
 # Start with system paths
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 

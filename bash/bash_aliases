@@ -40,7 +40,6 @@ alias c="claude"
 
 # Ollama aliases
 alias o="ollama"
-alias oc="ollama launch claude --model qwen3.5:latest"
 
 # Reload bash alias
 alias reload='source ~/.bash_profile'
