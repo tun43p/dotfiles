@@ -16,7 +16,12 @@ return {
 			},
 			sections = {
 				lualine_a = {
-					{ "mode", fmt = function(str) return str:sub(1, 3) end },
+					{
+						"mode",
+						fmt = function(str)
+							return str:sub(1, 3)
+						end,
+					},
 				},
 				lualine_b = {
 					{ "branch", icon = "" },

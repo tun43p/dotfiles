@@ -26,6 +26,7 @@
   "oxocarbon.nvim": { "branch": "main", "commit": "a7ba74849a00546a311f8c146320b433900393e7" },
   "pathlib.nvim": { "branch": "main", "commit": "57e5598af6fe253761c1b48e0b59b7cd6699e2c1" },
   "snacks.nvim": { "branch": "main", "commit": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e" },
+  "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
   "tree-sitter-norg": { "branch": "main", "commit": "d7edfaf89198aab652c7a1f0f818196efedaccfb" },
   "tree-sitter-norg-meta": { "branch": "main", "commit": "729d4e54fb881ba0ddf0f925ec78401354c7c6db" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
