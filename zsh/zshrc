@@ -28,10 +28,24 @@ setopt CORRECT
 
 # Prompt with git branch (via vcs_info)
 autoload -Uz vcs_info
-precmd() { vcs_info }
+
+# Pre-prompt hook to fix current directory name
+precmd() {
+  vcs_info
+  # List parent dir and grep case-insensitively to get the real cased name from filesystem
+  local _parent="${PWD:h}" _base="${PWD:t}"
+  _PROMPT_DIR=$(ls -1 "$_parent" 2>/dev/null | grep -ix "$_base" | head -1)
+  [[ -z "$_PROMPT_DIR" ]] && _PROMPT_DIR="$_base"
+  [[ "$PWD" == "$HOME" ]] && _PROMPT_DIR="~"
+}
+
 zstyle ':vcs_info:git:*' formats ' (%b)'
 setopt PROMPT_SUBST
-PROMPT='%F{green}%n@%m%f:%F{blue}%~%f%F{yellow}${vcs_info_msg_0_}%f$ '
+
+# Line 1: dirname (bold) + git branch (dim grey)
+# Line 2: ❯ cyan on success, red on error
+PROMPT='%B%F{white}${_PROMPT_DIR}%f%b%F{242}${vcs_info_msg_0_}%f
+%(?.%F{cyan}.%F{red})❯%f '
 
 # zoxide — smarter cd
 if command -v zoxide &> /dev/null; then
