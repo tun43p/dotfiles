@@ -1,24 +1,25 @@
 #!/bin/sh
 
 if [ -z "$1" ]; then
-  echo "Usage: t <folder> | t -l | t -d <session> | t -h"
-  exit 1
+  session=$(tmux list-sessions -F '#S' 2>/dev/null | fzf --prompt='session: ' --height=20%)
+  [ -z "$session" ] && exit 0
+  if [ -n "$TMUX" ]; then
+      tmux switch-client -t "$session"
+  else
+      tmux attach -t "$session"
+  fi
+  exit 0
 fi
-
-SESSIONS=$(tmux list-sessions | cut -d: -f1)
 
 if [ "$1" = "-h" ]; then
   echo "Usage: t <folder> | t -l | t -d <session> | t -h"
+  echo "t will list all tmux sessions"
   echo "t <folder> will open the folder in a new tmux session"
-  echo "t -l will list all tmux sessions"
   echo "t -d <session> will kill the session"
   exit 0
 fi
 
-if [ "$1" = "-l" ]; then
-  echo $SESSIONS
-  exit 0
-fi
+SESSIONS=$(tmux list-sessions 2>/dev/null | cut -d: -f1)
 
 if [ "$1" = "-d" ]; then
   if [ -z "$2" ]; then
@@ -44,7 +45,7 @@ if [ -z "$ZOXIDE_RESULT" ]; then
 fi
 
 FOLDER=$(basename $ZOXIDE_RESULT)
-SESSION=$(tmux list-sessions | grep "$FOLDER" | cut -d: -f1)
+SESSION=$($SESSIONS | grep "$FOLDER" | cut -d: -f1)
 
 if [ -z "$TMUX" ]; then
   if [ -z "$SESSION" ]; then

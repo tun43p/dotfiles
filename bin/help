@@ -1,0 +1,45 @@
+#!/bin/sh
+
+BOLD='\033[1m'
+DIM='\033[2m'
+CYAN='\033[36m'
+WHITE='\033[37m'
+RESET='\033[0m'
+
+section() {
+    printf "\n${BOLD}${WHITE}%s${RESET}\n" "$1"
+    printf "${DIM}%s${RESET}\n" "$(printf '─%.0s' $(seq 1 40))"
+}
+
+row() {
+    printf "  ${CYAN}%-28s${RESET}%s\n" "$1" "$2"
+}
+
+section "zsh"
+row "Ctrl+R"            "fuzzy search history"
+row "Ctrl+T"            "fuzzy insert file path"
+row "Alt+C"             "fuzzy cd into subdirectory"
+row "Ctrl+A / Ctrl+E"   "beginning / end of line"
+row "Ctrl+W"            "delete word backward"
+row "Ctrl+U"            "clear line"
+row "Ctrl+L"            "clear screen"
+
+section "tmux  (prefix = Ctrl+Space)"
+row "prefix + v"        "split vertical"
+row "prefix + b"        "split horizontal"
+row "prefix + c"        "new window"
+row "prefix + s"        "switch session (fzf)"
+row "prefix + q"        "detach session (keeps alive)"
+row "prefix + r"        "reload config"
+row "prefix + h/j/k/l"  "navigate panes"
+row "prefix + H/J/K/L"  "resize pane"
+row "prefix + [0-9]"    "go to window N"
+row "prefix + &"        "kill window"
+row "prefix + x"        "kill pane"
+
+section "t  (tmux sessions)"
+row "t"                 "list and switch session (fzf)"
+row "t <folder>"        "open or attach session"
+row "t -d <session>"    "kill session"
+
+printf "\n"
