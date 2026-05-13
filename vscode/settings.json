@@ -29,8 +29,8 @@
     "zsh": {
       "path": "/opt/homebrew/bin/zsh",
       "args": ["-l"],
-      "icon": "terminal-bash",
-    },
+      "icon": "terminal-bash"
+    }
   },
 
   "remote.autoForwardPortsSource": "hybrid",
@@ -41,41 +41,41 @@
   "git.ignoreRebaseWarning": true,
 
   "files.exclude": {
-    "**/__pycache__": true,
+    "**/__pycache__": true
   },
 
   "[shellscript]": {
     "editor.tabSize": 4,
     "files.eol": "\n",
-    "editor.defaultColorDecorators": "never",
+    "editor.defaultColorDecorators": "never"
   },
 
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "js/ts.updateImportsOnFileMove.enabled": "always",
@@ -89,7 +89,7 @@
     "editor.suggestSelection": "first",
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": "off",
+    "editor.wordBasedSuggestions": "off"
   },
 
   "[python]": {
@@ -98,8 +98,8 @@
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
       "source.fixAll.ruff": "always",
-      "source.organizeImports.ruff": "always",
-    },
+      "source.organizeImports.ruff": "always"
+    }
   },
 
   "ruff.enable": true,
@@ -117,7 +117,7 @@
 
   "[go]": {
     "editor.defaultFormatter": "golang.go",
-    "editor.tabSize": 4,
+    "editor.tabSize": 4
   },
 
   "go.toolsManagement.autoUpdate": true,
@@ -125,13 +125,13 @@
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,
-    "editor.tabSize": 4,
+    "editor.tabSize": 4
   },
 
   "[zig]": {
     "editor.defaultFormatter": "ziglang.vscode-zig",
     "editor.formatOnSave": true,
-    "editor.tabSize": 4,
+    "editor.tabSize": 4
   },
 
   "zig.zls.enabled": "on",
@@ -139,15 +139,15 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
-      "strings": true,
-    },
+      "strings": true
+    }
   },
 
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
-      "strings": true,
-    },
+      "strings": true
+    }
   },
 
   "[yaml]": {
@@ -157,8 +157,8 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true,
-    },
+      "strings": true
+    }
   },
 
   "redhat.telemetry.enabled": false,
@@ -172,17 +172,17 @@
     "editor.quickSuggestions": {
       "comments": "off",
       "strings": "off",
-      "other": "off",
-    },
+      "other": "off"
+    }
   },
 
   "markdownlint.config": {
     "default": true,
-    "MD041": false,
+    "MD041": false
   },
 
   "vim.handleKeys": {
-    "<C-r>": false,
+    "<C-r>": false
   },
 
   "json.schemaDownload.trustedDomains": {
@@ -195,6 +195,7 @@
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,
-    "https://www.schemastore.org/": true,
+    "https://www.schemastore.org/": true
   },
+  "diffEditor.ignoreTrimWhitespace": false
 }
