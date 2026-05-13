@@ -46,7 +46,7 @@ if [ -z "$ZOXIDE_RESULT" ]; then
 fi
 
 FOLDER=$(basename $ZOXIDE_RESULT)
-SESSION=$($SESSIONS | grep "$FOLDER" | cut -d: -f1)
+SESSION=$(tmux list-sessions 2>/dev/null | grep "$FOLDER" | cut -d: -f1)
 
 if [ -z "$TMUX" ]; then
   if [ -z "$SESSION" ]; then
