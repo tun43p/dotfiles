@@ -42,7 +42,6 @@ return {
 				gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts("Reset hunk"))
 			vim.keymap.set("n", "<leader>hS", gs.stage_buffer, opts("Stage buffer"))
-			vim.keymap.set("n", "<leader>hu", gs.undo_stage_hunk, opts("Undo stage hunk"))
 			vim.keymap.set("n", "<leader>hR", gs.reset_buffer, opts("Reset buffer"))
 			vim.keymap.set("n", "<leader>hp", gs.preview_hunk, opts("Preview hunk"))
 			vim.keymap.set("n", "<leader>hb", function()

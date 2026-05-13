@@ -1,24 +1,27 @@
--- Script to export the list of available LSP servers 
 local function export_servers()
-  -- Get the list of available servers
-  local servers = require('mason-lspconfig').get_available_servers()
-  
-  -- Convert the list to JSON format
-  local json = vim.json.encode(servers)
-  
-  -- Output file path
+  local registry = require("mason-registry")
+  local servers = {}
+
+  for _, pkg in ipairs(registry.get_all_packages()) do
+    for _, category in ipairs(pkg.spec.categories or {}) do
+      if category == "LSP" then
+        table.insert(servers, pkg.name)
+        break
+      end
+    end
+  end
+
+  table.sort(servers)
+
   local output_file = vim.fn.expand("~/.config/nvim/services.json")
-  
-  -- Create the directory if it doesn't exist
   local config_dir = vim.fn.expand("~/.config/nvim")
   if vim.fn.isdirectory(config_dir) == 0 then
     vim.fn.mkdir(config_dir, "p")
   end
-  
-  -- Write to the file
+
   local file = io.open(output_file, "w")
   if file then
-    file:write(json)
+    file:write(vim.json.encode(servers))
     file:close()
     print("Servers exported to " .. output_file)
   else
@@ -27,5 +30,5 @@ local function export_servers()
 end
 
 return {
-  export_servers = export_servers
+  export_servers = export_servers,
 }

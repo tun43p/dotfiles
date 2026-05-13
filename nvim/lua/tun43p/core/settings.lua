@@ -40,12 +40,12 @@ vim.o.completeopt = "menuone,noselect"
 -- don't show modes
 vim.opt.showmode = false
 
+-- hide cmdline when not in use (noice handles it via popup)
+vim.opt.cmdheight = 0
+
 -- open splits on the right and below
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-
--- update vim after file update from outside
-vim.opt.autoread = true
 
 -- indentation
 vim.opt.autoindent = true
@@ -75,6 +75,8 @@ vim.g.loaded_netrw = 1
 -- disable unused providers
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
 
 -- auto enter terminal mode when switching to a terminal buffer
 vim.api.nvim_create_autocmd({ "BufEnter", "TermOpen" }, {
