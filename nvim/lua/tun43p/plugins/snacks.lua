@@ -46,7 +46,15 @@ return {
 		explorer = { enabled = true },
 
 		-- Picker (replaces telescope)
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			sources = {
+				explorer = {
+					hidden = true,
+					ignored = true,
+				},
+			},
+		},
 
 		-- Notifications (replaces noice + nvim-notify)
 		notifier = { enabled = true },
