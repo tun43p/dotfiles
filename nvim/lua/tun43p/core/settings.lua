@@ -80,18 +80,18 @@ vim.g.loaded_python3_provider = 0
 
 -- auto enter terminal mode when switching to a terminal buffer
 vim.api.nvim_create_autocmd({ "BufEnter", "TermOpen" }, {
-  pattern = "term://*",
-  callback = function()
-    vim.cmd("startinsert")
-  end,
+	pattern = "term://*",
+	callback = function()
+		vim.cmd("startinsert")
+	end,
 })
 
 -- colorcolumn at 80 for files
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact" },
-  callback = function()
-    vim.opt_local.colorcolumn = "80"
-  end,
+	pattern = { "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function()
+		vim.opt_local.colorcolumn = "80"
+	end,
 })
 
 -- NOTE: copilot desactive, utilisation de Claude Code

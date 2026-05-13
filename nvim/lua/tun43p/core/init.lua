@@ -1,2 +1,2 @@
-require('tun43p.core.settings')
-require('tun43p.core.keymaps')
+require("tun43p.core.settings")
+require("tun43p.core.keymaps")

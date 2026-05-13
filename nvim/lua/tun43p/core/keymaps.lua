@@ -3,31 +3,31 @@ vim.keymap.set("n", "<leader>s", ":write<cr>", { silent = true, desc = "Save fil
 
 -- move normally between wrapped lines with k and j or up and down
 vim.keymap.set(
-  "n",
-  "k",
-  "v:count == 0 ? 'gk' : 'k'",
-  { expr = true, silent = true, desc = "Move normally between bottom wrapped lines" }
+	"n",
+	"k",
+	"v:count == 0 ? 'gk' : 'k'",
+	{ expr = true, silent = true, desc = "Move normally between bottom wrapped lines" }
 )
 
 vim.keymap.set(
-  "n",
-  "<up>",
-  "v:count == 0 ? 'gk' : 'k'",
-  { expr = true, silent = true, desc = "Move normally between bottom wrapped" }
+	"n",
+	"<up>",
+	"v:count == 0 ? 'gk' : 'k'",
+	{ expr = true, silent = true, desc = "Move normally between bottom wrapped" }
 )
 
 vim.keymap.set(
-  "n",
-  "j",
-  "v:count == 0 ? 'gj' : 'j'",
-  { expr = true, silent = true, desc = "Move normally between upper wrapped lines" }
+	"n",
+	"j",
+	"v:count == 0 ? 'gj' : 'j'",
+	{ expr = true, silent = true, desc = "Move normally between upper wrapped lines" }
 )
 
 vim.keymap.set(
-  "n",
-  "<down>",
-  "v:count == 0 ? 'gj' : 'j'",
-  { expr = true, silent = true, desc = "Move normally between upper wrapped lines" }
+	"n",
+	"<down>",
+	"v:count == 0 ? 'gj' : 'j'",
+	{ expr = true, silent = true, desc = "Move normally between upper wrapped lines" }
 )
 
 -- move to the first and last symbols on the line with shift + h or shift + l
@@ -76,7 +76,7 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
 
 -- open terminal with snacks (space + t)
 vim.keymap.set("n", "<leader>t", function()
-  Snacks.terminal()
+	Snacks.terminal()
 end, { desc = "Open terminal" })
 
 -- NOTE: copilot desactive, utilisation de Claude Code / Codeium
