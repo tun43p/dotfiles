@@ -63,7 +63,7 @@ function _prompt_precmd {
     git diff --quiet 2>/dev/null || _flags+="%F{yellow}!%f"
     git ls-files --others --exclude-standard | grep -q . && _flags+="%F{red}?%f"
     local _git_icon=$'\ue0a0'
-    _GIT_INFO=" %F{242}(${_git_icon} %f${_branch}${_flags}%F{242})%f"
+    _GIT_INFO=" %F{242}(${_git_icon} %f${_branch} ${_flags}%F{242})%f"
   else
     _GIT_INFO=''
   fi
