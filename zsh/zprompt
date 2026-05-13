@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 setopt PROMPT_SUBST
+zmodload zsh/datetime
 
 # --- Vi mode ---
 
@@ -41,11 +42,20 @@ autoload -Uz add-zsh-hook
 add-zsh-hook preexec _prompt_preexec
 
 function _prompt_duration {
+  (( _CMD_START == 0 )) && return
   local elapsed=$(( EPOCHSECONDS - _CMD_START ))
   _CMD_START=0
-  if (( elapsed >= 3 )); then
-    echo "%F{242}${elapsed}s%f "
-  fi
+  (( elapsed == 0 )) && return
+
+  local h=$(( elapsed / 3600 ))
+  local m=$(( (elapsed % 3600) / 60 ))
+  local s=$(( elapsed % 60 ))
+  local out=''
+  (( h > 0 )) && out+="${h}h"
+  (( m > 0 )) && out+="${m}m"
+  out+="${s}s"
+
+  echo "%F{242}${out}%f "
 }
 
 # --- Precmd ---
@@ -99,5 +109,5 @@ function _prompt_python {
 PROMPT='%B%F{magenta}${_PROMPT_DIR}%f%b${_GIT_INFO} $(_prompt_python)
 ${_VI_INDICATOR}%(?.%F{cyan}.%F{red})❯%f '
 
-# Right: duration + time
-RPROMPT='${_CMD_DURATION}%F{242}%T%f'
+# Right: duration
+RPROMPT='${_CMD_DURATION}'
