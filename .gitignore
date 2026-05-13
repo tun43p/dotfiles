@@ -7,3 +7,5 @@ local/
 *.local
 
 git/conf.d
+
+zsh/zshenv
