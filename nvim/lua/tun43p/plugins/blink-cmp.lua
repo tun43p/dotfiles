@@ -11,9 +11,10 @@ return {
 				require("luasnip.loaders.from_vscode").lazy_load()
 			end,
 		},
+		{ "milanglacier/minuet-ai.nvim" },
 	},
----@module 'blink.cmp'
-opts = {
+	---@module 'blink.cmp'
+	opts = {
 		keymap = {
 			preset = "default",
 			["<CR>"] = { "accept", "fallback" },
@@ -22,6 +23,11 @@ opts = {
 			["<C-n>"] = { "select_next", "fallback" },
 			["<C-p>"] = { "select_prev", "fallback" },
 			["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<A-y>"] = {
+				function(cmp)
+					cmp.show({ providers = { "minuet" } })
+				end,
+			},
 		},
 		appearance = {
 			nerd_font_variant = "mono",
@@ -31,13 +37,18 @@ opts = {
 			accept = { auto_brackets = { enabled = true } },
 			documentation = { auto_show = true, auto_show_delay_ms = 200 },
 			menu = { border = "rounded" },
-			ghost_text = { enabled = false },
+			ghost_text = { enabled = true },
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "minuet" },
 			providers = {
 				buffer = { min_keyword_length = 3 },
 				snippets = { min_keyword_length = 2 },
+				minuet = {
+					name = "minuet",
+					module = "minuet.blink",
+					score_offset = 100,
+				},
 			},
 		},
 		signature = { enabled = true, window = { border = "rounded" } },
