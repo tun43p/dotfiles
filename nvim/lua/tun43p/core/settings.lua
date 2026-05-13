@@ -72,6 +72,10 @@ vim.opt.sidescroll = 5
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
+-- disable unused providers
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- auto enter terminal mode when switching to a terminal buffer
 vim.api.nvim_create_autocmd({ "BufEnter", "TermOpen" }, {
   pattern = "term://*",

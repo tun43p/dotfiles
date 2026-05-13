@@ -43,6 +43,9 @@ return {
 		-- Git utilities
 		git = {},
 
+		-- Inline image rendering (Ghostty supported)
+		image = { enabled = true },
+
 		-- Smooth scrolling
 		scroll = { enabled = true },
 
