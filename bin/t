@@ -1,0 +1,64 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  echo "Usage: t <folder> | t -l | t -d <session> | t -h"
+  exit 1
+fi
+
+SESSIONS=$(tmux list-sessions | cut -d: -f1)
+
+if [ "$1" = "-h" ]; then
+  echo "Usage: t <folder> | t -l | t -d <session> | t -h"
+  echo "t <folder> will open the folder in a new tmux session"
+  echo "t -l will list all tmux sessions"
+  echo "t -d <session> will kill the session"
+  exit 0
+fi
+
+if [ "$1" = "-l" ]; then
+  echo $SESSIONS
+  exit 0
+fi
+
+if [ "$1" = "-d" ]; then
+  if [ -z "$2" ]; then
+    echo "Usage: t -d <session>"
+    exit 1
+  fi
+
+  SESSION=$2
+  if ! echo $SESSIONS | grep -q $SESSION; then
+    echo "Session $SESSION not found"
+    exit 1
+  fi
+
+  tmux kill-session -t $SESSION
+  echo "Session $SESSION killed"
+  exit 0
+fi
+
+ZOXIDE_RESULT=$(zoxide query $1)
+
+if [ -z "$ZOXIDE_RESULT" ]; then
+  exit 0
+fi
+
+FOLDER=$(basename $ZOXIDE_RESULT)
+SESSION=$(tmux list-sessions | grep "$FOLDER" | cut -d: -f1)
+
+if [ -z "$TMUX" ]; then
+  if [ -z "$SESSION" ]; then
+    cd $ZOXIDE_RESULT
+    tmux new-session -s $FOLDER
+  else
+    tmux attach -t $SESSION
+  fi
+else
+  if [ -z "$SESSION" ]; then
+    cd $ZOXIDE_RESULT
+    tmux new-session -d -s $FOLDER
+    tmux switch-client -t $FOLDER
+  else
+    tmux switch-client -t $SESSION
+  fi
+fi
