@@ -58,12 +58,12 @@ function _prompt_precmd {
 
   if git rev-parse --is-inside-work-tree &>/dev/null; then
     local _branch _flags=''
+    local _git_icon=$'\ue0a0' _i_staged=$'\uf067' _i_unstaged=$'\uf071' _i_untracked=$'\uf128'
     _branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-    git diff --cached --quiet 2>/dev/null || _flags+="%F{green}+%f"
-    git diff --quiet 2>/dev/null || _flags+="%F{yellow}!%f"
-    git ls-files --others --exclude-standard | grep -q . && _flags+="%F{red}?%f"
-    local _git_icon=$'\ue0a0'
-    _GIT_INFO=" %F{242}(${_git_icon} %f${_branch} ${_flags}%F{242})%f"
+    git diff --cached --quiet 2>/dev/null || _flags+=" %F{green}${_i_staged}%f"
+    git diff --quiet 2>/dev/null || _flags+=" %F{yellow}${_i_unstaged}%f"
+    git ls-files --others --exclude-standard | grep -q . && _flags+=" %F{red}${_i_untracked}%f"
+    _GIT_INFO=" %F{242}(${_git_icon} %f${_branch}${_flags}%F{242})%f"
   else
     _GIT_INFO=''
   fi
@@ -79,7 +79,7 @@ add-zsh-hook precmd _prompt_precmd
 # --- Python (venv or pyenv) ---
 
 function _prompt_python {
-  local _icon=$''
+  local _icon=$'\ue606'
   if [[ -n "$VIRTUAL_ENV" ]]; then
     echo "%F{blue}${_icon} ${VIRTUAL_ENV:t}%f "
   else
