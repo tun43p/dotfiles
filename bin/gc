@@ -1,4 +1,5 @@
 #!/bin/sh
+# google cloud platform utilities
 
 help() {
     if [ -n "$1" ]; then

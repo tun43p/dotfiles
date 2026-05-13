@@ -1,4 +1,5 @@
 #!/bin/sh
+# show application keybinds, aliases, and scripts
 
 BOLD='\033[1m'
 DIM='\033[2m'
@@ -77,56 +78,21 @@ section_nvim() {
 }
 
 section_aliases() {
-    section "common aliases"
-    row "reload"              "exec zsh"
-
-    section "ls aliases"
-    row "ls"                  "ls --color=auto"
-    row "ll"                  "ls -lh"
-    row "la"                  "ls -lAh"
-    row "l"                   "ls -CF"
-
-    section "safety nets aliases"
-    row "rm"                  "rm -i"
-    row "cp"                  "cp -i"
-    row "mv"                  "mv -i"
-
-    section "neovim aliases"
-    row "vim"                 "neovim"
-    row "n"                   "neovim"
-    row "v"                   "neovim"
-
-    section "git aliases"
-    row "g"                   "git"
-    row "gs"                  "git status"
-    row "ga"                  "git add"
-    row "gc"                  "git commit"
-    row "gp"                  "git push"
-    row "gl"                  "git log --oneline --graph"
-    row "gd"                  "git diff"
-
-    section "terraform aliases"
-    row "tf"                  "terraform"
-    row "tfi"                 "terraform init"
-    row "tfp"                 "terraform plan"
-    row "tfa"                 "terraform apply"
-
-    section "ccusage aliases"
-    row "ccud"                "ccusage daily --package"
-    row "ccum"                "ccusage monthly --package"
-
-    section "osx specific aliases"
-    row "finder"              "open -R"
-    row "flushdns"            "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+    section "aliases"
+    grep '^alias ' "$HOME/.zshrc" | while IFS= read -r line; do
+        alias_name=$(echo "$line" | sed "s/alias \([^=]*\)=.*/\1/")
+        alias_val=$(echo "$line" | sed "s/alias [^=]*='\(.*\)'/\1/;s/alias [^=]*=\"\(.*\)\"/\1/")
+        row "$alias_name" "$alias_val"
+    done
 }
 
 section_scripts() {
     section "scripts"
-    row "gc"                  "google cloud platform utils"
-    row "gpgg"                "utils for gpg"
-    row "hgrep"               "search shell history"
-    row "osx"                 "osx utils"
-    row "t"                   "list and switch session (fzf)"
+    DOTS_BIN="$(dirname "$0")"
+    ls -1 "$DOTS_BIN" | grep -v '^help$' | while IFS= read -r script; do
+        desc=$(sed -n '2p' "$DOTS_BIN/$script" | sed 's/^# *//')
+        row "$script" "$desc"
+    done
 }
 
 # if help -a is used, print all sections
@@ -145,5 +111,3 @@ else
     section_tmux
     section_nvim
 fi
-
-printf "\n"
