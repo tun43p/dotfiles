@@ -1,0 +1,93 @@
+#!/usr/bin/env zsh
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats ' (%b)'
+setopt PROMPT_SUBST
+
+# --- Vi mode ---
+
+bindkey -v
+KEYTIMEOUT=1
+_VI_INDICATOR=''
+
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    _VI_INDICATOR='%F{yellow}[N]%f '
+    printf '\e[2 q'
+  else
+    _VI_INDICATOR=''
+    printf '\e[6 q'
+  fi
+
+  zle reset-prompt
+}
+
+zle -N zle-keymap-select
+
+function zle-line-init {
+  _VI_INDICATOR=''
+  printf '\e[6 q'
+}
+
+zle -N zle-line-init
+
+# --- Command duration ---
+
+_CMD_START=0
+
+function _prompt_preexec {
+  _CMD_START=$EPOCHSECONDS
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _prompt_preexec
+
+function _prompt_duration {
+  local elapsed=$(( EPOCHSECONDS - _CMD_START ))
+  _CMD_START=0
+  if (( elapsed >= 3 )); then
+    echo "%F{242}${elapsed}s%f "
+  fi
+}
+
+# --- Precmd ---
+
+function _prompt_precmd {
+  stty sane 2>/dev/null
+  _VI_INDICATOR=''
+  printf '\e[6 q'
+  _CMD_DURATION=$(_prompt_duration)
+  vcs_info
+  local _parent="${PWD:h}" _base="${PWD:t}"
+  _PROMPT_DIR=$(ls -1 "$_parent" 2>/dev/null | grep -ix "$_base" | head -1)
+  [[ -z "$_PROMPT_DIR" ]] && _PROMPT_DIR="$_base"
+  [[ "$PWD" == "$HOME" ]] && _PROMPT_DIR="~"
+}
+
+add-zsh-hook precmd _prompt_precmd
+
+# --- Python (venv or pyenv) ---
+
+function _prompt_python {
+  local _icon=$''
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "%F{blue}${_icon} ${VIRTUAL_ENV:t}%f "
+  else
+    local pyver_file
+    pyver_file=$(builtin cd "$PWD" && while [[ "$PWD" != "/" ]]; do
+      [[ -f ".python-version" ]] && { cat ".python-version"; break; }
+      builtin cd ..
+    done 2>/dev/null)
+    [[ -n "$pyver_file" ]] && echo "%F{blue}${_icon} ${pyver_file// /}%f "
+  fi
+}
+
+# --- Prompt ---
+
+# Left: dirname (bold magenta) + git branch (dim grey)
+# Line 2: python + vi mode + ❯ (cyan ok / red error)
+PROMPT='%B%F{magenta}${_PROMPT_DIR}%f%b%F{242}${vcs_info_msg_0_}%f $(_prompt_python)
+${_VI_INDICATOR}%(?.%F{cyan}.%F{red})❯%f '
+
+# Right: duration + time
+RPROMPT='${_CMD_DURATION}%F{242}%T%f'
