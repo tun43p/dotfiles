@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-autoload -Uz vcs_info
-zstyle ':vcs_info:git:*' formats ' (%b)'
 setopt PROMPT_SUBST
 
 # --- Vi mode ---
@@ -57,7 +55,17 @@ function _prompt_precmd {
   _VI_INDICATOR=''
   printf '\e[6 q'
   _CMD_DURATION=$(_prompt_duration)
-  vcs_info
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    local _branch _flags=''
+    _branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+    git diff --cached --quiet 2>/dev/null || _flags+="%F{green}+%f"
+    git diff --quiet 2>/dev/null || _flags+="%F{yellow}!%f"
+    git ls-files --others --exclude-standard | grep -q . && _flags+="%F{red}?%f"
+    _GIT_INFO=" %F{242}(%f${_branch}${_flags}%F{242})%f"
+  else
+    _GIT_INFO=''
+  fi
+
   local _parent="${PWD:h}" _base="${PWD:t}"
   _PROMPT_DIR=$(ls -1 "$_parent" 2>/dev/null | grep -ix "$_base" | head -1)
   [[ -z "$_PROMPT_DIR" ]] && _PROMPT_DIR="$_base"
@@ -86,7 +94,7 @@ function _prompt_python {
 
 # Left: dirname (bold magenta) + git branch (dim grey)
 # Line 2: python + vi mode + ❯ (cyan ok / red error)
-PROMPT='%B%F{magenta}${_PROMPT_DIR}%f%b%F{242}${vcs_info_msg_0_}%f $(_prompt_python)
+PROMPT='%B%F{magenta}${_PROMPT_DIR}%f%b${_GIT_INFO} $(_prompt_python)
 ${_VI_INDICATOR}%(?.%F{cyan}.%F{red})❯%f '
 
 # Right: duration + time
