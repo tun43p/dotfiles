@@ -6,40 +6,144 @@ CYAN='\033[36m'
 WHITE='\033[37m'
 RESET='\033[0m'
 
+COLS=$(tput cols 2>/dev/null || echo 80)
+KEY_W=28
+DESC_W=$((COLS - KEY_W - 4))
+SEP=$(printf '─%.0s' $(seq 1 $((COLS - 1))))
+
 section() {
     printf "\n${BOLD}${WHITE}%s${RESET}\n" "$1"
-    printf "${DIM}%s${RESET}\n" "$(printf '─%.0s' $(seq 1 40))"
+    printf "${DIM}%s${RESET}\n" "$SEP"
 }
 
 row() {
-    printf "  ${CYAN}%-28s${RESET}%s\n" "$1" "$2"
+    printf "  ${CYAN}%-${KEY_W}s${RESET}%-${DESC_W}s\n" "$1" "$2"
 }
 
-section "zsh"
-row "Ctrl+R"            "fuzzy search history"
-row "Ctrl+T"            "fuzzy insert file path"
-row "Alt+C"             "fuzzy cd into subdirectory"
-row "Ctrl+A / Ctrl+E"   "beginning / end of line"
-row "Ctrl+W"            "delete word backward"
-row "Ctrl+U"            "clear line"
-row "Ctrl+L"            "clear screen"
+section_zsh() {
+    section "zsh keybinds"
+    row "Ctrl+R"              "fuzzy search history"
+    row "Ctrl+T"              "fuzzy insert file path"
+    row "Alt+C"               "fuzzy cd into subdirectory"
+    row "Ctrl+A / Ctrl+E"     "beginning / end of line"
+    row "Ctrl+W"              "delete word backward"
+    row "Ctrl+U"              "clear line"
+    row "Ctrl+L"              "clear screen"
+}
 
-section "tmux  (prefix = Ctrl+Space)"
-row "prefix + v"        "split vertical"
-row "prefix + b"        "split horizontal"
-row "prefix + c"        "new window"
-row "prefix + s"        "switch session (fzf)"
-row "prefix + q"        "detach session (keeps alive)"
-row "prefix + r"        "reload config"
-row "prefix + h/j/k/l"  "navigate panes"
-row "prefix + H/J/K/L"  "resize pane"
-row "prefix + [0-9]"    "go to window N"
-row "prefix + &"        "kill window"
-row "prefix + x"        "kill pane"
+section_fzf() {
+    section "fzf keybinds"
+    row "Enter"               "confirm selection"
+    row "Tab"                 "multi-select toggle"
+    row "Ctrl+P / Ctrl+N"     "move up / down"
+    row "Ctrl+C / Esc"        "cancel"
+}
 
-section "t  (tmux sessions)"
-row "t"                 "list and switch session (fzf)"
-row "t <folder>"        "open or attach session"
-row "t -d <session>"    "kill session"
+section_tmux() {
+    section "tmux keybinds (prefix = Ctrl+Space)"
+    row "prefix + v"          "split vertical"
+    row "prefix + b"          "split horizontal"
+    row "prefix + c"          "new window"
+    row "prefix + s"          "switch session (fzf)"
+    row "prefix + q"          "detach session (keeps alive)"
+    row "prefix + r"          "reload config"
+    row "prefix + h/j/k/l"    "navigate panes"
+    row "prefix + C-h/j/k/l"  "resize pane"
+    row "prefix + [0-9]"      "go to window N"
+    row "prefix + &"          "kill window"
+    row "prefix + x"          "kill pane"
+}
+
+section_nvim() {
+    section "neovim keybinds (leader = Space)"
+    row "leader + s"          "save file"
+    row "leader + q"          "kill split"
+    row "leader + v / b"      "open vertical / horizontal split"
+    row "leader + h/j/k/l"    "navigate splits"
+    row "Tab / S-Tab"         "next / previous buffer"
+    row "leader + x"          "close current buffer"
+    row "leader + X"          "close all other buffers"
+    row "leader + c"          "clear search highlight"
+    row "leader + t"          "open terminal"
+    row "H / L"               "move to first / last symbol on line"
+    row "leader + e"          "file explorer"
+    row "leader + ff"         "find files"
+    row "leader + fg"         "live grep"
+    row "leader + fb"         "buffers"
+    row "leader + fr"         "recent files"
+    row "leader + gs"         "git status"
+    row "leader + gl"         "git log"
+    row "leader + gb"         "open in browser"
+}
+
+section_aliases() {
+    section "common aliases"
+    row "reload"              "exec zsh"
+
+    section "ls aliases"
+    row "ls"                  "ls --color=auto"
+    row "ll"                  "ls -lh"
+    row "la"                  "ls -lAh"
+    row "l"                   "ls -CF"
+
+    section "safety nets aliases"
+    row "rm"                  "rm -i"
+    row "cp"                  "cp -i"
+    row "mv"                  "mv -i"
+
+    section "neovim aliases"
+    row "vim"                 "neovim"
+    row "n"                   "neovim"
+    row "v"                   "neovim"
+
+    section "git aliases"
+    row "g"                   "git"
+    row "gs"                  "git status"
+    row "ga"                  "git add"
+    row "gc"                  "git commit"
+    row "gp"                  "git push"
+    row "gl"                  "git log --oneline --graph"
+    row "gd"                  "git diff"
+
+    section "terraform aliases"
+    row "tf"                  "terraform"
+    row "tfi"                 "terraform init"
+    row "tfp"                 "terraform plan"
+    row "tfa"                 "terraform apply"
+
+    section "ccusage aliases"
+    row "ccud"                "ccusage daily --package"
+    row "ccum"                "ccusage monthly --package"
+
+    section "osx specific aliases"
+    row "finder"              "open -R"
+    row "flushdns"            "sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+}
+
+section_scripts() {
+    section "scripts"
+    row "gc"                  "google cloud platform utils"
+    row "gpgg"                "utils for gpg"
+    row "hgrep"               "search shell history"
+    row "osx"                 "osx utils"
+    row "t"                   "list and switch session (fzf)"
+}
+
+# if help -a is used, print all sections
+if [ "$1" = "-a" ]; then
+    section_zsh
+    section_fzf
+    section_tmux
+    section_nvim
+    section_aliases
+    section_scripts
+elif [ -n "$1" ]; then
+    section_$1
+else
+    section_zsh
+    section_fzf
+    section_tmux
+    section_nvim
+fi
 
 printf "\n"
