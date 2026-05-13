@@ -21,4 +21,7 @@ require("lazy").setup( {{ import = "tun43p.plugins" }}, {
 	change_detection = {
 		notify = false,
 	},
+	rocks = {
+		hererocks = true,
+	},
 })

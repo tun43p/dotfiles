@@ -17,7 +17,7 @@ return {
         "jsonls",                          -- JSON
         "lua_ls",                          -- Lua
         "marksman",                        -- Markdown
-        -- "ruff",                         -- Python (installed with pip)
+        "ruff",                            -- Python
         "rust_analyzer",                   -- Rust
         "yamlls",                          -- YAML
         "zls",                             -- Zig
@@ -76,15 +76,15 @@ return {
         vim.lsp.buf.definition()
       end, { desc = "LSP Goto Definition" })
       
-      vim.keymap.set("n", "gr", function()
+      vim.keymap.set("n", "<leader>lr", function()
         vim.lsp.buf.references()
       end, { desc = "LSP Goto References" })
-      
-      vim.keymap.set("n", "gi", function()
+
+      vim.keymap.set("n", "<leader>li", function()
         vim.lsp.buf.implementation()
       end, { desc = "LSP Goto Implementation" })
-      
-      vim.keymap.set("n", "gt", function()
+
+      vim.keymap.set("n", "<leader>lt", function()
         vim.lsp.buf.type_definition()
       end, { desc = "LSP Goto Type Definition" })
       
@@ -154,7 +154,7 @@ return {
 
         -- enable inlay hints if the LSP supports it
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client and client.supports_method("textDocument/inlayHint") then
+        if client and client:supports_method("textDocument/inlayHint") then
           vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
         end
       end,
