@@ -76,7 +76,7 @@ vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
 
 -- open terminal with snacks (space + t)
 vim.keymap.set("n", "<leader>t", function()
-	Snacks.terminal()
+	require("snacks").terminal()
 end, { desc = "Open terminal" })
 
 -- NOTE: copilot desactive, utilisation de Claude Code / Codeium
