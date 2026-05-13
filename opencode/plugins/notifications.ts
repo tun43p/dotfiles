@@ -8,9 +8,12 @@ const getActivateApp = (): string => {
   ) {
     return "com.microsoft.VSCode";
   }
+
   const term = Bun.env.TERM_PROGRAM ?? "";
+
   if (term === "iTerm.app") return "com.googlecode.iterm2";
   if (term === "ghostty") return "com.mitchellh.ghostty";
+
   return "com.apple.Terminal";
 };
 
