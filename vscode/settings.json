@@ -198,5 +198,5 @@
     "https://www.schemastore.org/": true,
   },
   "diffEditor.ignoreTrimWhitespace": false,
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "oxocarbon",
 }
