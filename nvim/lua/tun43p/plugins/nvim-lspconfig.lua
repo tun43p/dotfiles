@@ -3,125 +3,58 @@ return {
   dependencies = {
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
-    { "hrsh7th/cmp-nvim-lsp" },
+    { "saghen/blink.cmp" },
   },
   config = function()
     require("mason").setup({})
-    require("mason-lspconfig").setup({
-      ensure_installed = {
-        "bashls",                          -- Bash
-        "clangd",                          -- C/C++
-        "cmake",                           -- CMake
-        "dockerls",                        -- Dockefile
-        "docker_compose_language_service", -- Docker Compose
-        "jsonls",                          -- JSON
-        "lua_ls",                          -- Lua
-        "marksman",                        -- Markdown
-        "ruff",                            -- Python
-        "rust_analyzer",                   -- Rust
-        "yamlls",                          -- YAML
-        "zls",                             -- Zig
 
-        -- TODO(tun43p): https://mason-registry.dev/registry/list
-        -- "astro-language-server", -- Astro
-        -- "bash-language-server", -- Bash
-        -- "clangd", -- C/C++
-        -- "cmake-language-server", -- CMake
-        -- "css-lsp", -- CSS
-        -- "deno", -- Deno
-        -- "dockerfile-language-server", -- Dockefile
-        -- "docker-compose-language-server", -- Docker Compose
-        -- "eslint-lsp", -- Eslint
-        -- "golangci-lint-langserver", -- Golang
-        -- "gitlab-ci-ls", -- Gitlab CI
-        -- "gradle-language-server", -- Gradle
-        -- "html-lsp", -- HTML
-        -- "json-lsp", -- JSON
-        -- "kotlin-language-server", -- Kotlin
-        -- "lua-language-server", -- Lua
-        -- "marksman", -- Markdown
-        -- "prisma-language-server", -- Prisma
-        -- "python-language-server", -- Python
-        -- "taplo", -- TOML
-        -- "solidity", -- Solidity
-        -- "tailwindcss-language-server", -- Tailwind CSS
-        -- "vue-language-server", -- Vue
-      },
-      handlers = {
-        function(server_name)
-          vim.lsp.config(server_name, {})
-        end,
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-        ["lua_ls"] = function()
-          vim.lsp.config("lua_ls", {
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" }
-                }
-              }
-            }
-          })
-        end,
+    vim.lsp.config("*", { capabilities = capabilities })
+
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = { globals = { "vim" } },
+        },
       },
     })
 
-    local servers = require("mason-lspconfig").get_installed_servers()
-    for _, server in ipairs(servers) do
-      vim.lsp.enable(server)
-    end
-    
-    local function setup_global_keymaps()
-      vim.keymap.set("n", "gd", function()
-        vim.lsp.buf.definition()
-      end, { desc = "LSP Goto Definition" })
-      
-      vim.keymap.set("n", "<leader>lr", function()
-        vim.lsp.buf.references()
-      end, { desc = "LSP Goto References" })
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "bashls",
+        "clangd",
+        "cmake",
+        "dockerls",
+        "docker_compose_language_service",
+        "jsonls",
+        "lua_ls",
+        "marksman",
+        "ruff",
+        "rust_analyzer",
+        "yamlls",
+        "zls",
+      },
+      automatic_enable = {
+        exclude = { "stylua" }, -- via conform, not needed
+      },
+    })
 
-      vim.keymap.set("n", "<leader>li", function()
-        vim.lsp.buf.implementation()
-      end, { desc = "LSP Goto Implementation" })
-
-      vim.keymap.set("n", "<leader>lt", function()
-        vim.lsp.buf.type_definition()
-      end, { desc = "LSP Goto Type Definition" })
-      
-      vim.keymap.set("n", "gl", function()
-        vim.diagnostic.open_float()
-      end, { desc = "Show Line Diagnostics" })
-      
-      vim.keymap.set("n", "[d", function()
-        vim.diagnostic.goto_prev()
-      end, { desc = "Previous Diagnostic" })
-      
-      vim.keymap.set("n", "]d", function()
-        vim.diagnostic.goto_next()
-      end, { desc = "Next Diagnostic" })
-      
-      vim.keymap.set("n", "<leader>pa", function()
-        vim.lsp.buf.code_action()
-      end, { desc = "LSP Code Action" })
-      
-      vim.keymap.set("n", "<leader>pr", function()
-        vim.lsp.buf.rename()
-      end, { desc = "LSP Rename" })
-      
-      vim.keymap.set("n", "<leader>pf", function()
-        vim.lsp.buf.format({ async = true })
-      end, { desc = "LSP Format" })
-      
-      vim.keymap.set("n", "<leader>ps", function()
-        vim.lsp.buf.workspace_symbol()
-      end, { desc = "LSP Workspace Symbol" })
-      
-      vim.keymap.set("n", "<leader>pd", function()
-        vim.diagnostic.setloclist()
-      end, { desc = "LSP Diagnostics List" })
-    end
-    
-    setup_global_keymaps()
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Goto Definition" })
+    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "LSP Goto References" })
+    vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "LSP Goto Implementation" })
+    vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, { desc = "LSP Goto Type Definition" })
+    vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show Line Diagnostics" })
+    vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end,
+      { desc = "Previous Diagnostic" })
+    vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end,
+      { desc = "Next Diagnostic" })
+    vim.keymap.set("n", "<leader>pa", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+    vim.keymap.set("n", "<leader>pr", vim.lsp.buf.rename, { desc = "LSP Rename" })
+    vim.keymap.set("n", "<leader>pf", function() vim.lsp.buf.format({ async = true }) end, { desc = "LSP Format" })
+    vim.keymap.set("n", "<leader>ps", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Symbol" })
+    vim.keymap.set("n", "<leader>pd", vim.diagnostic.setloclist, { desc = "LSP Diagnostics List" })
 
     vim.diagnostic.config({
       virtual_text = true,
@@ -139,27 +72,22 @@ return {
       },
     })
 
-    vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         local opts = { buffer = ev.buf, remap = false }
 
-        vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover()
-        end, vim.tbl_deep_extend("force", opts, { desc = "LSP Hover Documentation" }))
+        vim.keymap.set("n", "K", vim.lsp.buf.hover,
+          vim.tbl_deep_extend("force", opts, { desc = "LSP Hover Documentation" }))
 
-        vim.keymap.set("i", "<C-k>", function()
-          vim.lsp.buf.signature_help()
-        end, vim.tbl_deep_extend("force", opts, { desc = "LSP Signature Help" }))
+        vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help,
+          vim.tbl_deep_extend("force", opts, { desc = "LSP Signature Help" }))
 
-        -- enable inlay hints if the LSP supports it
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if client and client:supports_method("textDocument/inlayHint") then
           vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
         end
       end,
     })
-
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
   end,
 }

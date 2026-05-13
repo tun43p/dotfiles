@@ -1,7 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	lazy = false,
+	event = { "BufReadPost", "BufNewFile" },
+	cmd = { "TSUpdate", "TSInstall", "TSInstallInfo" },
 	config = function()
 		local parsers = {
 			"astro", "bash", "c", "cmake", "cpp", "css", "dockerfile",

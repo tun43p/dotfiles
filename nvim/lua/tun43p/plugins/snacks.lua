@@ -7,6 +7,27 @@ return {
 		-- Big files: disable heavy features
 		bigfile = { enabled = true },
 
+		-- Startup screen
+		dashboard = {
+			enabled = true,
+			preset = {
+				keys = {
+					{ icon = " ", key = "f", desc = "Find file",     action = ":lua Snacks.picker.files()" },
+					{ icon = " ", key = "n", desc = "New file",      action = ":ene | startinsert" },
+					{ icon = " ", key = "g", desc = "Find text",     action = ":lua Snacks.picker.grep()" },
+					{ icon = " ", key = "r", desc = "Recent files",  action = ":lua Snacks.picker.recent()" },
+					{ icon = " ", key = "c", desc = "Config",        action = ":lua Snacks.picker.files({ cwd = vim.fn.stdpath('config') })" },
+					{ icon = "󰒲 ", key = "l", desc = "Lazy",          action = ":Lazy",                                                       enabled = package.loaded.lazy ~= nil },
+					{ icon = " ", key = "q", desc = "Quit",          action = ":qa" },
+				},
+			},
+			sections = {
+				{ section = "header" },
+				{ section = "keys",    gap = 1, padding = 1 },
+				{ section = "startup" },
+			},
+		},
+
 		-- Fast rendering when opening a file from the shell
 		quickfile = { enabled = true },
 
@@ -19,8 +40,8 @@ return {
 		-- Notifications (replaces noice + nvim-notify)
 		notifier = { enabled = true },
 
-		-- Disabled: noice.nvim handles inputs
-		input = { enabled = false },
+		-- vim.ui.input replacement 
+		input = { enabled = true },
 
 		-- Terminal (used by claudecode.nvim)
 		terminal = {},

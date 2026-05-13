@@ -10,13 +10,13 @@ return {
 			view = "cmdline_popup",
 		},
 		messages = {
-			enabled = true,
+			enabled = false,
 		},
 		popupmenu = {
 			enabled = true,
 		},
 		notify = {
-			enabled = true,
+			enabled = false,
 		},
 		lsp = {
 			override = {
