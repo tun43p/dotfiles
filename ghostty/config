@@ -1,0 +1,7 @@
+theme = Dark+
+font-size = 14
+background-blur-radius = 40
+background-opacity = 0.8
+mouse-hide-while-typing = true
+window-decoration = true
+macos-option-as-alt = true
