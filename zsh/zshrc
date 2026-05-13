@@ -30,14 +30,11 @@ setopt CORRECT
 autoload -Uz vcs_info
 
 # Pre-prompt hook to fix current directory name
-_PROMPT_FIRST=1
 precmd() {
-  # Print blank line between command output and next prompt (skip first)
-  [[ $_PROMPT_FIRST -eq 0 ]] && printf '\n'
-  _PROMPT_FIRST=0
-
+  stty sane 2>/dev/null
+  _VI_INDICATOR=''
+  printf '\e[6 q'
   vcs_info
-  # List parent dir and grep case-insensitively to get the real cased name from filesystem
   local _parent="${PWD:h}" _base="${PWD:t}"
   _PROMPT_DIR=$(ls -1 "$_parent" 2>/dev/null | grep -ix "$_base" | head -1)
   [[ -z "$_PROMPT_DIR" ]] && _PROMPT_DIR="$_base"
@@ -47,10 +44,36 @@ precmd() {
 zstyle ':vcs_info:git:*' formats ' (%b)'
 setopt PROMPT_SUBST
 
+# Vi mode
+bindkey -v
+KEYTIMEOUT=1
+_VI_INDICATOR=''
+
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    _VI_INDICATOR='%F{yellow}[N]%f'
+    printf '\e[2 q'
+  else
+    _VI_INDICATOR=''
+    printf '\e[6 q'
+  fi
+
+  zle reset-prompt
+}
+
+zle -N zle-keymap-select
+
+function zle-line-init {
+  _VI_INDICATOR=''
+  printf '\e[6 q'
+}
+
+zle -N zle-line-init
+
 # Line 1: dirname (bold) + git branch (dim grey)
-# Line 2: ❯ cyan on success, red on error
-PROMPT='%B%F{white}${_PROMPT_DIR}%f%b%F{242}${vcs_info_msg_0_}%f
-%(?.%F{cyan}.%F{red})❯%f '
+# Line 2: mode indicator + ❯ cyan on success, red on error
+PROMPT='%B%F{magenta}${_PROMPT_DIR}%f%b%F{242}${vcs_info_msg_0_}%f
+${_VI_INDICATOR}%(?.%F{cyan}.%F{red})❯%f '
 
 # zoxide — smarter cd
 if command -v zoxide &> /dev/null; then
