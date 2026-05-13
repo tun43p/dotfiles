@@ -32,7 +32,7 @@ return {
 			},
 			format_on_save = {
 				timeout = 500,
-				lsp_format = "falback",
+				lsp_format = "fallback",
 			},
 		})
 
