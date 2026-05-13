@@ -1,4 +1,5 @@
 #!/bin/sh
+# tmux session manager with fzf and zoxide
 
 if [ -z "$1" ]; then
   session=$(tmux list-sessions -F '#S' 2>/dev/null | fzf --prompt='session: ' --height=20%)

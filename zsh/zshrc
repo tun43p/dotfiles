@@ -30,7 +30,12 @@ setopt CORRECT
 autoload -Uz vcs_info
 
 # Pre-prompt hook to fix current directory name
+_PROMPT_FIRST=1
 precmd() {
+  # Print blank line between command output and next prompt (skip first)
+  [[ $_PROMPT_FIRST -eq 0 ]] && printf '\n'
+  _PROMPT_FIRST=0
+
   vcs_info
   # List parent dir and grep case-insensitively to get the real cased name from filesystem
   local _parent="${PWD:h}" _base="${PWD:t}"

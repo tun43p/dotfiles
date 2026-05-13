@@ -1,4 +1,5 @@
 #!/bin/sh
+# osx system utilities
 
 help() {
     if [ -n "$1" ]; then

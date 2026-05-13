@@ -1,4 +1,5 @@
 #!/bin/sh
+# search shell history with grep
 
 SHELL_HISTORY="$HOME/.zsh_history"
 

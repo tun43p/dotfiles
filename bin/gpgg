@@ -1,4 +1,5 @@
 #!/bin/sh
+# gpg key management utilities
 
 GPG_CONF="$HOME/.gnupg/gpg.conf"
 GPG_AGENT_CONF="$HOME/.gnupg/gpg-agent.conf"

@@ -24,6 +24,7 @@
 
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.stickyScroll.enabled": false,
   "terminal.integrated.profiles.osx": {
     "zsh": {
       "path": "/opt/homebrew/bin/zsh",
