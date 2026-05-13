@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SHELL_HISTORY="$HOME/.bash_history"
+SHELL_HISTORY="$HOME/.zsh_history"
 
 help() {
     if [ -n "$1" ]; then

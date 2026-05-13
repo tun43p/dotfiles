@@ -52,11 +52,6 @@ if command -v zoxide &> /dev/null; then
     eval "$(zoxide init zsh)"
 fi
 
-# Navigation aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
 # ls aliases (color)
 alias ls='ls --color=auto'
 alias ll='ls -lh'
@@ -68,8 +63,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Vim aliases
+# Neovim aliases
 alias vim='nvim'
+alias n='nvim'
 alias v='nvim'
 
 # Git aliases
@@ -87,14 +83,8 @@ alias tfi="terraform init"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
 
-# Claude aliases
-alias c="claude"
-
-# Ollama aliases
-alias o="ollama"
-
 # Reload zsh alias
-alias reload='source ~/.zshrc'
+alias reload='exec zsh'
 
 # Claude Code usage aliases
 alias ccud="npx ccusage daily --package"

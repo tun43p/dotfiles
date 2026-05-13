@@ -43,6 +43,12 @@
     "**/__pycache__": true,
   },
 
+  "[shellscript]": {
+    "editor.tabSize": 4,
+    "files.eol": "\n",
+    "editor.defaultColorDecorators": "never",
+  },
+
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
