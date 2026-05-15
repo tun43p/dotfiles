@@ -4,7 +4,6 @@ return {
 	lazy = true,
 	config = function()
 		require("minuet").setup({
-			notify = "debug",
 			provider = "openai_compatible",
 			request_timeout = 2.5,
 			throttle = 1500,
