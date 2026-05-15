@@ -22,8 +22,15 @@ return {
 			"TabLine",
 			"TabLineFill",
 		}
+
 		for _, group in ipairs(transparent_groups) do
-			vim.api.nvim_set_hl(0, group, { bg = "none" })
+			-- Get current foreground color before setting bg to none
+			local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+			if hl.fg then
+				vim.api.nvim_set_hl(0, group, { fg = hl.fg, bg = "none" })
+			else
+				vim.api.nvim_set_hl(0, group, { bg = "none" })
+			end
 		end
 
 		-- Override snacks highlights after plugins load (snacks sets them with default=true)

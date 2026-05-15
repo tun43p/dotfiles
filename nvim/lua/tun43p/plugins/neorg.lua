@@ -29,7 +29,7 @@ return {
 
 				["core.keybinds"] = {
 					config = {
-						default_keybinds = false,
+						default_keybinds = true,
 					},
 				},
 
@@ -42,5 +42,6 @@ return {
 		{ "<leader>nr", "<cmd>Neorg return<cr>", desc = "Neorg return" },
 		{ "<leader>nj", "<cmd>Neorg journal today<cr>", desc = "Neorg journal today" },
 		{ "<leader>nw", "<cmd>Neorg workspace notes<cr>", desc = "Neorg workspace" },
+		{ "<leader>nt", "<cmd>Neorg toc<cr>", desc = "Neorg TOC" },
 	},
 }

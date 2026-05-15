@@ -35,29 +35,21 @@ vim.keymap.set("n", "H", "^", { desc = "Move to first symbol" })
 vim.keymap.set("n", "L", "$", { desc = "Move to last symbol" })
 
 -- quit the current buffer with shift + q
-vim.keymap.set("n", "<leader>q", "<c-w>q", { desc = "Kill buffer" })
+vim.keymap.set("n", "<leader>q", "<c-w>q", { desc = "Kill window" })
 
--- open split with space + b or v
-vim.keymap.set("n", "<leader>b", "<c-w>s", { desc = "Open horizontal split" })
-vim.keymap.set("n", "<leader>v", "<c-w>v", { desc = "Open vertical split" })
+-- open split with space + wh or wv
+vim.keymap.set("n", "<leader>wh", "<c-w>s", { desc = "Open horizontal split" })
+vim.keymap.set("n", "<leader>wv", "<c-w>v", { desc = "Open vertical split" })
 
--- jump between splits with space + vim or arrow keys
-vim.keymap.set("n", "<leader>h", "<c-w>h", { desc = "Jump to left split" })
-vim.keymap.set("n", "<leader><left>", "<c-w>h", { desc = "Jump to left split" })
-vim.keymap.set("n", "<leader>j", "<c-w>j", { desc = "Jump to bottom split" })
-vim.keymap.set("n", "<leader><down>", "<c-w>j", { desc = "Jump to bottom split" })
-vim.keymap.set("n", "<leader>k", "<c-w>k", { desc = "Jump to upper split" })
-vim.keymap.set("n", "<leader><up>", "<c-w>k", { desc = "Jump to upper split" })
-vim.keymap.set("n", "<leader>l", "<c-w>l", { desc = "Jump to right split" })
-vim.keymap.set("n", "<leader><right>", "<c-w>l", { desc = "Jump to right split" })
+-- jump between splits with ctrl + vim keys
+vim.keymap.set("n", "<C-h>", "<c-w>h", { desc = "Jump to left split" })
+vim.keymap.set("n", "<C-j>", "<c-w>j", { desc = "Jump to bottom split" })
+vim.keymap.set("n", "<C-k>", "<c-w>k", { desc = "Jump to upper split" })
+vim.keymap.set("n", "<C-l>", "<c-w>l", { desc = "Jump to right split" })
 
 -- navigate between buffers with tab or shift + tab
 vim.keymap.set("n", "<tab>", ":bn<cr>", { silent = true, desc = "Navigate to next buffer" })
 vim.keymap.set("n", "<s-tab>", ":bp<cr>", { silent = true, desc = "Navigate to previous buffer" })
-
--- close buffers with space + x
-vim.keymap.set("n", "<leader>x", ":bdelete<cr>", { silent = true, desc = "Close current buffer" })
-vim.keymap.set("n", "<leader>X", ":%bd|e#|bd#<cr>", { silent = true, desc = "Close all other buffers" })
 
 -- indenting in visual mode with tab or shift + tab
 vim.keymap.set("v", "<tab>", ">gv", { desc = "Add a tabulation" })

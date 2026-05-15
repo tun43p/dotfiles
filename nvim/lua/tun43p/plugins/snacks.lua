@@ -258,9 +258,9 @@ return {
 			desc = "Zen mode",
 		},
 
-		-- Words (reference navigation LSP)
+		-- Words (reference navigation LSP) -- NOTE: ]]/[[ retirés car conflict avec neorg headings
 		{
-			"]]",
+			"]r",
 			function()
 				Snacks.words.jump(vim.v.count1)
 			end,
@@ -268,7 +268,7 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			"[[",
+			"[r",
 			function()
 				Snacks.words.jump(-vim.v.count1)
 			end,
