@@ -2,6 +2,7 @@
   "chat.agent.enabled": false,
   "chat.agentsControl.enabled": "hidden",
 
+  "workbench.colorTheme": "oxocarbon",
   "workbench.editor.empty.hint": "hidden",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
 
@@ -35,6 +36,7 @@
 
   "remote.autoForwardPortsSource": "hybrid",
 
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.useInlineViewWhenSpaceIsLimited": false,
 
   "git.confirmSync": false,
@@ -101,6 +103,9 @@
       "source.organizeImports.ruff": "always",
     },
   },
+
+  "python-envs.defaultEnvManager": "ms-python.python:pyenv",
+  "python.analysis.typeCheckingMode": "off",
 
   "ruff.enable": true,
   "ruff.fixAll": true,
@@ -197,6 +202,4 @@
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true,
   },
-  "diffEditor.ignoreTrimWhitespace": false,
-  "workbench.colorTheme": "oxocarbon",
 }
