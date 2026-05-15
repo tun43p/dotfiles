@@ -84,7 +84,9 @@ return {
 		git = {},
 
 		-- Lazygit integration
-		lazygit = {},
+		lazygit = {
+			configure = false,
+		},
 
 		-- Inline image rendering (Ghostty supported)
 		image = { enabled = true },
