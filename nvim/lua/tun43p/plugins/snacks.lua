@@ -83,6 +83,9 @@ return {
 		-- Git utilities
 		git = {},
 
+		-- Lazygit integration
+		lazygit = {},
+
 		-- Inline image rendering (Ghostty supported)
 		image = { enabled = true },
 
@@ -208,6 +211,13 @@ return {
 				Snacks.picker.git_diff()
 			end,
 			desc = "Git diff",
+		},
+		{
+			"<leader>gg",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "Lazygit",
 		},
 
 		-- Buffers

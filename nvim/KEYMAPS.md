@@ -63,7 +63,8 @@
 
 | Key          | Mode | Action                 |
 | ------------ | ---- | ---------------------- |
-| `<leader>ff` | n    | Find files             |
+| `<leader>ft` | n | Todo comments |
+| `<leader>ff` | n | Find files |
 | `<leader>fg` | n    | Live grep              |
 | `<leader>fb` | n    | Buffers                |
 | `<leader>fh` | n    | Help tags              |
@@ -83,7 +84,8 @@
 
 | Key          | Mode | Action          |
 | ------------ | ---- | --------------- |
-| `<leader>gb` | n/v  | Open in browser |
+| `<leader>gg` | n | Lazygit |
+| `<leader>gb` | n/v | Open in browser |
 | `<leader>gl` | n    | Git log         |
 | `<leader>gs` | n    | Git status      |
 | `<leader>gd` | n    | Git diff        |
@@ -356,6 +358,17 @@
 ## Mini.pairs (`plugins/mini.lua`)
 
 Auto-fermeture en mode insert : `(`, `[`, `{`, `"`, `'`, `` ` ``
+
+| `]t` | n | Next todo comment |
+| `[t` | n | Previous todo comment |
+
+---
+
+## Render Markdown (`plugins/render-markdown.lua`)
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `<leader>mr` | n | Toggle markdown render |
 
 ---
 
