@@ -71,9 +71,8 @@ vim.keymap.set("n", "<leader>t", function()
 	require("snacks").terminal()
 end, { desc = "Open terminal" })
 
--- NOTE: copilot desactive, utilisation de Claude Code / Codeium
--- vim.keymap.set("i", "<C-L>", 'copilot#Accept("\\<CR>")', {
--- 	expr = true,
--- 	replace_keycodes = false,
--- 	desc = "Accept copilot suggestion",
--- })
+-- open keymaps reference
+vim.keymap.set("n", "<leader>hk", function()
+	local keymaps = vim.fn.stdpath("config") .. "/docs/KEYMAPS.md"
+	vim.cmd("edit " .. keymaps)
+end, { desc = "Open keymaps reference" })
