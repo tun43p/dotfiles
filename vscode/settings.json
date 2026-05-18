@@ -105,6 +105,7 @@
   },
 
   "python-envs.defaultEnvManager": "ms-python.python:pyenv",
+  "python.terminal.useEnvFile": true,
   "python.analysis.typeCheckingMode": "off",
 
   "ruff.enable": true,
