@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-ICLOUD_DOCS="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents"
-CURRENT_DIR="$ICLOUD_DOCS/Repositories/github.com/tun43p/dotfiles"
+ICLOUD_DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+DOTFILES="$ICLOUD_DRIVE/Documents/Code/github.com/tun43p/dotfiles"
 
 typeset -A links=(
     "$HOME/.claude" "claude"
@@ -18,7 +18,7 @@ typeset -A links=(
 
 for target src in ${(kv)links}; do
     echo "Linking $target -> $src..."
-    rm -rf -- "$target" && ln -sf "$CURRENT_DIR/$src" "$target"
+    rm -rf -- "$target" && ln -sf "$DOTFILES/$src" "$target"
 done
 
 echo "Done!"
