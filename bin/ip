@@ -1,0 +1,21 @@
+#!/bin/sh
+
+RESULT=$(curl -sS https://ipinfo.io/json)
+
+IP=$(echo $RESULT | jq -r '.ip')
+CITY=$(echo $RESULT | jq -r '.city')
+REGION=$(echo $RESULT | jq -r '.region')
+COUNTRY=$(echo $RESULT | jq -r '.country')
+LOCATION=$(echo $RESULT | jq -r '.loc')
+ORG=$(echo $RESULT | jq -r '.org')
+POSTAL=$(echo $RESULT | jq -r '.postal')
+TIMEZONE=$(echo $RESULT | jq -r '.timezone')
+
+echo "IP: $IP"
+echo "City: $CITY"
+echo "Region: $REGION"
+echo "Country: $COUNTRY"
+echo "Location: $LOCATION"
+echo "Organization: $ORG"
+echo "Postal: $POSTAL"
+echo "Timezone: $TIMEZONE"
