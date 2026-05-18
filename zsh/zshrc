@@ -30,7 +30,7 @@ setopt CORRECT
 source "$DOTS/zsh/zprompt"
 
 # pyenv — Python version manager
-if command -v pyenv &>/dev/null; then
+if [[ -o interactive ]] && command -v pyenv &>/dev/null; then
     eval "$(pyenv init - zsh)"
 fi
 
