@@ -3,14 +3,6 @@ return {
 	version = "*",
 	event = "InsertEnter",
 	dependencies = {
-		{
-			"L3MON4D3/LuaSnip",
-			version = "v2.*",
-			dependencies = { "rafamadriz/friendly-snippets" },
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
-		},
 		{ "milanglacier/minuet-ai.nvim" },
 	},
 	---@module 'blink.cmp'
@@ -32,7 +24,7 @@ return {
 		appearance = {
 			nerd_font_variant = "mono",
 		},
-		snippets = { preset = "luasnip" },
+		snippets = { preset = "default" },
 		completion = {
 			accept = { auto_brackets = { enabled = true } },
 			documentation = { auto_show = true, auto_show_delay_ms = 200 },
