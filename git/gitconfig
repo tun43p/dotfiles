@@ -20,14 +20,14 @@
 	name = tun43p
 	email = tun43p@icloud.com
 
-[includeIf "gitdir:~/Documents/Code/github.com/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/github.com
+[includeIf "gitdir:/Users/tun43p/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/github.com/tun43p/"]
+	path = "/Users/tun43p/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/github.com/tun43p/dotfiles/git/conf.d/github.com/tun43p"
 
-[includeIf "gitdir:~/Documents/Code/gitlab.com/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/gitlab.com
+[includeIf "gitdir:/Users/tun43p/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/gitlab.com/"]
+	path = "/Users/tun43p/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/github.com/tun43p/dotfiles/git/conf.d/gitlab.com"
 
-[includeIf "gitdir:~/Documents/Code/gitlab.innolab.fr/"]
-	path = ~/Documents/Code/github.com/tun43p/dotfiles/git/conf.d/gitlab.innolab.fr
+[includeIf "gitdir:/Users/tun43p/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/gitlab.innolab.fr/"]
+	path = "/Users/tun43p/Library/Mobile Documents/com~apple~CloudDocs/Documents/Repositories/github.com/tun43p/dotfiles/git/conf.d/gitlab.innolab.fr"
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
