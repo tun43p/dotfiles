@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Usage: f <pattern> [path]
+# Find an occurrence in files (ripgrep wrapper).
+
+set -e
+
+if [ -z "$1" ]; then
+    echo "Usage: f <pattern> [path]" >&2
+    exit 1
+fi
+
+if ! command -v rg >/dev/null 2>&1; then
+    echo "f: ripgrep (rg) is required" >&2
+    exit 1
+fi
+
+rg --hidden --smart-case --line-number --color=auto "$1" "${2:-.}"
