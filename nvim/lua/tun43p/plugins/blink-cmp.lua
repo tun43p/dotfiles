@@ -33,6 +33,9 @@ return {
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer", "minuet" },
+			per_filetype = {
+				opencode = { "lsp", "path", "snippets", "buffer" },
+			},
 			providers = {
 				buffer = { min_keyword_length = 3 },
 				snippets = { min_keyword_length = 2 },
