@@ -79,7 +79,7 @@ vim.keymap.set("n", "<C-l>", "<c-w>l", { desc = "Jump to right split" })
 vim.keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { silent = true, desc = "Navigate to next buffer" })
 vim.keymap.set("n", "<s-tab>", "<cmd>BufferLineCyclePrev<cr>", { silent = true, desc = "Navigate to previous buffer" })
 
--- navigate between buffers in visual order with ctrl keys (bufferline)
+--  navigate between buffers in visual order with ctrl keys (bufferline)
 vim.keymap.set("n", "<C-n>", "<cmd>BufferLineCycleNext<cr>", { silent = true, desc = "Navigate to next buffer" })
 vim.keymap.set("n", "<C-p>", "<cmd>BufferLineCyclePrev<cr>", { silent = true, desc = "Navigate to previous buffer" })
 

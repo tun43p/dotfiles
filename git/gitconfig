@@ -1,5 +1,6 @@
 [core]
 	editor = code --wait
+  hooks = ~/Library/Mobile Documents/com~apple~CloudDocs/Documents/Code/github.com/tun43p/dotfiles/hooks
 
 [init]
 	defaultBranch = main

@@ -1,4 +1,4 @@
-theme = TokyoNight Moon
+theme = Catppuccin Mocha 
 window-padding-x = 12
 window-padding-y = 8
 font-size = 14
@@ -7,3 +7,4 @@ background-opacity = 0.8
 mouse-hide-while-typing = true
 window-decoration = true
 macos-option-as-alt = left
+working-directory = home
