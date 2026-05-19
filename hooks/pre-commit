@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+MATCHA_CONFIG="matcha/config.json"
+
+if git diff --cached --name-only | grep -q "^$MATCHA_CONFIG$"; then
+  staged=$(git show ":$MATCHA_CONFIG" 2>/dev/null)
+
+  if echo "$staged" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+accounts = data.get('accounts', [])
+if len(accounts) > 0:
+    print(f'ERROR: {len(accounts)} account(s) found in matcha/config.json accounts array.')
+    print('Remove all accounts before committing.')
+    sys.exit(1)
+" 2>&1; then
+    :
+  else
+    exit 1
+  fi
+fi
+
+exit 0

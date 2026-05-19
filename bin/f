@@ -3,8 +3,10 @@
 # Usage: f <pattern> [path]
 # Find an occurrence in files (ripgrep wrapper).
 
-set -e
+# TODO: Replace command with this
+# find ~ \( -name "*aerc*" -o -name ".aerc*" \) 2>/dev/null
 
+set -e
 if [ -z "$1" ]; then
     echo "Usage: f <pattern> [path]" >&2
     exit 1

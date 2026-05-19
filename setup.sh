@@ -7,6 +7,7 @@ typeset -A links=(
     "$HOME/.claude" "claude"
     "$HOME/.config/ghostty" "ghostty"
     "$HOME/.gitconfig" "git/gitconfig"
+    "$HOME/.config/matcha" "matcha"
     "$HOME/.config/nvim" "nvim"
     "$HOME/.config/opencode" "opencode"
     "$HOME/Library/Application Support/lazygit" "lazygit"
