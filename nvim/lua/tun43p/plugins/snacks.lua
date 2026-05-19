@@ -31,8 +31,10 @@ return {
 					{
 						icon = " ",
 						key = "s",
-						desc = "Restore session",
-						action = ":lua require('persistence').load()",
+						desc = "Pick session",
+						action = function()
+							require("tun43p.cmds").pick_session()
+						end,
 					},
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
@@ -72,7 +74,7 @@ return {
 		input = { enabled = true },
 
 		-- Terminal (used by claudecode.nvim)
-		terminal = {},
+		terminal = { enabled = true },
 
 		-- Indent guides
 		indent = { enabled = true },
@@ -84,16 +86,17 @@ return {
 		words = { enabled = true },
 
 		-- Buffer deletion without breaking layout
-		bufdelete = {},
+		bufdelete = { enabled = true },
 
 		-- Open file/branch/commit in browser
-		gitbrowse = {},
+		gitbrowse = { enabled = true },
 
 		-- Git utilities
-		git = {},
+		git = { enabled = true },
 
 		-- Lazygit integration
 		lazygit = {
+			enabled = true,
 			configure = false,
 		},
 
@@ -107,14 +110,15 @@ return {
 		statuscolumn = { enabled = true },
 
 		-- Toggle keymaps integrated with which-key
-		toggle = {},
+		toggle = { enabled = true },
 
 		-- Dim inactive scopes
-		dim = {},
+		dim = { enabled = true },
 
 		-- Zen mode
-		zen = {},
+		zen = { enabled = true },
 	},
+
 	keys = {
 		-- Picker : files
 		{
@@ -228,8 +232,7 @@ return {
 			function()
 				local buf = vim.api.nvim_get_current_buf()
 				local file = vim.api.nvim_buf_get_name(buf)
-				local dir = (file ~= "" and vim.fn.filereadable(file) == 1)
-						and vim.fn.fnamemodify(file, ":p:h")
+				local dir = (file ~= "" and vim.fn.filereadable(file) == 1) and vim.fn.fnamemodify(file, ":p:h")
 					or vim.uv.cwd()
 				local root = vim.fs.root(dir, ".git") or dir
 				Snacks.lazygit({ cwd = root })
@@ -283,6 +286,41 @@ return {
 				Snacks.zen()
 			end,
 			desc = "Zen mode",
+		},
+
+		-- Terminal
+		{
+			"<leader>t",
+			function()
+				Snacks.terminal.toggle()
+			end,
+			desc = "Toggle floating terminal",
+		},
+		{
+			"<leader>st",
+			function()
+				Snacks.terminal(nil, { win = { position = "bottom" } })
+			end,
+			desc = "Open terminal split (bottom)",
+		},
+
+		-- Keymaps reference
+		{
+			"<leader>hk",
+			function()
+				local keymaps = vim.fn.stdpath("config") .. "/docs/KEYMAPS.md"
+				Snacks.win({
+					file = keymaps,
+					position = "float",
+					width = 0.8,
+					height = 0.8,
+					border = "rounded",
+					title = " Keymaps ",
+					title_pos = "center",
+					wo = { wrap = false },
+				})
+			end,
+			desc = "Open keymaps reference",
 		},
 
 		-- Words (reference navigation LSP)

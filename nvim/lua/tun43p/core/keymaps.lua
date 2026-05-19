@@ -81,30 +81,6 @@ vim.keymap.set("n", "<leader>c", ":noh<cr>", { silent = true, desc = "Clean sear
 -- fixes pasting after visual selection
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
 
--- floating terminal toggle with <leader>t
-vim.keymap.set("n", "<leader>t", function()
-	Snacks.terminal.toggle()
-end, { desc = "Toggle floating terminal" })
-
--- split terminal at the bottom with <leader>st
-vim.keymap.set("n", "<leader>st", function()
-	Snacks.terminal(nil, { win = { position = "bottom" } })
-end, { desc = "Open terminal split (bottom)" })
-
--- open keymaps reference in a floating window
-vim.keymap.set("n", "<leader>hk", function()
-	local keymaps = vim.fn.stdpath("config") .. "/docs/KEYMAPS.md"
-	Snacks.win({
-		file = keymaps,
-		position = "float",
-		width = 0.8,
-		height = 0.8,
-		border = "rounded",
-		title = " Keymaps ",
-		title_pos = "center",
-		wo = { wrap = false },
-	})
-end, { desc = "Open keymaps reference" })
 
 -- reload neovim config
 vim.keymap.set("n", "<leader>rc", function()
