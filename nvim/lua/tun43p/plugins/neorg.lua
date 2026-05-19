@@ -21,7 +21,7 @@ return {
 				["core.dirman"] = {
 					config = {
 						workspaces = {
-							notes = "~/Notes",
+							notes = "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/Notes/",
 						},
 						default_workspace = "notes",
 					},

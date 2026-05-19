@@ -34,11 +34,25 @@ vim.keymap.set(
 vim.keymap.set("n", "H", "^", { desc = "Move to first symbol" })
 vim.keymap.set("n", "L", "$", { desc = "Move to last symbol" })
 
--- close current split with <leader>sq
-vim.keymap.set("n", "<leader>sq", "<c-w>q", { desc = "Close split" })
+-- quit all
+vim.keymap.set("n", "<leader>qa", "<cmd>qa<cr>", { silent = true, desc = "Quit all" })
 
--- quit the current buffer with shift + q
-vim.keymap.set("n", "<leader>q", "<c-w>q", { desc = "Kill window" })
+-- quit window
+vim.keymap.set("n", "<leader>qq", "<c-w>q", { silent = true, desc = "Quit window" })
+
+-- quit split
+vim.keymap.set("n", "<leader>qs", "<c-w>q", { silent = true, desc = "Quit split" })
+
+-- quit buffer (keep window)
+vim.keymap.set("n", "<leader>qb", function()
+	Snacks.bufdelete()
+end, { desc = "Quit buffer" })
+
+-- quit other buffers
+vim.keymap.set("n", "<leader>qo", function()
+	Snacks.bufdelete.other()
+end, { desc = "Quit other buffers" })
+
 
 -- open split with <leader>sh or <leader>sv
 vim.keymap.set("n", "<leader>sh", "<c-w>s", { desc = "Open horizontal split" })
