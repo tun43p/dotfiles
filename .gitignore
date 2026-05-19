@@ -6,6 +6,8 @@
 local/
 *.local
 
+docs/superpowers/
+
 git/conf.d
 
 lazygit/state.yml
