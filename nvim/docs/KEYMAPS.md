@@ -168,17 +168,19 @@
 
 ## Vim — Fenêtres / Onglets
 
-| Key           | Action                        |
-| ------------- | ----------------------------- |
-| `<leader>wh`  | Split horizontal              |
-| `<leader>wv`  | Split vertical                |
-| `<leader>q`   | Fermer la fenêtre             |
-| `<C-h/j/k/l>` | Naviguer entre les splits     |
-| `<C-w>=`      | Égaliser la taille des splits |
-| `<C-w>_`      | Maximiser hauteur             |
-| `<C-w>\|`     | Maximiser largeur             |
-| `<tab>`       | Buffer suivant                |
-| `<S-tab>`     | Buffer précédent              |
+| Key                    | Action                        |
+| ---------------------- | ----------------------------- |
+| `<leader>sh`           | Split horizontal              |
+| `<leader>sv`           | Split vertical                |
+| `<leader>sq`           | Fermer le split courant       |
+| `<leader>q`            | Fermer la fenêtre             |
+| `<leader>h/j/k/l`      | Naviguer entre les splits     |
+| `<C-h>` / `<C-j/k/l>` | Naviguer entre les splits     |
+| `<C-w>=`               | Égaliser la taille des splits |
+| `<C-w>_`               | Maximiser hauteur             |
+| `<C-w>\|`              | Maximiser largeur             |
+| `<tab>`                | Buffer suivant                |
+| `<S-tab>`              | Buffer précédent              |
 
 ---
 
@@ -198,22 +200,25 @@
 
 ## Core (`keymaps.lua`)
 
-| Key           | Mode | Action                 |
-| ------------- | ---- | ---------------------- |
-| `<leader>s`   | n    | Save file              |
-| `<leader>c`   | n    | Clear search highlight |
-| `<leader>t`   | n    | Open terminal          |
-| `<leader>wh`  | n    | Split horizontal       |
-| `<leader>wv`  | n    | Split vertical         |
-| `<leader>q`   | n    | Kill window            |
-| `<C-h/j/k/l>` | n    | Naviguer splits        |
-| `<tab>`       | n    | Buffer suivant         |
-| `<S-tab>`     | n    | Buffer précédent       |
-| `<tab>`       | v    | Indenter               |
-| `<S-tab>`     | v    | Désindenter            |
-| `H`           | n    | Premier symbole (`^`)  |
-| `L`           | n    | Dernier symbole (`$`)  |
-| `<leader>hk`  | n    | Ouvrir ce fichier      |
+| Key                    | Mode | Action                 |
+| ---------------------- | ---- | ---------------------- |
+| `<leader>s`            | n    | Save file              |
+| `<leader>c`            | n    | Clear search highlight |
+| `<leader>t`            | n    | Toggle floating terminal |
+| `<leader>st`           | n    | Terminal split (bas)   |
+| `<leader>sh`           | n    | Split horizontal       |
+| `<leader>sv`           | n    | Split vertical         |
+| `<leader>sq`           | n    | Fermer le split        |
+| `<leader>q`            | n    | Kill window            |
+| `<leader>h/j/k/l`      | n    | Naviguer splits        |
+| `<C-h>` / `<C-j/k/l>` | n    | Naviguer splits        |
+| `<tab>`                | n    | Buffer suivant         |
+| `<S-tab>`              | n    | Buffer précédent       |
+| `<tab>`                | v    | Indenter               |
+| `<S-tab>`              | v    | Désindenter            |
+| `H`                    | n    | Premier symbole (`^`)  |
+| `L`                    | n    | Dernier symbole (`$`)  |
+| `<leader>hk`           | n    | Ouvrir ce fichier (flottant) |
 
 ---
 
@@ -331,11 +336,11 @@
 | `<leader>lr` | n    | Goto references       |
 | `<leader>li` | n    | Goto implementation   |
 | `<leader>lt` | n    | Goto type definition  |
+| `<leader>lw` | n    | Workspace symbol      |
+| `<leader>ld` | n    | Diagnostics list      |
 | `<leader>pa` | n    | Code action           |
 | `<leader>pr` | n    | Rename symbol         |
 | `<leader>pf` | n    | Format                |
-| `<leader>ps` | n    | Workspace symbol      |
-| `<leader>pd` | n    | Diagnostics list      |
 | `K`          | n    | Hover documentation   |
 | `<C-k>`      | i    | Signature help        |
 
@@ -343,17 +348,17 @@
 
 ## Gitsigns (`plugins/gitsigns.lua`)
 
-| Key          | Mode | Action        |
-| ------------ | ---- | ------------- |
-| `]h`         | n    | Next hunk     |
-| `[h`         | n    | Previous hunk |
-| `<leader>hs` | n/v  | Stage hunk    |
-| `<leader>hr` | n/v  | Reset hunk    |
-| `<leader>hS` | n    | Stage buffer  |
-| `<leader>hR` | n    | Reset buffer  |
-| `<leader>hp` | n    | Preview hunk  |
-| `<leader>hb` | n    | Blame line    |
-| `<leader>hd` | n    | Diff this     |
+| Key           | Mode | Action        |
+| ------------- | ---- | ------------- |
+| `]h`          | n    | Next hunk     |
+| `[h`          | n    | Previous hunk |
+| `<leader>ghs` | n/v  | Stage hunk    |
+| `<leader>ghr` | n/v  | Reset hunk    |
+| `<leader>ghS` | n    | Stage buffer  |
+| `<leader>ghR` | n    | Reset buffer  |
+| `<leader>ghp` | n    | Preview hunk  |
+| `<leader>ghb` | n    | Blame line    |
+| `<leader>ghd` | n    | Diff this     |
 
 ---
 
@@ -490,23 +495,13 @@
 
 ---
 
-## Treesitter Textobjects (`plugins/treesitter-textobjects.lua`)
+## Persistence (`plugins/persistence.lua`)
 
-### Sélection (o/x)
-
-| Key         | Action                  |
-| ----------- | ----------------------- |
-| `af` / `if` | Outer / inner function  |
-| `ac` / `ic` | Outer / inner class     |
-| `aa` / `ia` | Outer / inner paramètre |
-
-### Navigation (n/x/o)
-
-| Key         | Action                     |
-| ----------- | -------------------------- |
-| `]f` / `[f` | Next / prev function start |
-| `]F` / `[F` | Next / prev function end   |
-| `]c` / `[c` | Next / prev class start    |
+| Key          | Mode | Action                  |
+| ------------ | ---- | ----------------------- |
+| `<leader>ps` | n    | Restaurer session       |
+| `<leader>pl` | n    | Restaurer dernière session |
+| `<leader>pd` | n    | Stopper la persistence  |
 
 ---
 
@@ -516,3 +511,111 @@
 | ----------------- | --------------------- |
 | `iH` / `aH`       | Inner / outer heading |
 | `<down>` / `<up>` | Move item down / up   |
+
+---
+
+## OpenCode (`plugins/opencode.lua`)
+
+### Global (Editor)
+
+| Key           | Mode | Action                                      |
+| ------------- | ---- | ------------------------------------------- |
+| `<leader>og`  | n    | Toggle OpenCode (ouvre/ferme)               |
+| `<leader>oi`  | n    | Ouvrir input (insert mode)                  |
+| `<leader>oI`  | n    | Ouvrir input (nouvelle session)             |
+| `<leader>oo`  | n    | Ouvrir output                               |
+| `<leader>ot`  | n    | Toggle focus OpenCode ↔ fenêtre précédente  |
+| `<leader>oT`  | n    | Timeline (naviguer/undo/redo/fork messages) |
+| `<leader>oq`  | n    | Fermer les fenêtres UI                      |
+| `<leader>os`  | n    | Sélectionner une session                    |
+| `<leader>oR`  | n    | Renommer la session courante                |
+| `<leader>op`  | n    | Changer de provider / modèle               |
+| `<leader>oV`  | n    | Changer le variant du modèle               |
+| `<leader>oy`  | v    | Ajouter la sélection visuelle au contexte  |
+| `<leader>oY`  | v    | Insérer la sélection comme bloc inline     |
+| `<leader>oz`  | n    | Zoom in/out sur les fenêtres OpenCode      |
+| `<leader>ov`  | n    | Coller une image depuis le presse-papier   |
+| `<leader>od`  | n    | Ouvrir le diff du fichier modifié          |
+| `<leader>o]`  | n    | Diff suivant                               |
+| `<leader>o[`  | n    | Diff précédent                             |
+| `<leader>oc`  | n    | Fermer la vue diff                         |
+| `<leader>ora` | n    | Revert tous les fichiers (dernier prompt)  |
+| `<leader>ort` | n    | Revert fichier courant (dernier prompt)    |
+| `<leader>orA` | n    | Revert tous les fichiers (session)         |
+| `<leader>orT` | n    | Revert fichier courant (session)           |
+| `<leader>orr` | n    | Restaurer un fichier à un restore point    |
+| `<leader>orR` | n    | Restaurer tous les fichiers (restore point)|
+| `<leader>ox`  | n    | Swap position du panneau (gauche/droite)   |
+| `<leader>ott` | n    | Toggle affichage des outils (diffs, etc.)  |
+| `<leader>otr` | n    | Toggle affichage du raisonnement           |
+| `<leader>o/`  | n/x  | Quick chat (contexte sélection ou ligne)   |
+
+### Fenêtre Input
+
+| Key       | Mode | Action                                |
+| --------- | ---- | ------------------------------------- |
+| `<S-CR>`  | n/i  | Soumettre le prompt                   |
+| `<Esc>`   | i    | Fermer les fenêtres UI                |
+| `<C-c>`   | i    | Annuler la requête en cours           |
+| `~`       | i    | Mentionner un fichier (contexte)      |
+| `@`       | i    | Insérer une mention (fichier/agent)   |
+| `/`       | i    | Commandes slash                       |
+| `#`       | i    | Gérer les éléments de contexte        |
+| `<M-v>`   | i    | Coller une image en pièce jointe      |
+| `<Tab>`   | n/i  | Toggle entre input et output          |
+| `<up>`    | n/i  | Prompt précédent (historique)         |
+| `<down>`  | n/i  | Prompt suivant (historique)           |
+| `<M-m>`   | n    | Changer de mode (build/plan)          |
+| `<M-r>`   | n/i  | Cycler les variants de modèle         |
+
+### Fenêtre Output
+
+| Key           | Mode | Action                             |
+| ------------- | ---- | ---------------------------------- |
+| `<Esc>`       | n    | Fermer les fenêtres UI             |
+| `<C-c>`       | n    | Annuler la requête en cours        |
+| `]]`          | n    | Message suivant                    |
+| `[[`          | n    | Message précédent                  |
+| `<Tab>`       | n/i  | Toggle entre input et output       |
+| `i`           | n    | Focus input (insert mode)          |
+| `<M-r>`       | n    | Cycler les variants de modèle      |
+| `<leader>oS`  | n    | Sélectionner une session enfant    |
+| `<leader>oP`  | n    | Aller à la session parente         |
+| `<leader>oB`  | n    | Sélectionner une session sœur      |
+| `<leader>oD`  | n    | Debug message (buffer brut)        |
+| `<leader>oO`  | n    | Debug output (buffer brut)         |
+| `<leader>ods` | n    | Debug session (buffer brut)        |
+
+### Session Picker
+
+| Key    | Action                       |
+| ------ | ---------------------------- |
+| `<C-r>` | Renommer la session sélectionnée |
+| `<C-d>` | Supprimer la session sélectionnée |
+| `<C-s>` | Nouvelle session              |
+
+### Timeline Picker
+
+| Key    | Mode | Action                              |
+| ------ | ---- | ----------------------------------- |
+| `<C-u>` | i/n  | Undo jusqu'au message sélectionné  |
+| `<C-f>` | i/n  | Fork depuis le message sélectionné |
+
+### History Picker
+
+| Key    | Mode | Action                         |
+| ------ | ---- | ------------------------------ |
+| `<C-d>` | i/n  | Supprimer l'entrée sélectionnée |
+| `<C-X>` | i/n  | Effacer tout l'historique      |
+
+### Model Picker
+
+| Key    | Mode | Action               |
+| ------ | ---- | -------------------- |
+| `<C-f>` | i/n  | Toggle favori        |
+
+### MCP Picker
+
+| Key    | Mode | Action                         |
+| ------ | ---- | ------------------------------ |
+| `<C-t>` | i/n  | Toggle connexion serveur MCP   |

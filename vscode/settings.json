@@ -1,8 +1,6 @@
 {
   "chat.agent.enabled": false,
   "chat.agentsControl.enabled": "hidden",
-
-  "workbench.colorTheme": "oxocarbon",
   "workbench.editor.empty.hint": "hidden",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
 
