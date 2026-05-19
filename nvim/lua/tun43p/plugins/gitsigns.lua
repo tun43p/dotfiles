@@ -33,21 +33,21 @@ return {
 			vim.keymap.set("n", "[h", gs.prev_hunk, opts("Previous hunk"))
 
 			-- Actions
-			vim.keymap.set("n", "<leader>hs", gs.stage_hunk, opts("Stage hunk"))
-			vim.keymap.set("n", "<leader>hr", gs.reset_hunk, opts("Reset hunk"))
-			vim.keymap.set("v", "<leader>hs", function()
+			vim.keymap.set("n", "<leader>ghs", gs.stage_hunk, opts("Stage hunk"))
+			vim.keymap.set("n", "<leader>ghr", gs.reset_hunk, opts("Reset hunk"))
+			vim.keymap.set("v", "<leader>ghs", function()
 				gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts("Stage hunk"))
-			vim.keymap.set("v", "<leader>hr", function()
+			vim.keymap.set("v", "<leader>ghr", function()
 				gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts("Reset hunk"))
-			vim.keymap.set("n", "<leader>hS", gs.stage_buffer, opts("Stage buffer"))
-			vim.keymap.set("n", "<leader>hR", gs.reset_buffer, opts("Reset buffer"))
-			vim.keymap.set("n", "<leader>hp", gs.preview_hunk, opts("Preview hunk"))
-			vim.keymap.set("n", "<leader>hb", function()
+			vim.keymap.set("n", "<leader>ghS", gs.stage_buffer, opts("Stage buffer"))
+			vim.keymap.set("n", "<leader>ghR", gs.reset_buffer, opts("Reset buffer"))
+			vim.keymap.set("n", "<leader>ghp", gs.preview_hunk, opts("Preview hunk"))
+			vim.keymap.set("n", "<leader>ghb", function()
 				gs.blame_line({ full = true })
 			end, opts("Blame line"))
-			vim.keymap.set("n", "<leader>hd", gs.diffthis, opts("Diff this"))
+			vim.keymap.set("n", "<leader>ghd", gs.diffthis, opts("Diff this"))
 		end,
 	},
 }

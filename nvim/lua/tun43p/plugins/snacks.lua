@@ -2,7 +2,6 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
 	opts = {
 		-- Big files: disable heavy features
 		bigfile = { enabled = true },
@@ -29,6 +28,12 @@ return {
 						action = ":Lazy",
 						enabled = package.loaded.lazy ~= nil,
 					},
+					{
+						icon = " ",
+						key = "s",
+						desc = "Restore session",
+						action = ":lua require('persistence').load()",
+					},
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 				},
 			},
@@ -52,6 +57,10 @@ return {
 				explorer = {
 					hidden = true,
 					ignored = true,
+					layout = {
+						preset = "sidebar",
+						preview = true,
+					},
 				},
 			},
 		},
@@ -217,7 +226,13 @@ return {
 		{
 			"<leader>gg",
 			function()
-				Snacks.lazygit()
+				local buf = vim.api.nvim_get_current_buf()
+				local file = vim.api.nvim_buf_get_name(buf)
+				local dir = (file ~= "" and vim.fn.filereadable(file) == 1)
+						and vim.fn.fnamemodify(file, ":p:h")
+					or vim.uv.cwd()
+				local root = vim.fs.root(dir, ".git") or dir
+				Snacks.lazygit({ cwd = root })
 			end,
 			desc = "Lazygit",
 		},
@@ -270,7 +285,7 @@ return {
 			desc = "Zen mode",
 		},
 
-		-- Words (reference navigation LSP) -- NOTE: ]]/[[ retirés car conflict avec neorg headings
+		-- Words (reference navigation LSP)
 		{
 			"]r",
 			function()

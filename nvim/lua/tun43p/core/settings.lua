@@ -33,6 +33,7 @@ vim.o.smartcase = true
 
 -- dicrease update time
 vim.o.updatetime = 250
+vim.o.ttimeoutlen = 0
 
 -- set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
@@ -58,7 +59,9 @@ vim.opt.shiftwidth = 2
 -- always use spaces instead of tabes
 vim.opt.expandtab = true
 
--- TODO: check documentation
+-- enable code wrap and
+
+-- setup line breaks
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.showbreak = "↳"
@@ -83,6 +86,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TermOpen" }, {
 	pattern = "term://*",
 	callback = function()
 		vim.cmd("startinsert")
+		vim.opt_local.winbar = ""
 	end,
 })
 
@@ -93,6 +97,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.colorcolumn = "80"
 	end,
 })
-
--- NOTE: copilot desactive, utilisation de Claude Code
--- vim.g.copilot_no_tab_map = true

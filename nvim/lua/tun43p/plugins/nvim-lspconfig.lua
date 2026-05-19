@@ -16,7 +16,7 @@ return {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
-					diagnostics = { globals = { "vim" } },
+					diagnostics = { globals = { "vim", "Snacks" } },
 				},
 			},
 		})
@@ -57,8 +57,8 @@ return {
 		vim.keymap.set("n", "<leader>pf", function()
 			vim.lsp.buf.format({ async = true })
 		end, { desc = "LSP Format" })
-		vim.keymap.set("n", "<leader>ps", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Symbol" })
-		vim.keymap.set("n", "<leader>pd", vim.diagnostic.setloclist, { desc = "LSP Diagnostics List" })
+		vim.keymap.set("n", "<leader>lw", vim.lsp.buf.workspace_symbol, { desc = "LSP Workspace Symbol" })
+		vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "LSP Diagnostics List" })
 
 		vim.diagnostic.config({
 			virtual_text = true,
