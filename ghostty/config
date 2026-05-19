@@ -7,4 +7,4 @@ background-opacity = 0.8
 mouse-hide-while-typing = true
 window-decoration = true
 macos-option-as-alt = left
-working-directory = home
+working-directory = home 

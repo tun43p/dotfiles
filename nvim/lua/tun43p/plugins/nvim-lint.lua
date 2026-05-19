@@ -13,7 +13,7 @@ return {
 			cmake = { "cmakelint" },
 			cpp = { "cpplint" },
 			css = { "eslint_d" },
-			go = { "golangci-lint" },
+			go = { "golangcilint" },
 			html = { "htmlhint" },
 			json = { "jsonlint" },
 			javascript = { "eslint_d" },

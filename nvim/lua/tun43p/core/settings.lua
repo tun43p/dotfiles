@@ -100,7 +100,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
-
 -- colorcolumn at 80 for files
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -108,4 +107,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.colorcolumn = "80"
 	end,
 })
-
