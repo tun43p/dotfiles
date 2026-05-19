@@ -62,9 +62,9 @@ vim.keymap.set("n", "<C-j>", "<c-w>j", { desc = "Jump to bottom split" })
 vim.keymap.set("n", "<C-k>", "<c-w>k", { desc = "Jump to upper split" })
 vim.keymap.set("n", "<C-l>", "<c-w>l", { desc = "Jump to right split" })
 
--- navigate between buffers with tab or shift + tab
-vim.keymap.set("n", "<tab>", ":bn<cr>", { silent = true, desc = "Navigate to next buffer" })
-vim.keymap.set("n", "<s-tab>", ":bp<cr>", { silent = true, desc = "Navigate to previous buffer" })
+-- navigate between buffers in visual order (bufferline)
+vim.keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { silent = true, desc = "Navigate to next buffer" })
+vim.keymap.set("n", "<s-tab>", "<cmd>BufferLineCyclePrev<cr>", { silent = true, desc = "Navigate to previous buffer" })
 
 -- indenting in visual mode with tab or shift + tab
 vim.keymap.set("v", "<tab>", ">gv", { desc = "Add a tabulation" })
@@ -80,7 +80,6 @@ vim.keymap.set("n", "<leader>c", ":noh<cr>", { silent = true, desc = "Clean sear
 
 -- fixes pasting after visual selection
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
-
 
 -- reload neovim config
 vim.keymap.set("n", "<leader>rc", function()
