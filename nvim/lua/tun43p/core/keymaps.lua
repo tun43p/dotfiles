@@ -53,7 +53,6 @@ vim.keymap.set("n", "<leader>qo", function()
 	Snacks.bufdelete.other()
 end, { desc = "Quit other buffers" })
 
-
 -- open split with <leader>sh or <leader>sv
 vim.keymap.set("n", "<leader>sh", "<c-w>s", { desc = "Open horizontal split" })
 vim.keymap.set("n", "<leader>sv", "<c-w>v", { desc = "Open vertical split" })
@@ -76,9 +75,13 @@ vim.keymap.set("n", "<C-j>", "<c-w>j", { desc = "Jump to bottom split" })
 vim.keymap.set("n", "<C-k>", "<c-w>k", { desc = "Jump to upper split" })
 vim.keymap.set("n", "<C-l>", "<c-w>l", { desc = "Jump to right split" })
 
--- navigate between buffers in visual order (bufferline)
+-- navigate between buffers in visual order with tab (bufferline)
 vim.keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { silent = true, desc = "Navigate to next buffer" })
 vim.keymap.set("n", "<s-tab>", "<cmd>BufferLineCyclePrev<cr>", { silent = true, desc = "Navigate to previous buffer" })
+
+-- navigate between buffers in visual order with ctrl keys (bufferline)
+vim.keymap.set("n", "<C-n>", "<cmd>BufferLineCycleNext<cr>", { silent = true, desc = "Navigate to next buffer" })
+vim.keymap.set("n", "<C-p>", "<cmd>BufferLineCyclePrev<cr>", { silent = true, desc = "Navigate to previous buffer" })
 
 -- indenting in visual mode with tab or shift + tab
 vim.keymap.set("v", "<tab>", ">gv", { desc = "Add a tabulation" })
