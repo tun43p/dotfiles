@@ -240,29 +240,6 @@ return {
 			desc = "Lazygit",
 		},
 
-		-- Buffers
-		{
-			"<leader>bd",
-			function()
-				Snacks.bufdelete()
-			end,
-			desc = "Delete buffer",
-		},
-		{
-			"<leader>ba",
-			function()
-				Snacks.bufdelete.all()
-			end,
-			desc = "Delete all buffers",
-		},
-		{
-			"<leader>bo",
-			function()
-				Snacks.bufdelete.other()
-			end,
-			desc = "Delete other buffers",
-		},
-
 		-- Notifications
 		{
 			"<leader>nh",
