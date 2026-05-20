@@ -3,7 +3,7 @@ local M = {}
 
 -- List of plugin modules to load (in order — colorscheme first, then UI, then LSP)
 local plugin_modules = {
-	"moonfly",
+	"vesper",
 	"_deps",
 	"which-key",
 	"neo-tree",
@@ -56,6 +56,13 @@ function M.setup()
 			vim.notify("Plugin config error: " .. tostring(err), vim.log.levels.ERROR)
 		end
 	end
+
+	-- Rebuild configs when plugins are updated
+	vim.api.nvim_create_autocmd("PackChanged", {
+		callback = function()
+			vim.notify("Plugins updated, restart required", vim.log.levels.INFO)
+		end,
+	})
 end
 
 return M

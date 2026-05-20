@@ -12,5 +12,5 @@ local/
 docs/superpowers/
 git/conf.d
 lazygit/state.yml
-matcha/accounts.json
+nvim/nvim-pack-lock.json
 zsh/zshenv
