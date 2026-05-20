@@ -11,32 +11,35 @@ const getActivateApp = (): string => {
 
   const term = Bun.env.TERM_PROGRAM ?? "";
 
-  if (term === "iTerm.app") return "com.googlecode.iterm2";
   if (term === "ghostty") return "com.mitchellh.ghostty";
 
   return "com.apple.Terminal";
+};
+
+const getAudio = (name: string): string => {
+  return `${Bun.env.HOME}/.config/opencode/assets/audio/${name}.aiff`;
 };
 
 export const NotificationsPlugin: Plugin = async ({ $ }) => {
   const activateApp = getActivateApp();
 
   const notify = async (message: string, sound: string) => {
-    await $`terminal-notifier -title OpenCode -message ${message} -sound ${sound} -activate ${activateApp}`.nothrow();
+    await $`terminal-notifier -title OpenCode -message ${message} -activate ${activateApp}; afplay ${getAudio(sound)} `.nothrow();
   };
 
   return {
     event: async ({ event }) => {
       if (event.type === "session.idle") {
-        await notify("Attend ta reponse.", "Glass");
+        await notify("Travail terminé.", "done");
       }
 
       if (event.type === "session.error") {
-        await notify("Une erreur est survenue.", "Basso");
+        await notify("Une erreur est survenue.", "error");
       }
     },
 
     "permission.asked": async () => {
-      await notify("Permission requise.", "Ping");
+      await notify("Permission requise.", "ping");
     },
   };
 };
