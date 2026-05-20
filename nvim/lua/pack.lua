@@ -12,6 +12,7 @@ local plugin_modules = {
 	"toggleterm",
 	"gitsigns",
 	"gitlinker",
+	"bufferline",
 	"lualine",
 	"mini",
 	"treesitter",
