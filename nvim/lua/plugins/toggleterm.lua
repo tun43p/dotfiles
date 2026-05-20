@@ -15,6 +15,7 @@ function M.config()
 	})
 
 	vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle floating terminal" })
+	vim.keymap.set("t", "<Esc>", "<cmd>ToggleTerm<cr>", { desc = "Close terminal" })
 	vim.keymap.set("n", "<leader>st", "<cmd>ToggleTerm direction=horizontal size=15<cr>", { desc = "Terminal split (bottom)" })
 
 	vim.keymap.set("n", "<leader>gg", function()

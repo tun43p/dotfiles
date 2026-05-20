@@ -3,7 +3,7 @@ local M = {}
 
 -- List of plugin modules to load (in order — colorscheme first, then UI, then LSP)
 local plugin_modules = {
-	"catppuccin",
+	"moonfly",
 	"_deps",
 	"which-key",
 	"neo-tree",
@@ -12,7 +12,6 @@ local plugin_modules = {
 	"toggleterm",
 	"gitsigns",
 	"gitlinker",
-	"bufferline",
 	"lualine",
 	"mini",
 	"treesitter",
