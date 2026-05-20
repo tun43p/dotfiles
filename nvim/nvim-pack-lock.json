@@ -72,6 +72,10 @@
       "rev": "449cf6ac16fbc5529f834c10e5fc1be7c75c3ffb",
       "src": "https://github.com/milanglacier/minuet-ai.nvim"
     },
+    "moonfly": {
+      "rev": "4ed07bc0c6083cdd547c63f5c245e02c068b0c45",
+      "src": "https://github.com/bluz71/vim-moonfly-colors"
+    },
     "neo-tree.nvim": {
       "rev": "ebd66767191714e008ce73b769518a763ff31bdc",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
