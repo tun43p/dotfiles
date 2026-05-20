@@ -50,7 +50,7 @@ return {
 		quickfile = { enabled = true },
 
 		-- File explorer (replaces neo-tree)
-		explorer = { enabled = true },
+		explorer = { enabled = true, replace_netrw = true, trash = true },
 
 		-- Picker (replaces telescope)
 		picker = {
