@@ -42,7 +42,11 @@ function M.config()
 		},
 		pickers = {
 			find_files = { hidden = true },
-			live_grep = { additional_args = function() return { "--hidden" } end },
+			live_grep = {
+				additional_args = function()
+					return { "--hidden" }
+				end,
+			},
 		},
 	})
 
@@ -62,45 +66,13 @@ function M.config()
 	map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Git status" })
 	map("n", "<leader>gd", "<cmd>Telescope git_bcommits<cr>", { desc = "Git diff (buffer commits)" })
 
+	map("n", "<C-r>", function()
+		require("utils.pick_repo").pick_repo()
+	end, { desc = "Pick repo" })
+
 	-- Find and replace
 	map("n", "<leader>fR", function()
-		local search = vim.fn.input("Search: ")
-		if search == "" then return end
-		local replace = vim.fn.input("Replace: ")
-		if replace == "" then
-			local confirm = vim.fn.confirm("Replace with empty string?", "&Yes\n&No", 2)
-			if confirm ~= 1 then return end
-		end
-		local builtin = require("telescope.builtin")
-		local action_state = require("telescope.actions.state")
-		builtin.live_grep({
-			default_text = search,
-			attach_mappings = function(prompt_bufnr, _)
-				actions.select_default:replace(function()
-					local picker = action_state.get_current_picker(prompt_bufnr)
-					local multi = picker:get_multi_selection()
-					local items = #multi > 0 and multi or { action_state.get_selected_entry() }
-					actions.close(prompt_bufnr)
-					local qf_items = {}
-					for _, item in ipairs(items) do
-						table.insert(qf_items, {
-							filename = item.filename or item.path,
-							lnum = item.lnum or 1,
-							col = item.col or 0,
-							text = item.text or "",
-						})
-					end
-					vim.fn.setqflist({}, "r", { items = qf_items })
-					local esc_s = vim.fn.escape(search, "/\\.[]^$*~&")
-					local esc_r = vim.fn.escape(replace, "/\\&~")
-					local ok, err = pcall(vim.cmd, "cfdo s/" .. esc_s .. "/" .. esc_r .. "/g | update")
-					if not ok then
-						vim.notify("Find and replace failed: " .. tostring(err), vim.log.levels.ERROR)
-					end
-				end)
-				return true
-			end,
-		})
+		require("utils.find_and_replace").find_and_replace()
 	end, { desc = "Find and replace" })
 end
 
