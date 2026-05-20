@@ -1,6 +1,3 @@
--- save the file with space + s
-vim.keymap.set("n", "<leader>w", ":write<cr>", { silent = true, desc = "Save file" })
-
 -- move normally between wrapped lines with k and j or up and down
 vim.keymap.set(
 	"n",
@@ -43,27 +40,13 @@ vim.keymap.set("n", "<leader>qq", "<c-w>q", { silent = true, desc = "Quit window
 -- quit split
 vim.keymap.set("n", "<leader>qs", "<c-w>q", { silent = true, desc = "Quit split" })
 
--- quit buffer (keep window)
-vim.keymap.set("n", "<leader>qb", function()
-	Snacks.bufdelete()
-end, { desc = "Quit buffer" })
+-- Note: <leader>qb and <leader>qo are defined in plugins/mini.lua (mini.bufremove)
 
--- quit other buffers
-vim.keymap.set("n", "<leader>qo", function()
-	Snacks.bufdelete.other()
-end, { desc = "Quit other buffers" })
+-- open split with <leader>wh or <leader>wv
+vim.keymap.set("n", "<leader>wh", "<c-w>s", { desc = "Open horizontal split" })
+vim.keymap.set("n", "<leader>wv", "<c-w>v", { desc = "Open vertical split" })
 
--- open split with <leader>sh or <leader>sv
-vim.keymap.set("n", "<leader>sh", "<c-w>s", { desc = "Open horizontal split" })
-vim.keymap.set("n", "<leader>sv", "<c-w>v", { desc = "Open vertical split" })
-
--- jump between splits with <leader> + vim keys or vim keys
-vim.keymap.set("n", "<leader>h", "<c-w>h", { desc = "Jump to left split" })
-vim.keymap.set("n", "<leader>j", "<c-w>j", { desc = "Jump to bottom split" })
-vim.keymap.set("n", "<leader>k", "<c-w>k", { desc = "Jump to upper split" })
-vim.keymap.set("n", "<leader>l", "<c-w>l", { desc = "Jump to right split" })
-
--- jump between splits with <leader> + arrow keys or vim keys
+-- jump between splits with <leader> + arrow keys
 vim.keymap.set("n", "<leader><Left>", "<c-w>h", { desc = "Jump to left split" })
 vim.keymap.set("n", "<leader><Down>", "<c-w>j", { desc = "Jump to bottom split" })
 vim.keymap.set("n", "<leader><Up>", "<c-w>k", { desc = "Jump to upper split" })

@@ -1,7 +1,9 @@
-return {
-	"lewis6991/gitsigns.nvim",
-	event = { "BufReadPre", "BufNewFile" },
-	opts = {
+local M = {}
+
+M.spec = { src = "https://github.com/lewis6991/gitsigns.nvim" }
+
+function M.config()
+	require("gitsigns").setup({
 		signs = {
 			add = { text = "+" },
 			change = { text = "~" },
@@ -49,5 +51,7 @@ return {
 			end, opts("Blame line"))
 			vim.keymap.set("n", "<leader>ghd", gs.diffthis, opts("Diff this"))
 		end,
-	},
-}
+	})
+end
+
+return M
