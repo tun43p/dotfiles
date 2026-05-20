@@ -187,6 +187,49 @@ return {
 			desc = "Grep word under cursor",
 			mode = { "n", "x" },
 		},
+		{
+			"<leader>fR",
+			function()
+				local search = vim.fn.input("Search: ")
+				if search == "" then
+					return
+				end
+				local replace = vim.fn.input("Replace: ")
+				if replace == "" then
+					local confirm = vim.fn.confirm("Replace with empty string (deletes matches)?", "&Yes\n&No", 2)
+					if confirm ~= 1 then
+						return
+					end
+				end
+				Snacks.picker.grep({
+					search = search,
+					on_close = function(picker)
+						vim.schedule(function()
+							local items = picker:selected({ fallback = true })
+							if not items or #items == 0 then
+								return
+							end
+							local qf_items = vim.tbl_map(function(item)
+								return {
+									filename = item.file or item.filename,
+									lnum = item.pos and item.pos[1] or 1,
+									col = item.pos and item.pos[2] or 0,
+									text = item.text or "",
+								}
+							end, items)
+							vim.fn.setqflist({}, "r", { items = qf_items })
+							local escaped_search = vim.fn.escape(search, "/\\.[]^$*~&")
+							local escaped_replace = vim.fn.escape(replace, "/\\&~")
+							local ok, err = pcall(vim.cmd, "cfdo s/" .. escaped_search .. "/" .. escaped_replace .. "/g | update")
+							if not ok then
+								vim.notify("Find and replace failed: " .. tostring(err), vim.log.levels.ERROR)
+							end
+						end)
+					end,
+				})
+			end,
+			desc = "Find and replace",
+		},
 
 		-- File explorer
 		{

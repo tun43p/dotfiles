@@ -237,6 +237,7 @@
 | `<leader>fd` | n    | Diagnostics            |
 | `<leader>fs` | n    | LSP symbols            |
 | `<leader>fw` | n/x  | Grep word sous curseur |
+| `<leader>fR` | n    | Find and replace (multi-file) |
 | `<leader>ft` | n    | Todo comments          |
 
 ### Explorer
