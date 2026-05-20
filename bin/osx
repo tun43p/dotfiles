@@ -12,12 +12,13 @@ help() {
     echo "Usage: osx <help | app-id | dock | file | ip | update>"
     echo ""
     echo "Commands:"
-    echo "  help, h        Show this help"
-    echo "  app-id, a      Get application id"
-    echo "  dock, d        Update the Dock settings"
-    echo "  file, f        Hide or unhide a file from Finder"
-    echo "  ip, i          Get the IP address"
-    echo "  update, u      Update Homebrew, casks, and system"
+    echo "  help, h             Show this help"
+    echo "  app-id, a           Get application id"
+    echo "  audio-restart, ar   Restart audio components (coreaudiod)"
+    echo "  dock, d             Update the Dock settings"
+    echo "  file, f             Hide or unhide a file from Finder"
+    echo "  ip, i               Get the IP address"
+    echo "  update, u           Update Homebrew, casks, and system"
 }
 
 help_dock() {
@@ -31,10 +32,10 @@ help_dock() {
     echo "Usage: osx dock <kill | show | reset | size>"
     echo ""
     echo "Commands:"
-    echo "  kill, k      Hide the Dock"
-    echo "  show, s      Show the Dock"
-    echo "  reset, r     Reset the Dock"
-    echo "  size, si     Set the Dock size"
+    echo "  kill, k             Hide the Dock"
+    echo "  show, s             Show the Dock"
+    echo "  reset, r            Reset the Dock"
+    echo "  size, si            Set the Dock size"
 }
 
 help_file() {
@@ -48,8 +49,8 @@ help_file() {
     echo "Usage: osx file <hide | unhide> <file>"
     echo ""
     echo "Commands:"
-    echo "  hide, h      Hide a file from Finder"
-    echo "  unhide, u    Unhide a file from Finder"
+    echo "  hide, h             Hide a file from Finder"
+    echo "  unhide, u           Unhide a file from Finder"
 }
 
 if [ $# -eq 0 ]; then
@@ -68,6 +69,9 @@ case "$1" in
         fi
 
         osascript -e 'id of app "'"$2"'"'
+        ;;
+    audio-restart | ar)
+        sudo killall coreaudiod
         ;;
     dock | d)
         if [ -z "$2" ]; then
