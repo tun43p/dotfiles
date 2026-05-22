@@ -6,6 +6,7 @@ typeset -A links=(
     "$HOME/.claude" "claude"
     "$HOME/.config/ghostty" "ghostty"
     "$HOME/.gitconfig" "git/gitconfig"
+    "$HOME/.hammerspoon" "hammerspoon"
     "$HOME/.config/matcha" "matcha"
     "$HOME/.config/nvim" "nvim"
     "$HOME/.config/opencode" "opencode"
