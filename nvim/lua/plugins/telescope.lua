@@ -3,7 +3,6 @@ local M = {}
 M.spec = {
 	{
 		src = "https://github.com/nvim-telescope/telescope.nvim",
-		version = "0.1.x",
 	},
 	{
 		src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
