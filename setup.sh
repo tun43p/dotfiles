@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
-ICLOUD_DRIVE="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
-DOTFILES="$ICLOUD_DRIVE/Documents/Code/github.com/tun43p/dotfiles"
+DOTFILES="$HOME/Code/github.com/tun43p/dotfiles"
 
 typeset -A links=(
     "$HOME/.claude" "claude"
@@ -12,6 +11,7 @@ typeset -A links=(
     "$HOME/.config/opencode" "opencode"
     "$HOME/Library/Application Support/lazygit" "lazygit"
     "$HOME/Library/Application Support/Code/User/settings.json" "vscode/settings.json"
+    "$HOME/.config/zellij" "zellij"
     "$HOME/.tmux.conf" "tmux/tmux.conf"
     "$HOME/.zshrc" "zsh/zshrc"
     "$HOME/.zshenv" "zsh/zshenv"
