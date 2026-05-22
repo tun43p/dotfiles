@@ -15,7 +15,10 @@ function M.config()
 	vim.keymap.set("n", "<A-j>", ss.move_cursor_down, { desc = "Move to below split/pane" })
 	vim.keymap.set("n", "<A-k>", ss.move_cursor_up, { desc = "Move to above split/pane" })
 	vim.keymap.set("n", "<A-l>", ss.move_cursor_right, { desc = "Move to right split/pane" })
-
+	vim.keymap.set("n", "<A-Left>", ss.move_cursor_left, { desc = "Move to left split/pane" })
+	vim.keymap.set("n", "<A-Down>", ss.move_cursor_down, { desc = "Move to below split/pane" })
+	vim.keymap.set("n", "<A-Up>", ss.move_cursor_up, { desc = "Move to above split/pane" })
+	vim.keymap.set("n", "<A-Right>", ss.move_cursor_right, { desc = "Move to right split/pane" })
 end
 
 return M
