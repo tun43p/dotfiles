@@ -2,6 +2,7 @@ local M = {}
 
 M.spec = { src = "https://github.com/3rd/image.nvim" }
 
+-- TODO: This don't work in markdown files
 function M.config()
 	require("image").setup({
 		backend = "kitty",
