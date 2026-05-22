@@ -34,7 +34,7 @@ function M.config()
 		capabilities = capabilities,
 		settings = {
 			Lua = {
-				diagnostics = { globals = { "vim" } },
+				diagnostics = { globals = { "hs", "vim" } },
 			},
 		},
 	})
