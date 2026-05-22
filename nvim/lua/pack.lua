@@ -16,6 +16,7 @@ local plugin_modules = {
 	"lualine",
 	"mini",
 	"treesitter",
+	"flash",
 	"blink",
 	"lsp",
 	"conform",
