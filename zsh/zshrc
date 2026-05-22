@@ -44,21 +44,21 @@ if command -v zoxide &> /dev/null; then
     eval "$(zoxide init zsh)"
 fi
 
-# ls aliases (color)
-alias ls='ls --color=auto'
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias l='ls -CF'
+# Override cd with zoxide
+alias cd="z"
+
+# ls aliases (eza)
+alias ls='eza --icons'
+alias ll='eza -lh --icons --git'
+alias la='eza -Ah --icons --git'
+alias l='eza -lbF --icons --git'
+alias lt='eza --tree --icons'
+alias lla='eza -lahg --icons --git'
 
 # Safety nets aliases
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-# Neovim aliases
-alias vim='nvim'
-alias n='nvim'
-alias v='nvim'
 
 # Git aliases
 alias g='git'
@@ -75,8 +75,21 @@ alias tfi="terraform init"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
 
+# Go to cloud documents
+alias cloud="cd '$ICLOUD_DRIVE'/Documents"
+
 # Reload zsh alias
 alias reload='exec zsh'
+
+# Override vim alias
+alias vim='nvim'
+
+# Zellij aliases
+alias zj="zellij"
+
+# Edit directories with neovim
+alias dots="nvim $DOTS"
+alias notes="nvim '$CLOUD'/Documents/Notes/"
 
 # Claude Code usage aliases
 alias ccud="npx ccusage daily --package"
