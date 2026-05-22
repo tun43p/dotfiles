@@ -89,6 +89,12 @@ vim.keymap.set("n", "<D-s>", "<cmd>w<cr>", { silent = true, desc = "Save file" }
 vim.keymap.set("i", "<D-s>", "<Esc><cmd>w<cr>", { silent = true, desc = "Save file" })
 vim.keymap.set("v", "<D-s>", "<Esc><cmd>w<cr>", { silent = true, desc = "Save file" })
 
+-- jump to with cursor at middle of the screen
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
+
 -- fixes pasting after visual selection
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
 
