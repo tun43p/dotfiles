@@ -9,7 +9,7 @@ local plugin_modules = {
 	"neo-tree",
 	"telescope",
 	"noice",
-	"toggleterm",
+	"smart-splits",
 	"gitsigns",
 	"gitlinker",
 	"bufferline",
@@ -25,7 +25,6 @@ local plugin_modules = {
 	"todo-comments",
 	"render-markdown",
 	"image",
-	"opencode",
 }
 
 function M.setup()

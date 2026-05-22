@@ -52,6 +52,10 @@ function M.config()
 			vim.keymap.set("n", "<leader>ghd", gs.diffthis, opts("Diff this"))
 		end,
 	})
+
+	vim.keymap.set("n", "<leader>gg", function()
+		require("utils.open_lazygit").open_lazygit()
+	end, { desc = "Lazygit" })
 end
 
 return M

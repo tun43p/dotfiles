@@ -59,7 +59,7 @@ function M.config()
 		draw = { animation = function() return 0 end },
 	})
 	vim.api.nvim_create_autocmd("FileType", {
-		pattern = { "help", "neo-tree", "Trouble", "mason", "notify", "toggleterm", "TelescopePrompt" },
+		pattern = { "help", "neo-tree", "Trouble", "mason", "notify", "TelescopePrompt" },
 		callback = function() vim.b.miniindentscope_disable = true end,
 	})
 
