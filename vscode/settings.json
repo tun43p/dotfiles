@@ -201,4 +201,5 @@
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true,
   },
+  "workbench.colorTheme": "Vesper",
 }
