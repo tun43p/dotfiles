@@ -76,9 +76,18 @@ vim.cmd("nnoremap <silent> p p`]")
 -- clean search highlight with space + c
 vim.keymap.set("n", "<leader>c", ":noh<cr>", { silent = true, desc = "Clean search highlight" })
 
+-- undo with cmd+z
+vim.keymap.set("n", "<D-z>", "u", { silent = true, desc = "Undo" })
+vim.keymap.set("i", "<D-z>", "<Esc>ui", { silent = true, desc = "Undo" })
+
+-- redo with cmd+shift+z
+vim.keymap.set("n", "<D-S-z>", "<C-r>", { silent = true, desc = "Redo" })
+vim.keymap.set("i", "<D-S-z>", "<Esc><C-r>i", { silent = true, desc = "Redo" })
+
 -- save file with cmd+s
 vim.keymap.set("n", "<D-s>", "<cmd>w<cr>", { silent = true, desc = "Save file" })
 vim.keymap.set("i", "<D-s>", "<Esc><cmd>w<cr>", { silent = true, desc = "Save file" })
+vim.keymap.set("v", "<D-s>", "<Esc><cmd>w<cr>", { silent = true, desc = "Save file" })
 
 -- fixes pasting after visual selection
 vim.keymap.set("v", "p", '"_dP', { desc = "Paste" })
