@@ -3,8 +3,8 @@
 DOTFILES="$HOME/Code/github.com/tun43p/dotfiles"
 
 typeset -A links=(
+    "$HOME/.config/alacritty" "alacritty"
     "$HOME/.claude" "claude"
-    "$HOME/.config/ghostty" "ghostty"
     "$HOME/.gitconfig" "git/gitconfig"
     "$HOME/.hammerspoon" "hammerspoon"
     "$HOME/.config/matcha" "matcha"
@@ -13,7 +13,6 @@ typeset -A links=(
     "$HOME/Library/Application Support/lazygit" "lazygit"
     "$HOME/Library/Application Support/Code/User/settings.json" "vscode/settings.json"
     "$HOME/.config/zellij" "zellij"
-    "$HOME/.tmux.conf" "tmux/tmux.conf"
     "$HOME/.zshrc" "zsh/zshrc"
     "$HOME/.zshenv" "zsh/zshenv"
 )
