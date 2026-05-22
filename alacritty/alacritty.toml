@@ -3,6 +3,7 @@ padding = { x = 12, y = 12 }
 opacity = 0.8
 blur = true
 decorations = "Full"
+option_as_alt = "OnlyLeft"
 
 [font]
 normal = { family = "Hack Nerd Font" }
