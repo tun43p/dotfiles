@@ -7,6 +7,7 @@ local function find_and_replace()
 	if search == "" then
 		return
 	end
+
 	local replace = vim.fn.input("Replace: ")
 	if replace == "" then
 		local confirm = vim.fn.confirm("Replace with empty string?", "&Yes\n&No", 2)
@@ -24,6 +25,7 @@ local function find_and_replace()
 				local items = #multi > 0 and multi or { action_state.get_selected_entry() }
 				actions.close(prompt_bufnr)
 				local qf_items = {}
+
 				for _, item in ipairs(items) do
 					table.insert(qf_items, {
 						filename = item.filename or item.path,
@@ -32,14 +34,18 @@ local function find_and_replace()
 						text = item.text or "",
 					})
 				end
+
 				vim.fn.setqflist({}, "r", { items = qf_items })
+
 				local esc_s = vim.fn.escape(search, "/\\.[]^$*~&")
 				local esc_r = vim.fn.escape(replace, "/\\&~")
 				local ok, err = pcall(vim.cmd, "cfdo s/" .. esc_s .. "/" .. esc_r .. "/g | update")
+
 				if not ok then
 					vim.notify("Find and replace failed: " .. tostring(err), vim.log.levels.ERROR)
 				end
 			end)
+
 			return true
 		end,
 	})
