@@ -32,19 +32,6 @@ function M.config()
 		},
 	})
 
-	-- Build native fuzzy matcher binary if missing (blink.cmp v2)
-	local blink_root = vim.fn.stdpath("data") .. "/site/pack/core/opt/blink.cmp"
-	local has_lib = vim.fn.glob(blink_root .. "/target/release/libblink_cmp_fuzzy.{dylib,so,dll}") ~= ""
-	if not has_lib then
-		vim.notify("Building blink.cmp native library (one-time)...", vim.log.levels.INFO)
-		local obj = vim.system({ "cargo", "build", "--release" }, { cwd = blink_root }):wait()
-		if obj.code == 0 then
-			vim.notify("blink.cmp build done", vim.log.levels.INFO)
-		else
-			vim.notify("blink.cmp build failed:\n" .. (obj.stderr or ""), vim.log.levels.ERROR)
-		end
-	end
-
 	require("blink.cmp").setup({
 		keymap = {
 			preset = "default",
