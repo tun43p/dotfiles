@@ -30,6 +30,7 @@ function M.config()
 				prompt_position = "top",
 			},
 			sorting_strategy = "ascending",
+			preview = { treesitter = false },
 			mappings = {
 				i = {
 					["<C-j>"] = actions.move_selection_next,
