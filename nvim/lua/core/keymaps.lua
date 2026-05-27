@@ -42,9 +42,9 @@ vim.keymap.set("n", "<leader>qs", "<c-w>q", { silent = true, desc = "Quit split"
 
 -- Note: <leader>qb and <leader>qo are defined in plugins/mini.lua (mini.bufremove)
 
--- open split with <leader>wh or <leader>wv
-vim.keymap.set("n", "<leader>wh", "<c-w>s", { desc = "Open horizontal split" })
-vim.keymap.set("n", "<leader>wv", "<c-w>v", { desc = "Open vertical split" })
+-- open split with <leader>oh or <leader>ov
+vim.keymap.set("n", "<leader>oh", "<c-w>s", { desc = "Open horizontal split" })
+vim.keymap.set("n", "<leader>ov", "<c-w>v", { desc = "Open vertical split" })
 
 -- jump between splits with <leader> + arrow keys
 vim.keymap.set("n", "<leader><Left>", "<c-w>h", { desc = "Jump to left split" })
