@@ -1,16 +1,16 @@
 #!/bin/sh
 
-# Usage: f <pattern> [path]
+# Usage: ff <pattern> [path]
 # Find files or an occurence in files 
 
 set -e
 if [ -z "$1" ]; then
-    echo "Usage: f <pattern> [path] --rg" >&2
+    echo "Usage: ff <pattern> [path] --rg" >&2
     exit 1
 fi
 
 if ! command -v rg >/dev/null 2>&1; then
-    echo "f: ripgrep (rg) is required" >&2
+    echo "ff: ripgrep (rg) is required" >&2
     exit 1
 fi
 

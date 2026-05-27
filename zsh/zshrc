@@ -84,9 +84,8 @@ alias reload='exec zsh'
 # Override vim alias
 alias vim='nvim'
 
-# Zellij aliases
+# Zellij alias 
 alias zj="zellij"
-alias zellij-auto='eval "$(zellij setup --generate-auto-start zsh)"'
 
 # Edit directories with neovim
 alias dots="nvim $DOTS"
@@ -164,7 +163,3 @@ if [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-# Lancer zellij automatiquement seulement si pas dans VSCode
-if [[ -z "$VSCODE_INJECTION" ]]; then
-    eval "$(zellij setup --generate-auto-start zsh)"
-fi

@@ -6,7 +6,7 @@ M.spec = { src = "https://github.com/vimwiki/vimwiki" }
 -- They are set at module require() time, which happens before vim.pack.add() in pack.lua
 vim.g.vimwiki_list = {
 	{
-		path = vim.fn.expand("~/Wiki"),
+		path = vim.fn.expand("~/.wiki"),
 		syntax = "markdown",
 		ext = ".md",
 	},
@@ -41,16 +41,16 @@ function M.config()
 			end
 
 			-- Navigation
-			map("<CR>",        "<Plug>VimwikiFollowLink",      "Wiki follow link")
-			map("<Backspace>", "<Plug>VimwikiGoBackLink",       "Wiki go back")
-			map("<leader>wn",  "<Plug>VimwikiNextLink",         "Wiki next link")
-			map("<leader>wp",  "<Plug>VimwikiPrevLink",         "Wiki prev link")
+			map("<CR>", "<Plug>VimwikiFollowLink", "Wiki follow link")
+			map("<Backspace>", "<Plug>VimwikiGoBackLink", "Wiki go back")
+			map("<leader>wn", "<Plug>VimwikiNextLink", "Wiki next link")
+			map("<leader>wp", "<Plug>VimwikiPrevLink", "Wiki prev link")
 
 			-- Diary
-			map("<leader>w<leader>w", "<Plug>VimwikiMakeDiaryNote",       "Wiki diary today")
-			map("<leader>w<leader>i", "<Plug>VimwikiDiaryGenerateLinks",  "Wiki diary index")
+			map("<leader>w<leader>w", "<Plug>VimwikiMakeDiaryNote", "Wiki diary today")
+			map("<leader>w<leader>i", "<Plug>VimwikiDiaryGenerateLinks", "Wiki diary index")
 			map("<leader>w<leader>y", "<Plug>VimwikiMakeYesterdayDiaryNote", "Wiki diary yesterday")
-			map("<leader>w<leader>t", "<Plug>VimwikiMakeTomorrowDiaryNote",  "Wiki diary tomorrow")
+			map("<leader>w<leader>t", "<Plug>VimwikiMakeTomorrowDiaryNote", "Wiki diary tomorrow")
 
 			-- Todo checkboxes
 			map("<C-Space>", "<Plug>VimwikiToggleListItem", "Wiki toggle checkbox")
@@ -58,9 +58,9 @@ function M.config()
 	})
 
 	-- Global mappings (outside wiki buffers)
-	vim.keymap.set("n", "<leader>ww", "<Plug>VimwikiIndex",      { desc = "Wiki index" })
+	vim.keymap.set("n", "<leader>ww", "<Plug>VimwikiIndex", { desc = "Wiki index" })
 	vim.keymap.set("n", "<leader>wi", "<Plug>VimwikiDiaryIndex", { desc = "Wiki diary index" })
-	vim.keymap.set("n", "<leader>wt", "<Plug>VimwikiTabIndex",   { desc = "Wiki index (tab)" })
+	vim.keymap.set("n", "<leader>wt", "<Plug>VimwikiTabIndex", { desc = "Wiki index (tab)" })
 end
 
 return M
