@@ -1,5 +1,3 @@
-// Plugin aliases - can be used to change the implementation of Zellij
-// changing these requires a restart to take effect
 plugins {
     about location="zellij:about"
     compact-bar location="zellij:compact-bar"
@@ -17,4 +15,8 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+}
+
+load_plugins {
+    zellij:link
 }

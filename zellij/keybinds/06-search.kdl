@@ -1,7 +1,15 @@
 search {
-    bind "c" { SearchToggleOption "CaseSensitivity"; }
-    bind "n" { Search "down"; }
-    bind "o" { SearchToggleOption "WholeWord"; }
     bind "p" { Search "up"; }
+    bind "n" { Search "down"; }
+
+    bind "c" { SearchToggleOption "CaseSensitivity"; }
+    bind "o" { SearchToggleOption "WholeWord"; }
     bind "w" { SearchToggleOption "Wrap"; }
+}
+
+
+entersearch {
+    bind "enter" { SwitchToMode "search"; }
+    bind "esc" { SwitchToMode "scroll"; }
+    bind "Ctrl c" { SwitchToMode "scroll"; }
 }
