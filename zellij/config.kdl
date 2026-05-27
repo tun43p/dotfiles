@@ -131,18 +131,18 @@ keybinds clear-defaults=true {
         bind "e" { EditScrollback; SwitchToMode "normal"; }
     }
 
-    entersearch {
-        bind "Ctrl c" { SwitchToMode "scroll"; }
-        bind "esc" { SwitchToMode "scroll"; }
-        bind "enter" { SwitchToMode "search"; }
-    }
-
     search {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "n" { Search "down"; }
         bind "o" { SearchToggleOption "WholeWord"; }
         bind "p" { Search "up"; }
         bind "w" { SearchToggleOption "Wrap"; }
+    }
+
+    entersearch {
+        bind "esc" { SwitchToMode "scroll"; }
+        bind "enter" { SwitchToMode "search"; }
+        bind "Ctrl c" { SwitchToMode "scroll"; }
     }
 
     session {
@@ -206,6 +206,87 @@ keybinds clear-defaults=true {
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "locked"; }
 
+        bind "Alt +" { Resize "Increase"; }
+        bind "Alt -" { Resize "Decrease"; }
+        bind "Alt =" { Resize "Increase"; }
+
+        bind "Alt n" { NewPane; }
+        bind "Alt i" { MoveTab "left"; }
+        bind "Alt o" { MoveTab "right"; }
+
+        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Alt p" { TogglePaneInGroup; }
+        bind "Alt Shift p" { ToggleGroupMarking; }
+
+        bind "Alt [" { PreviousSwapLayout; }
+        bind "Alt ]" { NextSwapLayout; }
+
+        bind "Alt x" { CloseFocus; }
+
+        bind "Ctrl q" { Quit; }
+    }
+
+    shared_except "locked" "move" {
+        bind "Ctrl h" { SwitchToMode "move"; }
+    }
+    
+    shared_except "locked" "session" {
+        bind "Ctrl o" { SwitchToMode "session"; }
+    }
+
+    shared_except "locked" "scroll" "search" {
+        bind "Ctrl s" { SwitchToMode "scroll"; }
+    }
+
+    shared_except "locked" "tab" {
+        bind "Ctrl t" { SwitchToMode "tab"; }
+    }
+    
+    shared_except "locked" "pane" {
+        bind "Ctrl p" { SwitchToMode "pane"; }
+    }
+    
+    shared_except "locked" "resize" {
+        bind "Ctrl n" { SwitchToMode "resize"; }
+    }
+    
+    shared_except "normal" "locked" "entersearch" {
+        bind "enter" { SwitchToMode "normal"; }
+    }
+    
+    shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
+        bind "esc" { SwitchToMode "normal"; }
+    }
+
+    shared_among "scroll" "search" {
+        bind "Ctrl s" { SwitchToMode "normal"; }
+        bind "Ctrl c" { ScrollToBottom; SwitchToMode "normal"; }
+    
+        bind "left" { PageScrollUp; }
+        bind "down" { ScrollDown; }
+        bind "up" { ScrollUp; }
+        bind "right" { PageScrollDown; }
+
+        bind "h" { PageScrollUp; }
+        bind "j" { ScrollDown; }
+        bind "k" { ScrollUp; }
+        bind "l" { PageScrollDown; }
+
+        bind "PageUp" { PageScrollUp; }
+        bind "PageDown" { PageScrollDown; }
+       
+        bind "Ctrl b" { PageScrollUp; }
+        bind "Ctrl f" { PageScrollDown; }
+       
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+    }
+    
+    shared_among "renametab" "renamepane" {
+        bind "Ctrl c" { SwitchToMode "normal"; }
+    }
+
+    shared_except "locked" {
         bind "Alt left" {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
@@ -286,96 +367,97 @@ keybinds clear-defaults=true {
             }
         }
 
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt =" { Resize "Increase"; }
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
+                "LOAD_ZELLIJ_BINDINGS" "false"
 
-        bind "Alt n" { NewPane; }
-        bind "Alt i" { MoveTab "left"; }
-        bind "Alt o" { MoveTab "right"; }
+                "[mode] Enter locked"            "Ctrl g  (from anywhere)"
+                "[mode] Enter pane"              "Ctrl p  (except locked/pane)"
+                "[mode] Enter tab"               "Ctrl t  (except locked/tab)"
+                "[mode] Enter resize"            "Ctrl n  (except locked/resize)"
+                "[mode] Enter move"              "Ctrl h  (except locked/move)"
+                "[mode] Enter scroll"            "Ctrl s  (except locked/scroll/search)"
+                "[mode] Enter session"           "Ctrl o  (except locked/session)"
+                "[mode] Exit → normal"           "Enter or Esc  (most modes)"
+                "[mode] Exit scroll/search"      "Ctrl s or Ctrl c  (scroll to bottom)"
 
-        bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt p" { TogglePaneInGroup; }
-        bind "Alt Shift p" { ToggleGroupMarking; }
+                "[global] Quit"                  "Ctrl q"
+                "[global] New pane"              "Alt n"
+                "[global] Toggle floating panes" "Alt f"
+                "[global] Close focused pane"    "Alt x"
+                "[global] Resize increase"       "Alt +"
+                "[global] Resize decrease"       "Alt -"
+                "[global] Move tab left"         "Alt i"
+                "[global] Move tab right"        "Alt o"
+                "[global] Toggle pane in group"  "Alt p"
+                "[global] Toggle group marking"  "Alt Shift p"
+                "[global] Previous swap layout"  "Alt ["
+                "[global] Next swap layout"      "Alt ]"
+                "[global] Navigate panes/tabs"   "Alt h/j/k/l or Alt ←↓↑→"
+                "[global] Open zellij-forgot"    "Ctrl y"
 
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
+                "[pane] Move focus"              "h/j/k/l or ←↓↑→"
+                "[pane] Move pane"               "H/J/K/L"
+                "[pane] New pane down"           "d"
+                "[pane] New pane right"          "r"
+                "[pane] New pane stacked"        "s"
+                "[pane] Rename pane"             "c"
+                "[pane] Embed or float pane"     "e"
+                "[pane] Toggle floating panes"   "f"
+                "[pane] Toggle fullscreen"       "F"
+                "[pane] Toggle pane pinned"      "i"
+                "[pane] Toggle pane frames"      "z"
+                "[pane] Close pane"              "x"
+                "[pane] Switch focus"            "p"
 
-        bind "Alt x" { CloseFocus; }
+                "[tab] Previous tab"             "h/k or ←/↑"
+                "[tab] Next tab"                 "j/l or ↓/→"
+                "[tab] Go to tab N"              "1-9"
+                "[tab] Move tab left"            "H"
+                "[tab] Move tab right"           "L"
+                "[tab] Break pane left"          "["
+                "[tab] Break pane right"         "]"
+                "[tab] Break pane to new tab"    "b"
+                "[tab] New tab"                  "n"
+                "[tab] Rename tab"               "r"
+                "[tab] Toggle sync tab"          "s"
+                "[tab] Close tab"                "x"
+                "[tab] Toggle last tab"          "Tab"
 
-        bind "Ctrl q" { Quit; }
-    }
+                "[resize] Increase size"         "h/j/k/l or ←↓↑→"
+                "[resize] Decrease size"         "H/J/K/L"
+                "[resize] Increase"              "+"
+                "[resize] Decrease"              "-"
 
-    shared_except "locked" "move" {
-        bind "Ctrl h" { SwitchToMode "move"; }
-    }
-    
-    shared_except "locked" "session" {
-        bind "Ctrl o" { SwitchToMode "session"; }
-    }
+                "[move] Move pane"               "h/j/k/l or ←↓↑→"
+                "[move] Move pane forward"       "n or Tab"
+                "[move] Move pane backward"      "p"
 
-    shared_except "locked" "scroll" "search" {
-        bind "Ctrl s" { SwitchToMode "scroll"; }
-    }
+                "[scroll] Scroll down"           "j or ↓"
+                "[scroll] Scroll up"             "k or ↑"
+                "[scroll] Page up"               "h or ← or PageUp or Ctrl b"
+                "[scroll] Page down"             "l or → or PageDown or Ctrl f"
+                "[scroll] Half page down"        "d"
+                "[scroll] Half page up"          "u"
+                "[scroll] Enter search"          "s"
+                "[scroll] Edit scrollback"       "e"
 
-    shared_except "locked" "tab" {
-        bind "Ctrl t" { SwitchToMode "tab"; }
-    }
-    
-    shared_except "locked" "pane" {
-        bind "Ctrl p" { SwitchToMode "pane"; }
-    }
-    
-    shared_except "locked" "resize" {
-        bind "Ctrl n" { SwitchToMode "resize"; }
-    }
-    
-    shared_except "normal" "locked" "entersearch" {
-        bind "enter" { SwitchToMode "normal"; }
-    }
-    
-    shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
-        bind "esc" { SwitchToMode "normal"; }
-    }
-    
-    shared_except "locked" {
-    bind "Ctrl y" {
-        LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
-            "LOAD_ZELLIJ_BINDINGS" "false"
-            "buy eggs" "5x"
-            "learn rust" "5h"
-            "clean up code" "tomorrow"
-            floating true
+                "[search] Next result"           "n"
+                "[search] Previous result"       "p"
+                "[search] Toggle case sensitive" "c"
+                "[search] Toggle whole word"     "o"
+                "[search] Toggle wrap"           "w"
+
+                "[session] About"                "a"
+                "[session] Configuration"        "c"
+                "[session] Layout manager"       "l"
+                "[session] Plugin manager"       "p"
+                "[session] Share session"        "s"
+                "[session] Session manager"      "w"
+
+                floating true
+            }
         }
-    }
-}
-
-    shared_among "scroll" "search" {
-        bind "Ctrl s" { SwitchToMode "normal"; }
-        bind "Ctrl c" { ScrollToBottom; SwitchToMode "normal"; }
-    
-        bind "left" { PageScrollUp; }
-        bind "down" { ScrollDown; }
-        bind "up" { ScrollUp; }
-        bind "right" { PageScrollDown; }
-
-        bind "h" { PageScrollUp; }
-        bind "j" { ScrollDown; }
-        bind "k" { ScrollUp; }
-        bind "l" { PageScrollDown; }
-
-        bind "PageUp" { PageScrollUp; }
-        bind "PageDown" { PageScrollDown; }
-       
-        bind "Ctrl b" { PageScrollUp; }
-        bind "Ctrl f" { PageScrollDown; }
-       
-        bind "d" { HalfPageScrollDown; }
-        bind "u" { HalfPageScrollUp; }
-    }
-    
-    shared_among "renametab" "renamepane" {
-        bind "Ctrl c" { SwitchToMode "normal"; }
     }
 }
 
@@ -604,6 +686,7 @@ default_layout "compact"
 // Default: true (if the host terminal supports it)
 // 
 support_kitty_keyboard_protocol true
+
 // Whether to make sure a local web server is running when a new Zellij session starts.
 // This web server will allow creating new sessions and attaching to existing ones that have
 // opted in to being shared in the browser.
