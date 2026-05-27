@@ -1,0 +1,18 @@
+move {
+    bind "Ctrl h" { SwitchToMode "normal"; }
+
+    bind "left" { MovePane "left"; }
+    bind "down" { MovePane "down"; }
+    bind "up" { MovePane "up"; }
+    bind "right" { MovePane "right"; }
+
+    bind "h" { MovePane "left"; }
+    bind "j" { MovePane "down"; }
+    bind "k" { MovePane "up"; }
+    bind "l" { MovePane "right"; }
+
+    bind "n" { MovePane; }
+    bind "p" { MovePaneBackwards; }
+
+    bind "tab" { MovePane; }
+}

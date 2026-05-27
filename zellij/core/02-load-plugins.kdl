@@ -1,0 +1,4 @@
+// Plugins to load in the background when a new session starts
+load_plugins {
+    zellij:link
+}

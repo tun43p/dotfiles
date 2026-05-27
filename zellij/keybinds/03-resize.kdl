@@ -1,0 +1,22 @@
+resize {
+    bind "Ctrl n" { SwitchToMode "normal"; }
+
+    bind "left" { Resize "Increase left"; }
+    bind "down" { Resize "Increase down"; }
+    bind "up" { Resize "Increase up"; }
+    bind "right" { Resize "Increase right"; }
+
+    bind "h" { Resize "Increase left"; }
+    bind "j" { Resize "Increase down"; }
+    bind "k" { Resize "Increase up"; }
+    bind "l" { Resize "Increase right"; }
+
+    bind "H" { Resize "Decrease left"; }
+    bind "J" { Resize "Decrease down"; }
+    bind "K" { Resize "Decrease up"; }
+    bind "L" { Resize "Decrease right"; }
+
+    bind "+" { Resize "Increase"; }
+    bind "-" { Resize "Decrease"; }
+    bind "=" { Resize "Increase"; }
+}
