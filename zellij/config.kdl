@@ -32,7 +32,13 @@ keybinds clear-defaults=true {
         bind "i" { TogglePanePinned; SwitchToMode "normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
 
+        bind "x" { CloseFocus; SwitchToMode "normal"; }
+
         bind "p" { SwitchFocus; }
+    }
+
+    renamepane {
+        bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
     
     tab {
@@ -68,9 +74,14 @@ keybinds clear-defaults=true {
         bind "b" { BreakPane; SwitchToMode "normal"; }
         bind "n" { NewTab; SwitchToMode "normal"; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "normal"; }
+       
         bind "x" { CloseTab; SwitchToMode "normal"; }
 
         bind "tab" { ToggleTab; }
+    }
+
+    renametab {
+        bind "esc" { UndoRenameTab; SwitchToMode "tab"; }
     }
 
     resize {
@@ -116,8 +127,14 @@ keybinds clear-defaults=true {
     }
 
     scroll {
-        bind "e" { EditScrollback; SwitchToMode "normal"; }
         bind "s" { SwitchToMode "entersearch"; SearchInput 0; }
+        bind "e" { EditScrollback; SwitchToMode "normal"; }
+    }
+
+    entersearch {
+        bind "Ctrl c" { SwitchToMode "scroll"; }
+        bind "esc" { SwitchToMode "scroll"; }
+        bind "enter" { SwitchToMode "search"; }
     }
 
     search {
@@ -129,6 +146,8 @@ keybinds clear-defaults=true {
     }
 
     session {
+        bind "Ctrl o" { SwitchToMode "normal"; }
+
         bind "a" {
             LaunchOrFocusPlugin "zellij:about" {
                 floating true
@@ -155,8 +174,6 @@ keybinds clear-defaults=true {
         
             SwitchToMode "normal"
         }
-        
-        bind "Ctrl o" { SwitchToMode "normal"; }
         
         bind "p" {
             LaunchOrFocusPlugin "plugin-manager" {
@@ -190,7 +207,7 @@ keybinds clear-defaults=true {
         bind "Ctrl g" { SwitchToMode "locked"; }
 
         bind "Alt left" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
                 payload "left"
                 floating false
@@ -200,7 +217,7 @@ keybinds clear-defaults=true {
         }
         
         bind "Alt down" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "down"
                 floating false
@@ -210,7 +227,7 @@ keybinds clear-defaults=true {
         }
 
         bind "Alt up" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "up"
                 floating false
@@ -220,7 +237,7 @@ keybinds clear-defaults=true {
         }
 
         bind "Alt right" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
                 payload "right"
                 floating false
@@ -230,7 +247,7 @@ keybinds clear-defaults=true {
         }
 
         bind "Alt h" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
                 payload "left"
                 floating false
@@ -240,7 +257,7 @@ keybinds clear-defaults=true {
         }
 
         bind "Alt j" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "down"
                 floating false
@@ -250,7 +267,7 @@ keybinds clear-defaults=true {
         }
 
         bind "Alt k" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "up"
                 floating false
@@ -260,7 +277,7 @@ keybinds clear-defaults=true {
         }
 
         bind "Alt l" {
-            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+            MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
                 payload "right"
                 floating false
@@ -321,10 +338,18 @@ keybinds clear-defaults=true {
         bind "esc" { SwitchToMode "normal"; }
     }
     
-    shared_among "pane" "tmux" {
-        bind "x" { CloseFocus; SwitchToMode "normal"; }
+    shared_except "locked" {
+    bind "Ctrl y" {
+        LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
+            "LOAD_ZELLIJ_BINDINGS" "false"
+            "buy eggs" "5x"
+            "learn rust" "5h"
+            "clean up code" "tomorrow"
+            floating true
+        }
     }
-    
+}
+
     shared_among "scroll" "search" {
         bind "Ctrl s" { SwitchToMode "normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "normal"; }
@@ -349,26 +374,8 @@ keybinds clear-defaults=true {
         bind "u" { HalfPageScrollUp; }
     }
     
-    entersearch {
-        bind "Ctrl c" { SwitchToMode "scroll"; }
-        bind "esc" { SwitchToMode "scroll"; }
-        bind "enter" { SwitchToMode "search"; }
-    }
-    
-    renametab {
-        bind "esc" { UndoRenameTab; SwitchToMode "tab"; }
-    }
-    
     shared_among "renametab" "renamepane" {
         bind "Ctrl c" { SwitchToMode "normal"; }
-    }
-    
-    renamepane {
-        bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
-    }
-    
-    shared_among "session" "tmux" {
-        bind "d" { Detach; }
     }
 }
 
