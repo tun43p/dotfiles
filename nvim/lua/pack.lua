@@ -24,6 +24,7 @@ local plugin_modules = {
 	"trouble",
 	"todo-comments",
 	"render-markdown",
+	"vimwiki",
 	"image",
 }
 
