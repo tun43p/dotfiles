@@ -13,8 +13,8 @@ shared_except "locked" {
     bind "Alt p" { TogglePaneInGroup; }
     bind "Alt Shift p" { ToggleGroupMarking; }
 
-    bind "Alt [" { PreviousSwapLayout; }
-    bind "Alt ]" { NextSwapLayout; }
+    bind "Alt u" { PreviousSwapLayout; }
+    bind "Alt y" { NextSwapLayout; }
 
     bind "Alt x" { CloseFocus; }
 

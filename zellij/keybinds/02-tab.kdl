@@ -25,8 +25,8 @@ tab {
     bind "H" { MoveTab "left"; SwitchToMode "normal"; }
     bind "L" { MoveTab "right"; SwitchToMode "normal"; }
 
-    bind "[" { BreakPaneLeft; SwitchToMode "normal"; }
-    bind "]" { BreakPaneRight; SwitchToMode "normal"; }
+    bind "u" { BreakPaneLeft; SwitchToMode "normal"; }
+    bind "y" { BreakPaneRight; SwitchToMode "normal"; }
 
     bind "b" { BreakPane; SwitchToMode "normal"; }
     bind "n" { NewTab; SwitchToMode "normal"; }
