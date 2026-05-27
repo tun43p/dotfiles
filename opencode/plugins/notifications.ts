@@ -1,19 +1,14 @@
 import type { Plugin } from "@opencode-ai/plugin";
 
 const getActivateApp = (): string => {
-  if (
-    Bun.env.VSCODE_PID ||
-    Bun.env.VSCODE_INJECTION ||
-    Bun.env.TERM_PROGRAM === "vscode"
-  ) {
-    return "com.microsoft.VSCode";
+  if (Bun.env.VSCODE_INJECTION || Bun.env.TERM_PROGRAM === "vscode") {
+    return "Visual Studio Code";
   }
 
-  const term = Bun.env.TERM_PROGRAM ?? "";
+  const term = Bun.env.TERM ?? "";
 
-  if (term === "ghostty") return "com.mitchellh.ghostty";
-
-  return "com.apple.Terminal";
+  if (term === "alacritty") return "Alacritty";
+  return "Terminal";
 };
 
 const getAudio = (name: string): string => {
@@ -24,7 +19,7 @@ export const NotificationsPlugin: Plugin = async ({ $ }) => {
   const activateApp = getActivateApp();
 
   const notify = async (message: string, sound: string) => {
-    await $`terminal-notifier -title OpenCode -message ${message} -activate ${activateApp}; afplay ${getAudio(sound)} `.nothrow();
+    await $`terminal-notifier -title OpenCode -message ${message} -execute "open -a '${activateApp}'"; afplay ${getAudio(sound)} `.nothrow();
   };
 
   return {
