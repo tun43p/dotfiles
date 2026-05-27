@@ -10,7 +10,8 @@ local/
 *-bak/
 
 docs/superpowers/
-git/conf.d
+git/conf.d/
 lazygit/state.yml
 nvim/nvim-pack-lock.json
+zellij/plugins/
 zsh/zshenv
