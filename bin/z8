@@ -1,0 +1,28 @@
+#!/bin/sh
+
+CONTENT_TYPE="Content-Type: application/json"
+AUTHORIZATION="Authorization: Bearer $Z8_API_KEY"
+
+if [ "$1" = "models" ]; then
+  curl -s $Z8_API_URL/models -H "$CONTENT_TYPE" -H "$AUTHORIZATION"
+elif [ "$1" = "chat" ]; then
+  if [ "$2" != "glm" ] && [ "$2" != "qwen" ]; then
+    echo "Wrong model. Only glm or qwen are available"
+    echo "Usage: z8 chat <model> <message>"
+    exit 1
+  elif [ -z "$3" ]; then
+    echo "Missing message."
+    echo "Usage: z8 chat <model> <message>"
+    exit 1
+  fi
+
+  MODEL="glm-4.6"
+  if [ "$2" = "qwen" ]; then
+    MODEL="qwen3-6"
+  fi
+
+  curl -s $Z8_API_URL/v1/chat/completions -H "$CONTENT_TYPE" -H "$AUTHORIZATION" -d '{
+    "model": "'$MODEL'",
+    "messages": [{"role": "user", "content": "'$3'"}]
+}'
+fi
