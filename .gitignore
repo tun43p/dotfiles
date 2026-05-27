@@ -9,10 +9,11 @@ local/
 *.bak
 *-bak/
 
-docs/superpowers/
 git/conf.d/
 lazygit/state.yml
 nvim/nvim-pack-lock.json
 zellij/plugins/
 zellij/config.kdl
 zsh/zshenv
+
+**/superpowers/
