@@ -1,0 +1,37 @@
+pane {
+    bind "Ctrl p" { SwitchToMode "normal"; }
+    bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
+
+    bind "left" { MoveFocus "left"; }
+    bind "down" { MoveFocus "down"; }
+    bind "up" { MoveFocus "up"; }
+    bind "right" { MoveFocus "right"; }
+
+    bind "h" { MoveFocus "left"; }
+    bind "j" { MoveFocus "down"; }
+    bind "k" { MoveFocus "up"; }
+    bind "l" { MoveFocus "right"; }
+
+    bind "H" { MovePane "left"; }
+    bind "J" { MovePane "down"; }
+    bind "K" { MovePane "up"; }
+    bind "L" { MovePane "right"; }
+
+    bind "d" { NewPane "down"; SwitchToMode "normal"; }
+    bind "r" { NewPane "right"; SwitchToMode "normal"; }
+    bind "s" { NewPane "stacked"; SwitchToMode "normal"; }
+
+    bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "normal"; }
+    bind "f" { ToggleFloatingPanes; SwitchToMode "normal"; }
+    bind "F" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+    bind "i" { TogglePanePinned; SwitchToMode "normal"; }
+    bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
+
+    bind "x" { CloseFocus; SwitchToMode "normal"; }
+
+    bind "p" { SwitchFocus; }
+}
+
+renamepane {
+    bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
+}

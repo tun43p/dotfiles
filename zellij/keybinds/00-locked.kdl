@@ -1,0 +1,3 @@
+locked {
+    bind "Ctrl g" { SwitchToMode "normal"; }
+}

@@ -1,0 +1,10 @@
+scroll {
+    bind "s" { SwitchToMode "entersearch"; SearchInput 0; }
+    bind "e" { EditScrollback; SwitchToMode "normal"; }
+}
+
+entersearch {
+    bind "esc" { SwitchToMode "scroll"; }
+    bind "enter" { SwitchToMode "search"; }
+    bind "Ctrl c" { SwitchToMode "scroll"; }
+}
