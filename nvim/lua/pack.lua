@@ -9,11 +9,12 @@ local plugin_modules = {
 	"neo-tree",
 	"telescope",
 	"noice",
-	"smart-splits",
+	"nvim-tmux-navigation",
 	"gitsigns",
 	"gitlinker",
 	"bufferline",
 	"lualine",
+	-- "vim-tpipeline", -- TODO: Setup nvim with tmux
 	"mini",
 	"treesitter",
 	"flash",

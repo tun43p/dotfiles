@@ -5,7 +5,7 @@ M.spec = { src = "https://github.com/nvim-lualine/lualine.nvim" }
 function M.config()
 	require("lualine").setup({
 		options = {
-			theme = "moonfly",
+			theme = "vesper",
 			icons_enabled = true,
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },

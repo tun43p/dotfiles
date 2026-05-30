@@ -1,4 +1,0 @@
-scroll {
-    bind "s" { SwitchToMode "entersearch"; SearchInput 0; }
-    bind "e" { EditScrollback; SwitchToMode "normal"; }
-}

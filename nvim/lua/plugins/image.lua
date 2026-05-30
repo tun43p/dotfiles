@@ -13,13 +13,19 @@ function M.config()
 				clear_in_insert_mode = false,
 				download_remote_images = true,
 				only_render_image_at_cursor = false,
-				filetypes = { "markdown" },
+				floating_windows = false,
+				filetypes = { "markdown", "vimwiki" },
 			},
 		},
-		max_width = 100,
-		max_height = 12,
+		max_width = nil,
+		max_height = nil,
+		max_width_window_percentage = nil,
 		max_height_window_percentage = 50,
-		window_overlap_clear_enabled = true,
+		scale_factor = 1.0,
+		kitty_direct_chunk_size = 4096,
+		window_overlap_clear_enabled = false,
+		editor_only_render_when_focused = false,
+		hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
 	})
 end
 
