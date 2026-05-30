@@ -14,7 +14,7 @@ local plugin_modules = {
 	"gitlinker",
 	"bufferline",
 	"lualine",
-	-- "vim-tpipeline", -- TODO: Setup nvim with tmux
+	"vim-tpipeline",
 	"mini",
 	"treesitter",
 	"flash",
