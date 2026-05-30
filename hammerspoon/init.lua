@@ -1,9 +1,9 @@
--- Launch Alacritty
+-- Launch kitty
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "a", function()
-	local app = hs.application.get("Alacritty")
+	local app = hs.application.get("kitty")
 
 	if not app then
-		hs.application.launchOrFocus("Alacritty")
+		hs.application.launchOrFocus("kitty")
 		hs.timer.doAfter(0.1, function()
 			hs.eventtap.keyStroke({ "cmd" }, "n")
 		end)
@@ -23,10 +23,10 @@ end)
 
 -- Launch Neovim
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "n", function()
-	local app = hs.application.get("Alacritty")
+	local app = hs.application.get("kitty")
 
 	if not app then
-		hs.application.launchOrFocus("Alacritty")
+		hs.application.launchOrFocus("kitty")
 		hs.timer.doAfter(0.1, function()
 			hs.eventtap.keyStroke({ "cmd" }, "n")
 			hs.timer.doAfter(0.1, function()
@@ -49,10 +49,10 @@ end)
 
 -- Launch Wiki
 hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "w", function()
-	local app = hs.application.get("Alacritty")
+	local app = hs.application.get("kitty")
 
 	if not app then
-		hs.application.launchOrFocus("Alacritty")
+		hs.application.launchOrFocus("kitty")
 		hs.timer.doAfter(0.1, function()
 			hs.eventtap.keyStroke({ "cmd" }, "n")
 			hs.timer.doAfter(0.1, function()
