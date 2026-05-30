@@ -10,9 +10,7 @@ function M.config()
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			globalstatus = true,
-			disabled_filetypes = {
-				statusline = { "neo-tree" },
-			},
+			disabled_filetypes = {},
 		},
 		sections = {
 			lualine_a = {

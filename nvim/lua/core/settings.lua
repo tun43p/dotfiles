@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
 
+-- enable TrueColor for plugins like vim-tpipeline
+vim.o.termguicolors = true
+
 -- set highlight on search
 vim.o.hlsearch = true
 
