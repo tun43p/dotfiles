@@ -137,6 +137,10 @@
       "rev": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
+    "tmux-status.nvim": {
+      "rev": "d985ba67132269dedc9a5f6479f2d40f10e06315",
+      "src": "https://github.com/christopher-francisco/tmux-status.nvim"
+    },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
@@ -152,6 +156,10 @@
     "vesper": {
       "rev": "1717b1ad657c94bec3fc2bdebb0c55452d9fe46d",
       "src": "https://github.com/datsfilipe/vesper.nvim"
+    },
+    "vim-tmux-navigator": {
+      "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
+      "src": "https://github.com/christoomey/vim-tmux-navigator"
     },
     "vimwiki": {
       "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",

@@ -1,7 +1,0 @@
-theme "vesper"
-
-default_layout "compact"
-
-support_kitty_keyboard_protocol true
-
-show_startup_tips false
