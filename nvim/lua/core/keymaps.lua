@@ -52,12 +52,6 @@ vim.keymap.set("n", "<leader><Down>", "<c-w>j", { desc = "Jump to bottom split" 
 vim.keymap.set("n", "<leader><Up>", "<c-w>k", { desc = "Jump to upper split" })
 vim.keymap.set("n", "<leader><Right>", "<c-w>l", { desc = "Jump to right split" })
 
--- jump between splits with <C-h/j/k/l> (fallback without zellij)
-vim.keymap.set("n", "<C-h>", "<c-w>h", { desc = "Jump to left split" })
-vim.keymap.set("n", "<C-j>", "<c-w>j", { desc = "Jump to bottom split" })
-vim.keymap.set("n", "<C-k>", "<c-w>k", { desc = "Jump to upper split" })
-vim.keymap.set("n", "<C-l>", "<c-w>l", { desc = "Jump to right split" })
-
 -- navigate between buffers
 vim.keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { silent = true, desc = "Navigate to next buffer" })
 vim.keymap.set("n", "<s-tab>", "<cmd>BufferLineCyclePrev<cr>", { silent = true, desc = "Navigate to previous buffer" })
