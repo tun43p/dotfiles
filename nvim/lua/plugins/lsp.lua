@@ -39,6 +39,20 @@ function M.config()
 		},
 	})
 
+	vim.lsp.config("ts_ls", {
+		capabilities = capabilities,
+		init_options = {
+			preferences = {
+				includeInlayParameterNameHints = "all",
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	})
+
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"bashls",
@@ -51,6 +65,7 @@ function M.config()
 			"marksman",
 			"ruff",
 			"rust_analyzer",
+			"ts_ls",
 			"yamlls",
 			"zls",
 		},
