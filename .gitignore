@@ -12,7 +12,6 @@ local/
 git/conf.d/
 himalaya/
 lazygit/state.yml
-nvim/nvim-pack-lock.json
 zsh/zshenv
 
 **/superpowers/
