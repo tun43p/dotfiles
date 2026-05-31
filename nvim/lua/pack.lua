@@ -28,6 +28,7 @@ local plugin_modules = {
 	"vimwiki",
 	"image",
 	"himalaya",
+	"colorizer",
 }
 
 function M.setup()
