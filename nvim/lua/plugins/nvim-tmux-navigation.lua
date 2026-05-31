@@ -1,5 +1,8 @@
 local M = {}
 
+-- disable vim-tmux-navigator default C-h/j/k/l mappings
+vim.g.tmux_navigator_no_mappings = 1
+
 M.spec = { src = "https://github.com/christoomey/vim-tmux-navigator" }
 
 function M.config()
