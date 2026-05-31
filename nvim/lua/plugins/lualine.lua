@@ -11,6 +11,10 @@ function M.config()
 			section_separators = { left = "", right = "" },
 			globalstatus = true,
 			disabled_filetypes = {},
+			ignore_focus = { "*" },
+			disabled = function()
+				return vim.env.TMUX ~= nil
+			end,
 		},
 		sections = {
 			lualine_a = {
