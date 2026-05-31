@@ -27,6 +27,7 @@ local plugin_modules = {
 	"render-markdown",
 	"vimwiki",
 	"image",
+	"himalaya",
 }
 
 function M.setup()
