@@ -5,6 +5,7 @@ DOTFILES="$HOME/Code/github.com/tun43p/dotfiles"
 typeset -A links=(
     "$HOME/.gitconfig" "git/gitconfig"
     "$HOME/.hammerspoon" "hammerspoon"
+    "$HOME/Library/Application Support/himalaya" "himalaya"
     "$HOME/.config/kitty" "kitty"
     "$HOME/Library/Application Support/lazygit" "lazygit"
     "$HOME/.config/nvim" "nvim"
