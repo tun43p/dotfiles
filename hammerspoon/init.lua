@@ -1,5 +1,5 @@
 -- Launch kitty
-hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "a", function()
+hs.hotkey.bind({ "ctrl", "alt", "cmd" }, "k", function()
 	local app = hs.application.get("kitty")
 
 	if not app then
