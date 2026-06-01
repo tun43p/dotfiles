@@ -9,12 +9,9 @@ function M.config()
 			icons_enabled = true,
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
-			globalstatus = true,
+			globalstatus = vim.env.TMUX == nil,
 			disabled_filetypes = {},
 			ignore_focus = { "*" },
-			disabled = function()
-				return vim.env.TMUX ~= nil
-			end,
 		},
 		sections = {
 			lualine_a = {
