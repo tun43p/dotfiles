@@ -13,18 +13,18 @@ function M.config()
 		css = { "eslint_d" },
 		go = { "golangcilint" },
 		html = { "htmlhint" },
-		json = { "jsonlint" },
+		-- json linting handled by jsonls LSP
 		javascript = { "eslint_d" },
 		javascriptreact = { "eslint_d" },
 		kotlin = { "ktlint" },
 		-- lua = { "luacheck" },
 		markdown = { "markdownlint" },
-		python = { "ruff" },
+		-- python linting handled by ruff LSP
 		scss = { "eslint_d" },
 		svelte = { "eslint_d" },
 		typescript = { "eslint_d" },
 		typescriptreact = { "eslint_d" },
-		yaml = { "yamllint" },
+		-- yaml linting handled by yamlls LSP
 	}
 
 	local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
