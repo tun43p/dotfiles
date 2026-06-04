@@ -4,8 +4,6 @@
   "workbench.editor.empty.hint": "hidden",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
 
-  "claudeCode.preferredLocation": "panel",
-
   "editor.detectIndentation": false,
   "editor.fontFamily": "Hack Nerd Font",
   "editor.fontSize": 12,
@@ -94,7 +92,7 @@
 
   "[python]": {
     "editor.tabSize": 4,
-    "editor.rulers": [100],
+    "editor.rulers": [88],
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
       "source.fixAll.ruff": "always",
@@ -104,14 +102,12 @@
 
   "python-envs.defaultEnvManager": "ms-python.python:pyenv",
   "python.terminal.activateEnvironment": false,
-  "python.analysis.typeCheckingMode": "off",
 
   "ruff.enable": true,
   "ruff.fixAll": true,
   "ruff.lint.enable": true,
   "ruff.lint.preview": true,
   "ruff.format.preview": true,
-  "ruff.configuration": "pyproject.toml",
 
   "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.formatOnSave.enabled": true,

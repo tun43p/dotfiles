@@ -1,11 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "z8/qwen3-coder-next",
+  "model": "z8/generic",
   "small_model": "openrouter/openai/gpt-oss-20b:free",
   "provider": {
     "openrouter": {},
     "google-vertex": {},
-    "google-vertex-anthropic": {},
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama",
@@ -25,17 +24,42 @@
         "baseURL": "{env:Z8_API_URL}"
       },
       "models": {
+        "generic": {
+          "name": "Generic"
+        },
         "glm-4.6": {
-          "name": "GLM 4.6"
+          "name": "GLM 4.6",
+          "tool_call": true,
+          "reasoning": false,
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
         },
         "qwen3-6": {
-          "name": "Qwen3.6"
+          "name": "Qwen3.6",
+          "tool_call": true,
+          "reasoning": false,
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
         },
         "qwen3-coder-next": {
-          "name": "Qwen3 Coder Next"
+          "name": "Qwen3 Coder Next",
+          "tool_call": true,
+          "reasoning": false,
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
         }
       }
     }
+  },
+  "permission": {
+    "bash": "ask",
+    "edit": "ask"
   },
   "compaction": {
     "auto": true,
