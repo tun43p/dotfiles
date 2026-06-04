@@ -24,7 +24,7 @@ local plugin_modules = {
 	"lint",
 	"trouble",
 	"todo-comments",
-	"render-markdown",
+	-- "render-markdown",
 	"vimwiki",
 	"image",
 	"himalaya",
