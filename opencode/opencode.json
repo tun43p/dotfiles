@@ -58,8 +58,20 @@
     }
   },
   "permission": {
-    "bash": "ask",
-    "edit": "ask"
+    "bash": {
+      "*": "allow",
+      "git": "ask",
+      "rm": "ask"
+    },
+    "read": {
+      "*": "allow",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "edit": {
+      "*": "ask",
+      "*.md": "allow"
+    }
   },
   "compaction": {
     "auto": true,
