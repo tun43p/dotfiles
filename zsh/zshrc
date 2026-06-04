@@ -63,15 +63,6 @@ alias mv='mv -i'
 # Alias trash cli
 alias del="trash"
 
-# Git aliases
-alias g='git'
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git log --oneline --graph --decorate'
-alias gd='git diff'
-
 # Terraform aliases
 alias tf="terraform"
 alias tfi="terraform init"
