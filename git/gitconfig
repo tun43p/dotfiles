@@ -1,6 +1,6 @@
 [core]
 	editor = nvim 
-  hooks = "~/Code/github.com/tun43p/dotfiles/git/hooks"
+  hooks = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/hooks"
 
 [init]
 	defaultBranch = main
@@ -26,15 +26,15 @@
 	process = git-lfs filter-process
 	required = true
 
-[includeIf "gitdir:~/Code/localhost/"]
-	path = "~/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p"
+[includeIf "gitdir:~/Documents/Forge/src/localhost/"]
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/tun43p"
 
-[includeIf "gitdir:~/Code/github.com/"]
-	path = "~/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p"
+[includeIf "gitdir:~/Documents/Forge/src/github.com/"]
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/tun43p"
 
-[includeIf "gitdir:~/Code/gitlab.com/"]
-	path = "~/Code/github.com/tun43p/dotfiles/git/conf.d/tun43p"
+[includeIf "gitdir:~/Documents/Forge/src/gitlab.com/"]
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/tun43p"
 
-[includeIf "gitdir:~/Code/gitlab.innolab.fr/"]
-	path = "~/Code/github.com/tun43p/dotfiles/git/conf.d/bytel"
+[includeIf "gitdir:~/Documents/Forge/src/gitlab.innolab.fr/"]
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/bytel"
 
