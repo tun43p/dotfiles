@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "z8/generic",
+  "model": "z8/qwen3-6-27b",
   "small_model": "openrouter/openai/gpt-oss-20b:free",
   "provider": {
     "openrouter": {},
@@ -24,9 +24,6 @@
         "baseURL": "{env:Z8_API_URL}"
       },
       "models": {
-        "generic": {
-          "name": "Generic"
-        },
         "glm-4.6": {
           "name": "GLM 4.6",
           "tool_call": true,
@@ -36,7 +33,7 @@
             "output": 32768
           }
         },
-        "qwen3-6": {
+        "qwen3-6-27b": {
           "name": "Qwen3.6",
           "tool_call": true,
           "reasoning": false,
@@ -53,25 +50,49 @@
             "context": 262144,
             "output": 32768
           }
+        },
+        "generic": {
+          "name": "Generic",
+          "tool_call": true,
+          "reasoning": false,
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
         }
       }
     }
   },
   "permission": {
     "bash": {
-      "*": "allow",
+      "*": "ask",
+      "cat": "allow",
+      "cd": "allow",
+      "ls": "allow",
       "git": "ask",
       "rm": "ask"
     },
+    "doom_loop": "ask",
+    "edit": {
+      "*": "ask",
+      "*.md": "allow"
+    },
+    "external_directory": "ask",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "question": "allow",
     "read": {
       "*": "allow",
       "*.env.*": "deny",
       "*.env.example": "allow"
     },
-    "edit": {
-      "*": "ask",
-      "*.md": "allow"
-    }
+    "skill": "allow",
+    "task": "allow",
+    "todowrite": "allow",
+    "webfetch": "allow",
+    "websearch": "allow"
   },
   "compaction": {
     "auto": true,
