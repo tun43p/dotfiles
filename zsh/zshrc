@@ -69,6 +69,10 @@ alias tfi="terraform init"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
 
+# Go to work directories
+alias etc="cd $HOME/Documents/Forge/etc"
+alias src="cd $HOME/Documents/Forge/src"
+
 # Go to cloud documents
 alias cloud="cd '$ICLOUD_DRIVE'/Documents"
 
@@ -122,6 +126,51 @@ extract() {
 # Find process using a port
 port() {
     lsof -i :"$1"
+}
+
+# Delete opencode sessions
+delete_opencode_session() {
+  local root="${1:-$HOME}"
+
+  find "$root" -type d -name .git 2>/dev/null | while read -r gitdir; do
+    local repo
+    repo="$(dirname "$gitdir")"
+
+    cd "$repo" || continue
+
+    local sessions
+    sessions="$(opencode session list --format json 2>/dev/null)"
+
+    if [[ -z "$sessions" || "$sessions" == "[]" ]]; then
+      continue
+    fi
+
+    local count
+    count="$(echo "$sessions" | jq 'length')"
+
+    if [[ "$count" -eq 0 ]]; then
+      continue
+    fi
+
+    echo
+    echo "📁 $repo"
+    echo "   $count session(s) trouvée(s)"
+
+    read -q "REPLY?Supprimer toutes les sessions de ce projet ? [y/N] "
+    echo
+
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+      echo "$sessions" \
+        | jq -r '.[].id' \
+        | while read -r id; do
+            opencode session delete "$id"
+          done
+
+      echo "✅ Sessions supprimées"
+    else
+      echo "⏭️  Ignoré"
+    fi
+  done
 }
 
 # fzf — fuzzy finder keybindings (Ctrl+R: history, Ctrl+T: files, Alt+C: cd)
