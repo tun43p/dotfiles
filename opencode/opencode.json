@@ -66,17 +66,11 @@
   "permission": {
     "bash": {
       "*": "ask",
-      "cat": "allow",
-      "cd": "allow",
-      "ls": "allow",
       "git": "ask",
       "rm": "ask"
     },
     "doom_loop": "ask",
-    "edit": {
-      "*": "ask",
-      "*.md": "allow"
-    },
+    "edit": "allow",
     "external_directory": "ask",
     "glob": "allow",
     "grep": "allow",
@@ -85,8 +79,8 @@
     "question": "allow",
     "read": {
       "*": "allow",
-      "*.env.*": "deny",
-      "*.env.example": "allow"
+      ".env*": "deny",
+      ".env.example": "allow"
     },
     "skill": "allow",
     "task": "allow",
