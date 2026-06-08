@@ -65,7 +65,7 @@
   },
   "permission": {
     "bash": {
-      "*": "ask",
+      "*": "allow",
       "git": "ask",
       "rm": "ask"
     },

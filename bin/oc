@@ -1,0 +1,170 @@
+#!/bin/sh
+# opencode helpers
+
+OC_CONFIG="$HOME/.config/opencode/opencode.json"
+_SELF=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+
+# fresh_start
+# Fresh-start opencode local data while preserving auth.
+# Run this with opencode FULLY closed.
+fresh_start() {
+    D="$HOME/.local/share/opencode"
+
+    # Refuse to run if opencode is still alive.
+    if pgrep -x opencode >/dev/null 2>&1; then
+        echo "Error: opencode is still running. Quit it first, then re-run."
+        exit 1
+    fi
+
+    TS=$(date +%Y%m%d_%H%M%S)
+    B="$D/_backup_$TS"
+    mkdir -p "$B"
+
+    # Backup current state (auth + db) before wiping.
+    [ -f "$D/auth.json" ]    && cp -p "$D/auth.json"    "$B/auth.json"
+    [ -f "$D/account.json" ] && cp -p "$D/account.json" "$B/account.json"
+    [ -f "$D/opencode.db" ]  && cp -p "$D/opencode.db"  "$B/opencode.db"
+
+    echo "Backup created at: $B"
+
+    # Wipe the database (sessions, projects, worktrees live here).
+    rm -f "$D/opencode.db" "$D/opencode.db-wal" "$D/opencode.db-shm"
+
+    # Wipe derived/session artifacts.
+    rm -rf "$D/snapshot" "$D/storage" "$D/tool-output"
+
+    echo "Done. Reset complete (auth preserved)."
+    echo "Next launch of opencode will rebuild a clean database."
+}
+
+# sess_list [worktree]
+# Lists sessions as TSV: id<TAB>worktree<TAB>title
+# Group header lines (worktree changes) are prefixed with "DIR".
+# If [worktree] is given, only sessions of that worktree are listed (no headers).
+sess_list() {
+    export HOME
+    opencode db --format json 'SELECT s.id, s.title, p.worktree FROM session s JOIN project p ON s.project_id = p.id ORDER BY p.worktree ASC, s.time_updated DESC' 2>/dev/null | jq -r --arg home "$HOME" --arg wt "$1" '
+        map(select($wt == "" or .worktree == $wt))
+        | if $wt != "" then
+            map(.id + "\t" + .worktree + "\t" + .title) | .[]
+          else
+            reduce .[] as $s (
+                {prev: null, out: []};
+                if $s.worktree != .prev then
+                    (
+                        .out += ["DIR\t\t── \u25b8 " + ($s.worktree | sub("^" + $home; "~"))]
+                        | .out += [$s.id + "\t" + $s.worktree + "\t" + $s.title]
+                        | .prev = $s.worktree
+                    )
+                else
+                    .out += [$s.id + "\t" + $s.worktree + "\t" + $s.title]
+                end
+            ) | .out[]
+          end
+    '
+}
+
+# sess_delete <id> [id...]
+# Confirms then deletes the given sessions.
+sess_delete() {
+    # Drop group-header pseudo-ids.
+    _ids=""
+    for _id in "$@"; do
+        [ "$_id" = "DIR" ] && continue
+        _ids="$_ids $_id"
+    done
+    set -- $_ids
+    [ $# -eq 0 ] && return 0
+    printf 'Delete %d session(s)? [y/N] ' "$#"
+    read -r _ans </dev/tty
+    case "$_ans" in
+        y|Y)
+            for _id in "$@"; do
+                opencode session delete "$_id" >/dev/null 2>&1
+            done ;;
+        *) ;;
+    esac
+}
+
+help() {
+    if [ -n "$1" ]; then
+        echo "Error: $1"
+        echo ""
+    fi
+    echo "oc - OpenCode helpers"
+    echo ""
+    echo "Usage:"
+    echo "  oc edit <ask|allow>         Toggle edit permission"
+    echo "  oc edit                     Show current edit permission"
+    echo "  oc fresh-start              Wipe and rebuild local data"
+    echo "  oc sessions [--all]         Browse sessions (fzf)"
+    echo "                              default: sessions of the current directory"
+    echo "                              --all: Every session across all repos + ~"
+    echo "                              Enter: open | Tab: multi-select | d: delete | ctrl-r: reload"
+    echo "  oc usage <daily|monthly>    Show usage stats"
+    echo "  oc help                     Show this help"
+}
+
+[ $# -eq 0 ] && { help; exit 1; }
+_D=$(printf '\t')
+
+case "$1" in
+    help|h) help ;;
+    fresh-start) fresh_start ;;
+    __sess-list) sess_list "$2" ;;
+    __sess-delete) shift; sess_delete "$@" ;;
+
+    edit)
+        [ ! -f "$OC_CONFIG" ] && { echo "Error: config not found"; exit 1; }
+        if [ $# -eq 1 ]; then
+            echo "edit: $(jq -r '.permission.edit // "not set"' "$OC_CONFIG")"
+            exit 0
+        fi
+
+        case "$2" in
+            ask|allow)
+                _TMP=$(mktemp)
+                jq --arg m "$2" '.permission.edit = $m' "$OC_CONFIG" > "$_TMP" && mv "$_TMP" "$OC_CONFIG"
+                echo "edit -> $2" ;;
+            *) echo "Error: use 'ask' or 'allow'"; exit 1 ;;
+        esac ;;
+
+    sessions)
+        command -v fzf >/dev/null 2>&1 || { echo "Error: fzf is required"; exit 1; }
+
+        if [ "$2" = "--all" ]; then
+            _WT=""
+            _HDR="  All Sessions"
+        else
+            _WT="$PWD"
+            _HDR="  Sessions ($PWD)"
+        fi
+
+        # fzf runs binds via `sh -c`; single-quote paths to survive spaces.
+        _GEN="'$_SELF' __sess-list '$_WT'"
+        _DEL="'$_SELF' __sess-delete {+1}"
+
+        _SEL=$(sess_list "$_WT" | fzf \
+            --multi \
+            --header="$_HDR  (Enter: open | Tab: select | d: delete | ctrl-r: reload)" \
+            --bind "d:execute($_DEL)+reload($_GEN)" \
+            --bind "ctrl-r:reload($_GEN)" \
+            --delimiter="$_D" \
+            --with-nth=3)
+
+        [ -z "$_SEL" ] && exit 0
+        _SID=$(printf '%s' "$_SEL" | head -n1 | cut -f1)
+        [ "$_SID" = "DIR" ] && exit 0
+        opencode -s "$_SID" ;;
+
+    usage)
+        if [ "$2" = "daily" ]; then
+            bunx ccusage opencode daily
+        elif [ "$2" = "monthly" ]; then
+            bunx ccusage opencode monthly
+        else
+            echo "Usage: oc usage <daily|monthly>"
+        fi ;;
+
+    *) help "$1 (unknown command)"; exit 1 ;;
+esac
