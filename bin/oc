@@ -37,14 +37,16 @@ fresh_start() {
     echo "Next launch of opencode will rebuild a clean database."
 }
 
-# sess_list [worktree]
+# sess_list [worktree] [verbose]
 # Lists sessions as TSV: id<TAB>worktree<TAB>title
-# Group header lines (worktree changes) are prefixed with "DIR".
+# Group header lines (worktree changes) are prefixed with "DIR" and a disabled marker.
 # If [worktree] is given, only sessions of that worktree are listed (no headers).
+# If [verbose] is "1", include sessions with @general or @explore; otherwise filter them out.
 sess_list() {
     export HOME
-    opencode db --format json 'SELECT s.id, s.title, p.worktree FROM session s JOIN project p ON s.project_id = p.id ORDER BY p.worktree ASC, s.time_updated DESC' 2>/dev/null | jq -r --arg home "$HOME" --arg wt "$1" '
+    opencode db --format json 'SELECT s.id, s.title, p.worktree FROM session s JOIN project p ON s.project_id = p.id ORDER BY p.worktree ASC, s.time_updated DESC' 2>/dev/null | jq -r --arg home "$HOME" --arg wt "$1" --arg verbose "$2" '
         map(select($wt == "" or .worktree == $wt))
+        | if $verbose != "1" then map(select(.title | test("@general|@explore") | not)) else . end
         | if $wt != "" then
             map(.id + "\t" + .worktree + "\t" + .title) | .[]
           else
@@ -52,7 +54,7 @@ sess_list() {
                 {prev: null, out: []};
                 if $s.worktree != .prev then
                     (
-                        .out += ["DIR\t\t── \u25b8 " + ($s.worktree | sub("^" + $home; "~"))]
+                        .out += ["DIR\t" + ($s.worktree | sub("^" + $home; "~")) + "\t── \u25b8 " + ($s.worktree | sub("^" + $home; "~"))]
                         | .out += [$s.id + "\t" + $s.worktree + "\t" + $s.title]
                         | .prev = $s.worktree
                     )
@@ -67,7 +69,6 @@ sess_list() {
 # sess_delete <id> [id...]
 # Confirms then deletes the given sessions.
 sess_delete() {
-    # Drop group-header pseudo-ids.
     _ids=""
     for _id in "$@"; do
         [ "$_id" = "DIR" ] && continue
@@ -97,9 +98,10 @@ help() {
     echo "  oc edit <ask|allow>         Toggle edit permission"
     echo "  oc edit                     Show current edit permission"
     echo "  oc fresh-start              Wipe and rebuild local data"
-    echo "  oc sessions [--all]         Browse sessions (fzf)"
+    echo "  oc sessions [--all] [--verbose] Browse sessions (fzf)"
     echo "                              default: sessions of the current directory"
     echo "                              --all: Every session across all repos + ~"
+    echo "                              --verbose: include @general and @explore sessions"
     echo "                              Enter: open | Tab: multi-select | d: delete | ctrl-r: reload"
     echo "  oc usage <daily|monthly>    Show usage stats"
     echo "  oc help                     Show this help"
@@ -111,7 +113,7 @@ _D=$(printf '\t')
 case "$1" in
     help|h) help ;;
     fresh-start) fresh_start ;;
-    __sess-list) sess_list "$2" ;;
+    __sess-list) sess_list "$2" "$3" ;;
     __sess-delete) shift; sess_delete "$@" ;;
 
     edit)
@@ -132,7 +134,18 @@ case "$1" in
     sessions)
         command -v fzf >/dev/null 2>&1 || { echo "Error: fzf is required"; exit 1; }
 
-        if [ "$2" = "--all" ]; then
+        _VERBOSE=0
+        _ALL=0
+        shift
+        while [ $# -gt 0 ]; do
+            case "$1" in
+                --all) _ALL=1 ;;
+                --verbose) _VERBOSE=1 ;;
+            esac
+            shift
+        done
+
+        if [ "$_ALL" = "1" ]; then
             _WT=""
             _HDR="  All Sessions"
         else
@@ -141,10 +154,10 @@ case "$1" in
         fi
 
         # fzf runs binds via `sh -c`; single-quote paths to survive spaces.
-        _GEN="'$_SELF' __sess-list '$_WT'"
+        _GEN="'$_SELF' __sess-list '$_WT' '$_VERBOSE'"
         _DEL="'$_SELF' __sess-delete {+1}"
 
-        _SEL=$(sess_list "$_WT" | fzf \
+        _SEL=$(sess_list "$_WT" "$_VERBOSE" | fzf \
             --multi \
             --header="$_HDR  (Enter: open | Tab: select | d: delete | ctrl-r: reload)" \
             --bind "d:execute($_DEL)+reload($_GEN)" \
