@@ -173,9 +173,9 @@ case "$1" in
 
     usage)
         if [ "$2" = "daily" ]; then
-            bunx ccusage opencode daily
+            bunx ccusage opencode daily --breakdown
         elif [ "$2" = "monthly" ]; then
-            bunx ccusage opencode monthly
+            bunx ccusage opencode monthly --breakdown
         else
             echo "Usage: oc usage <daily|monthly>"
         fi ;;
