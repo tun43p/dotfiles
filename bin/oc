@@ -132,6 +132,41 @@ case "$1" in
             *) echo "Error: use 'ask' or 'allow'"; exit 1 ;;
         esac ;;
 
+    plugins)
+        [ ! -f "$OC_CONFIG" ] && { echo "Error: config not found"; exit 1; }
+        if [ $# -eq 1 ]; then
+            echo "plugins: $(jq -r '.plugin | keys | .[]' "$OC_CONFIG")"
+            exit 0
+        fi 
+        
+        case "$2" in
+            add)
+                _TMP=$(mktemp)
+                if [ -z "$3" ]; then
+                    echo "Error: plugin name required"
+                    exit 1
+                fi
+
+                if [ "$3" = "superpowers" ]; then
+                    jq --argjson p '["superpowers@git+https://github.com/obra/superpowers.git"]' '.plugin |= $p' "$OC_CONFIG" > "$_TMP" && mv "$_TMP" "$OC_CONFIG"
+                    echo "Plugin superpowers added"
+                fi ;;
+            remove)
+                _TMP=$(mktemp)
+                if [ -z "$3" ]; then
+                    echo "Error: plugin name required"
+                    exit 1
+                fi
+
+                if [ "$3" = "superpowers" ]; then
+                    jq --argjson p [] '.plugin |= $p' "$OC_CONFIG" > "$_TMP" && mv "$_TMP" "$OC_CONFIG"
+                    echo "Plugin superpowers removed"
+                fi ;;
+            *)
+                echo "Error: use 'add' or 'remove'"
+                exit 1 ;;
+            esac ;;
+
     sessions)
         command -v fzf >/dev/null 2>&1 || { echo "Error: fzf is required"; exit 1; }
 
