@@ -70,7 +70,7 @@
       "rm": "ask"
     },
     "doom_loop": "ask",
-    "edit": "allow",
+    "edit": "ask",
     "external_directory": "ask",
     "glob": "allow",
     "grep": "allow",
@@ -118,7 +118,6 @@
       "enabled": true
     }
   },
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }

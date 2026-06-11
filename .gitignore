@@ -6,7 +6,7 @@
 local/
 *.local
 
-*.bak
+*.bak*
 *-bak/
 
 git/conf.d/
