@@ -118,6 +118,7 @@
       "enabled": true
     }
   },
+  "plugin": [],
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
