@@ -105,7 +105,7 @@
     },
     "playwright": {
       "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "command": ["npx", "-y", "@playwright/mcp@0.0.75"],
       "enabled": true
     },
     "tavily": {
