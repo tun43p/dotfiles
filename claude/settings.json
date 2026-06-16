@@ -1,9 +1,4 @@
 {
-  "enabledPlugins": {
-    "playwright@claude-plugins-official": true,
-    "context7@claude-plugins-official": true
-  },
-  "theme": "dark-ansi",
   "hooks": {
     "PreToolUse": [
       {
@@ -16,5 +11,15 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/tun43p/.claude/scripts/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "playwright@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "theme": "dark-ansi",
+  "skipWorkflowUsageWarning": true
 }
