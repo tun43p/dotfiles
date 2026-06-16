@@ -35,10 +35,16 @@ else
   app="Terminal"
 fi
 
-# Visual notification.
+# Click focuses the terminal app; inside tmux, also jump to the exact pane.
+click="open -a '$app'"
+tmux_bin="$(command -v tmux || true)"
+if [[ -n "${TMUX_PANE:-}" && -n "$tmux_bin" ]]; then
+  click="$click; '$tmux_bin' select-window -t '$TMUX_PANE'; '$tmux_bin' select-pane -t '$TMUX_PANE'"
+fi
+
 if command -v terminal-notifier >/dev/null 2>&1; then
   terminal-notifier -title "Claude Code" -message "$message" \
-    -execute "open -a '$app'" >/dev/null 2>&1 || true
+    -execute "$click" >/dev/null 2>&1 || true
 fi
 
 # Sound (fire-and-forget so the hook returns immediately).
