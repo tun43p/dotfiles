@@ -9,9 +9,14 @@ local/
 *.bak*
 *-bak/
 
+claude/*
+!claude/settings.json
+claude.json
+
 git/conf.d/
 himalaya/
 lazygit/state.yml
+opencode/skills/*
 zsh/zshenv
 
 **/superpowers/
