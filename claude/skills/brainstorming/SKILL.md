@@ -1,9 +1,6 @@
 ---
 name: brainstorming
 description: "Use before creative or constructive work (features, architecture, behavior). Transforms vague ideas into validated designs through disciplined reasoning and collaboration."
-risk: unknown
-source: community
-date_added: "2026-02-27"
 ---
 
 # Brainstorming Ideas Into Designs
@@ -39,7 +36,7 @@ Your job is to **slow the process down just enough to get it right**.
 
 ## The Process
 
-### 1️⃣ Understand the Current Context (Mandatory First Step)
+### 1. Understand the Current Context (Mandatory First Step)
 
 Before asking any questions:
 
@@ -55,7 +52,7 @@ Before asking any questions:
 
 ---
 
-### 2️⃣ Understanding the Idea (One Question at a Time)
+### 2. Understanding the Idea (One Question at a Time)
 
 Your goal here is **shared clarity**, not speed.
 
@@ -76,7 +73,7 @@ Focus on understanding:
 
 ---
 
-### 3️⃣ Non-Functional Requirements (Mandatory)
+### 3. Non-Functional Requirements (Mandatory)
 
 You MUST explicitly clarify or propose assumptions for:
 
@@ -93,7 +90,7 @@ If the user is unsure:
 
 ---
 
-### 4️⃣ Understanding Lock (Hard Gate)
+### 4. Understanding Lock (Hard Gate)
 
 Before proposing **any design**, you MUST pause and do the following:
 
@@ -124,7 +121,7 @@ Then ask:
 
 ---
 
-### 5️⃣ Explore Design Approaches
+### 5. Explore Design Approaches
 
 Once understanding is confirmed:
 
@@ -141,7 +138,7 @@ This is still **not** final design.
 
 ---
 
-### 6️⃣ Present the Design (Incrementally)
+### 6. Present the Design (Incrementally)
 
 When presenting the design:
 
@@ -161,7 +158,7 @@ Cover, as relevant:
 
 ---
 
-### 7️⃣ Decision Log (Mandatory)
+### 7. Decision Log (Mandatory)
 
 Maintain a running **Decision Log** throughout the design discussion.
 
@@ -177,7 +174,7 @@ This log should be preserved for documentation.
 
 ## After the Design
 
-### 📄 Documentation
+### Documentation
 
 Once the design is validated:
 
@@ -192,7 +189,7 @@ Persist the document according to the project’s standard workflow.
 
 ---
 
-### 🛠️ Implementation Handoff (Optional)
+### Implementation Handoff (Optional)
 
 Only after documentation is complete, ask:
 
