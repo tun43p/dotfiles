@@ -9,8 +9,13 @@ local/
 *.bak*
 *-bak/
 
-claude/*
-!claude/settings.json
+claude/backups/
+claude/cache/
+claude/ide/
+claude/plugins/
+claude/projects/
+claude/sessions/
+claude/history.jsonl
 claude.json
 
 git/conf.d/
