@@ -56,10 +56,9 @@
     "command": "bash /Users/tun43p/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
-    "playwright@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "ponytail@ponytail": true,
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
