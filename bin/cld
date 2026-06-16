@@ -1,0 +1,178 @@
+#!/bin/sh
+# claude code helpers
+
+CC_DIR="$HOME/.claude"
+_SELF=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+_D=$(printf '\t')
+
+# _sess_list [cwd_filter]
+# Lists sessions as TSV: id<TAB>cwd<TAB>title
+# Group header lines (cwd changes) are prefixed with "DIR".
+# If [cwd_filter] is given, only sessions of that directory are listed (no headers).
+_sess_list() {
+    python3 - "$1" << 'PYEOF'
+import json, os, sys, glob
+from datetime import datetime
+
+home = os.path.expanduser('~')
+projects_dir = os.path.join(home, '.claude', 'projects')
+cwd_filter = sys.argv[1] if len(sys.argv) > 1 else ''
+
+sessions = []
+
+for proj_dir in os.listdir(projects_dir):
+    proj_path = os.path.join(projects_dir, proj_dir)
+    if not os.path.isdir(proj_path):
+        continue
+    for jsonl_file in glob.glob(os.path.join(proj_path, '*.jsonl')):
+        sid = os.path.basename(jsonl_file).replace('.jsonl', '')
+        mtime = os.path.getmtime(jsonl_file)
+        cwd = ''
+        title = '(untitled)'
+
+        try:
+            with open(jsonl_file, 'rb') as f:
+                chunk = f.read(32768)
+            for line in chunk.decode('utf-8', errors='replace').split('\n'):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    data = json.loads(line)
+                except Exception:
+                    continue
+                if data.get('type') == 'user':
+                    if not cwd:
+                        cwd = data.get('cwd', '')
+                    msg = data.get('message', {})
+                    content = msg.get('content', '')
+                    if title == '(untitled)' and isinstance(content, list):
+                        for c in content:
+                            if isinstance(c, dict) and c.get('type') == 'text':
+                                text = c.get('text', '').strip()
+                                if text and not text.startswith('<'):
+                                    title = text.replace('\t', ' ').replace('\n', ' ')[:120]
+                                    break
+                if cwd and title != '(untitled)':
+                    break
+        except Exception:
+            continue
+
+        if not cwd:
+            continue
+        if cwd_filter and cwd != cwd_filter:
+            continue
+        sessions.append((mtime, cwd, sid, title))
+
+sessions.sort(key=lambda x: (x[1], -x[0]))
+
+prev_cwd = None
+for mtime, cwd, sid, title in sessions:
+    display_cwd = cwd.replace(home, '~', 1)
+    dt = datetime.fromtimestamp(mtime).strftime('%b %d')
+    if not cwd_filter and cwd != prev_cwd:
+        print('DIR\t' + cwd + '\t── ▸ ' + display_cwd)
+        prev_cwd = cwd
+    print(sid + '\t' + cwd + '\t' + title + '  ·  ' + dt)
+PYEOF
+}
+
+# _sess_delete <id> [id...]
+# Confirms then deletes the given sessions.
+_sess_delete() {
+    _ids=""
+    for _id in "$@"; do
+        [ "$_id" = "DIR" ] && continue
+        _ids="$_ids $_id"
+    done
+    set -- $_ids
+    [ $# -eq 0 ] && return 0
+    printf 'Delete %d session(s)? [y/N] ' "$#"
+    read -r _ans </dev/tty
+    case "$_ans" in
+        y|Y)
+            for _id in "$@"; do
+                _f=$(find "$CC_DIR/projects" -name "${_id}.jsonl" -maxdepth 2 2>/dev/null | head -1)
+                [ -z "$_f" ] && continue
+                rm -f "$_f"
+                _dir="${_f%.jsonl}"
+                [ -d "$_dir" ] && rm -rf "$_dir"
+            done ;;
+        *) ;;
+    esac
+}
+
+help() {
+    if [ -n "$1" ]; then
+        printf 'Error: %s\n\n' "$1"
+    fi
+    cat << 'EOF'
+cld - Claude Code helpers
+
+Usage:
+  cld                              Open Claude Code
+  cld sessions [--all]             Browse sessions (fzf)
+                                   default: sessions of the current directory
+                                   --all: Every session across all repos
+                                   Enter: open | Tab: multi-select | d: delete | ctrl-r: reload
+  cld usage <daily|monthly|weekly|session>
+                                   Show usage stats
+  cld help                         Show this help
+  cld <args>                       Pass through to claude
+EOF
+}
+
+[ $# -eq 0 ] && { exec claude; }
+
+case "$1" in
+    help|h) help ;;
+    __sess-list) _sess_list "$2" ;;
+    __sess-delete) shift; _sess_delete "$@" ;;
+
+    sessions)
+        command -v fzf >/dev/null 2>&1 || { echo "Error: fzf is required"; exit 1; }
+
+        _ALL=0
+        shift
+        while [ $# -gt 0 ]; do
+            case "$1" in --all) _ALL=1 ;; esac
+            shift
+        done
+
+        if [ "$_ALL" = "1" ]; then
+            _WT=""
+            _HDR="  All Sessions"
+        else
+            _WT="$PWD"
+            _HDR="  Sessions ($PWD)"
+        fi
+
+        _GEN="'$_SELF' __sess-list '$_WT'"
+        _DEL="'$_SELF' __sess-delete {+1}"
+
+        _SEL=$(_sess_list "$_WT" | fzf \
+            --multi \
+            --header="$_HDR  (Enter: open | Tab: select | d: delete | ctrl-r: reload)" \
+            --bind "d:execute($_DEL)+reload($_GEN)" \
+            --bind "ctrl-r:reload($_GEN)" \
+            --delimiter="$_D" \
+            --with-nth=3)
+
+        [ -z "$_SEL" ] && exit 0
+        _LINE=$(printf '%s' "$_SEL" | head -n1)
+        _SID=$(printf '%s' "$_LINE" | cut -f1)
+        _CWD=$(printf '%s' "$_LINE" | cut -f2)
+        [ "$_SID" = "DIR" ] && exit 0
+        cd "$_CWD" && exec claude -r "$_SID" ;;
+
+    usage)
+        case "$2" in
+            daily)   exec bunx ccusage claude daily --breakdown ;;
+            monthly) exec bunx ccusage claude monthly --breakdown ;;
+            weekly)  exec bunx ccusage claude weekly --breakdown ;;
+            session) exec bunx ccusage claude session ;;
+            *) printf 'Usage: cc usage <daily|monthly|weekly|session>\n'; exit 1 ;;
+        esac ;;
+
+    *) exec claude "$@" ;;
+esac
