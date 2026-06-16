@@ -9,13 +9,23 @@ local/
 *.bak*
 *-bak/
 
+.playwright-mcp/
+
 claude/backups/
 claude/cache/
+claude/file-history/
 claude/ide/
+claude/plans/
 claude/plugins/
 claude/projects/
+claude/session-env/
 claude/sessions/
+claude/shell-snapshots/
+
+claude/.last-cleanup
 claude/history.jsonl
+claude/mcp-needs-auth-cache.json
+
 claude.json
 
 git/conf.d/
