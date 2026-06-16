@@ -10,16 +10,65 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/tun43p/.claude/scripts/notify.sh done"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/tun43p/.claude/scripts/notify.sh permission"
+          }
+        ]
+      },
+      {
+        "matcher": "elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/tun43p/.claude/scripts/notify.sh question"
+          }
+        ]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/tun43p/.claude/scripts/notify.sh idle"
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/tun43p/.claude/scripts/statusline-command.sh"
+    "command": "bash /Users/tun43p/.claude/scripts/statusline.sh"
   },
   "enabledPlugins": {
     "playwright@claude-plugins-official": true,
-    "context7@claude-plugins-official": true
+    "context7@claude-plugins-official": true,
+    "ponytail@ponytail": true
   },
+  "extraKnownMarketplaces": {
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
-  "skipWorkflowUsageWarning": true
+  "preferredNotifChannel": "auto"
 }
