@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Important Rules
+
+- Be extremely concise. Sacrifice grammar for the sake of concision.
+
 ## Git Conventions
 
 If you need to commit something, you must always follow these rules and never deviate from them:
