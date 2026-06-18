@@ -15,6 +15,7 @@ claude/backups/
 claude/cache/
 claude/file-history/
 claude/ide/
+claude/image-cache/
 claude/plans/
 claude/plugins/
 claude/projects/
