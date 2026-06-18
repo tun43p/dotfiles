@@ -5,10 +5,14 @@
 
 set -euo pipefail
 
-# Drain hook JSON from stdin so the pipe closes cleanly (payload unused).
-cat >/dev/null 2>&1 || true
-
+payload="$(cat 2>/dev/null || true)"
 kind="${1:-done}"
+
+# Label each notification by project so multiple VSCode tabs/windows are
+# distinguishable, and group by session so they stack instead of overwriting.
+cwd="$(printf '%s' "$payload" | sed -n 's/.*"cwd":[[:space:]]*"\([^"]*\)".*/\1/p')"
+project="$(basename "${cwd:-$PWD}")"
+group="${CLAUDE_CODE_SESSION_ID:-$project}"
 
 # Use $DOTS when set; otherwise derive the repo root from this script's real
 # location (resolves the ~/.claude symlink) so the GUI-launch case still works.
@@ -35,16 +39,25 @@ else
   app="Terminal"
 fi
 
-# Click focuses the terminal app; inside tmux, also jump to the exact pane.
-click="open -a '$app'"
-tmux_bin="$(command -v tmux || true)"
-if [[ -n "${TMUX_PANE:-}" && -n "$tmux_bin" ]]; then
-  click="$click; '$tmux_bin' select-window -t '$TMUX_PANE'; '$tmux_bin' select-pane -t '$TMUX_PANE'"
+# Build the click action: focus the right window, then narrow if we can.
+if [[ "$app" == "Visual Studio Code" && -n "$cwd" ]]; then
+  # `open -a` sends an Apple event to the running app — no `code` CLI helper, so
+  # no extra Electron process bouncing in the Dock. Still raises the folder's
+  # window/native-tab.
+  # ponytail: no API to target a specific chat if several sessions share one folder
+  click="open -a 'Visual Studio Code' '$cwd'"
+else
+  click="open -a '$app'"
+  # Inside tmux, jump to the exact session, window and pane.
+  tmux_bin="$(command -v tmux || true)"
+  if [[ -n "${TMUX_PANE:-}" && -n "$tmux_bin" ]]; then
+    click="$click; '$tmux_bin' switch-client -t '$TMUX_PANE' 2>/dev/null; '$tmux_bin' select-window -t '$TMUX_PANE'; '$tmux_bin' select-pane -t '$TMUX_PANE'"
+  fi
 fi
 
 if command -v terminal-notifier >/dev/null 2>&1; then
-  terminal-notifier -title "Claude Code" -message "$message" \
-    -execute "$click" >/dev/null 2>&1 || true
+  terminal-notifier -title "Claude Code — $project" -message "$message" \
+    -group "$group" -execute "$click" >/dev/null 2>&1 || true
 fi
 
 # Sound (fire-and-forget so the hook returns immediately).
