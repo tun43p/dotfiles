@@ -56,9 +56,11 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/tun43p/.claude/scripts/statusline.sh"
+    "command": "bun x ccusage statusline --visual-burn-rate emoji --cost-source cc --context-low-threshold 25 --context-medium-threshold 50",
+    "padding": 0
   },
   "enabledPlugins": {
+    "chrome-devtools-mcp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,

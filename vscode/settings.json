@@ -36,7 +36,7 @@
 
   "remote.autoForwardPortsSource": "hybrid",
 
-  "claudeCode.useTerminal": true,
+  "claudeCode.useTerminal": false,
   "claudeCode.preferredLocation": "panel",
 
   "diffEditor.ignoreTrimWhitespace": false,
