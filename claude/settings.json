@@ -1,4 +1,7 @@
 {
+  "env": {
+    "npm_config_registry": "https://registry.npmjs.org/"
+  },
   "hooks": {
     "PreToolUse": [
       {
@@ -58,7 +61,10 @@
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "ponytail@ponytail": true
+    "playwright@claude-plugins-official": true,
+    "ponytail@ponytail": true,
+    "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
