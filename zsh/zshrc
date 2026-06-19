@@ -44,9 +44,6 @@ if command -v zoxide &> /dev/null; then
     eval "$(zoxide init zsh)"
 fi
 
-# Override cd with zoxide
-alias cd="z"
-
 # ls aliases (eza)
 alias ls='eza --icons'
 alias ll='eza -lh --icons --git'
