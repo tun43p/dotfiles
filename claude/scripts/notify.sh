@@ -20,12 +20,12 @@ repo_root="$(cd -P "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 assets="${DOTS:-$repo_root}/assets/audio"
 
 case "$kind" in
-  done)       message="Travail terminé." ;        sound="done" ;;
-  error)      message="Une erreur est survenue." ; sound="error" ;;
-  permission) message="Permission requise." ;      sound="ping" ;;
-  question)   message="Question en attente." ;     sound="ping" ;;
-  idle)       message="En attente de ta réponse." ; sound="ping" ;;
-  *)          message="$kind" ;                    sound="done" ;;
+  done)       message="Travail terminé." ;          sound="warcraft-done" ;;
+  error)      message="Une erreur est survenue." ;  sound="windows-error" ;;
+  permission) message="Permission requise." ;       sound="shocked" ;;
+  question)   message="Question en attente." ;      sound="metal-gear-solid" ;;
+  idle)       message="En attente de ta réponse." ; sound="correct" ;;
+  *)          message="$kind" ;                     sound="gta-v-notification" ;;
 esac
 
 # Detect the front app so a click on the notification re-focuses it.
@@ -44,7 +44,6 @@ if [[ "$app" == "Visual Studio Code" && -n "$cwd" ]]; then
   # `open -a` sends an Apple event to the running app — no `code` CLI helper, so
   # no extra Electron process bouncing in the Dock. Still raises the folder's
   # window/native-tab.
-  # ponytail: no API to target a specific chat if several sessions share one folder
   click="open -a 'Visual Studio Code' '$cwd'"
 else
   click="open -a '$app'"
