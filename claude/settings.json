@@ -1,6 +1,7 @@
 {
   "env": {
-    "npm_config_registry": "https://registry.npmjs.org/"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "NPM_CONFIG_REGISTRY": "https://registry.npmjs.org/"
   },
   "hooks": {
     "PreToolUse": [
