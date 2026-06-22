@@ -78,5 +78,6 @@
   },
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
-  "preferredNotifChannel": "auto"
+  "preferredNotifChannel": "auto",
+  "effortLevel": "max"
 }
