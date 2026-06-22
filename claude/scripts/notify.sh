@@ -5,6 +5,9 @@
 
 set -euo pipefail
 
+# Disable audio
+WITH_AUDIO="false"
+
 payload="$(cat 2>/dev/null || true)"
 kind="${1:-done}"
 
@@ -60,6 +63,10 @@ if command -v terminal-notifier >/dev/null 2>&1; then
 fi
 
 # Sound (fire-and-forget so the hook returns immediately).
+if [[ "$WITH_AUDIO" == "false" ]]; then
+  exit 0
+fi
+
 audio="$assets/$sound.aiff"
 if [[ -f "$audio" ]] && command -v afplay >/dev/null 2>&1; then
   ( afplay "$audio" >/dev/null 2>&1 & )
