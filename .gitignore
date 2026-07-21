@@ -24,6 +24,7 @@ claude.json
 git/conf.d/
 himalaya/
 lazygit/state.yml
+models/
 opencode/skills/*
 zsh/zshenv
 
