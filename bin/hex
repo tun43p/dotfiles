@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SIZE=("8" "16" "32" "64" "128" "256")
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $0 <size>"
+    echo "Available sizes: ${SIZE[*]}"
+    exit 1
+fi
+
+output_size="$1"
+if [[ ! " ${SIZE[*]} " =~ " ${output_size} " ]]; then
+    echo "Invalid size: $output_size"
+    echo "Available sizes: ${SIZE[*]}"
+    exit 1
+fi
+
+hex=$(openssl rand -hex $((output_size / 2)))
+
+echo "$hex"

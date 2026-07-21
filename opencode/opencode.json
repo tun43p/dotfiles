@@ -76,7 +76,11 @@
     },
     "playwright": {
       "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@0.0.75"],
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@0.0.75"
+      ],
       "enabled": true
     },
     "tavily": {
@@ -89,8 +93,14 @@
       "enabled": true
     }
   },
-  "plugin": [],
+  "plugin": [
+    "/Users/tun43p/.claude/plugins/marketplaces/ponytail/.opencode/plugins/ponytail.mjs"
+  ],
   "watcher": {
-    "ignore": ["node_modules/**", "dist/**", ".git/**"]
+    "ignore": [
+      "node_modules/**",
+      "dist/**",
+      ".git/**"
+    ]
   }
 }

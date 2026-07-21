@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ -z "${1:-}" ]]; then
+    echo "Usage: $0 <video> [language]"
+    exit 1
+fi
+
+video="$1"
+lang="${2:-fr}"
+# ponytail: model resolved from this script's dir; override with MODEL=... if symlinked elsewhere
+MODEL="${MODEL:-$(cd "$(dirname "$0")/../models" && pwd)/ggml-large-v3-turbo.bin}"
+
+[[ -f "$video" ]] || { echo "No such file: $video"; exit 1; }
+[[ -f "$MODEL" ]] || { echo "Model not found: $MODEL"; exit 1; }
+
+wav="$(mktemp -t transcribe).wav"
+trap 'rm -f "$wav"' EXIT
+
+ffmpeg -y -loglevel error -i "$video" -ar 16000 -ac 1 -c:a pcm_s16le "$wav"
+whisper-cli -m "$MODEL" -l "$lang" -otxt -of "${video%.*}" "$wav"
+
+echo "Transcript: ${video%.*}.txt"

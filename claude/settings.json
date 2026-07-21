@@ -66,7 +66,8 @@
     "gopls-lsp@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
     "ponytail@ponytail": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "humanizer@humanizer": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -74,10 +75,16 @@
         "source": "github",
         "repo": "DietrichGebert/ponytail"
       }
+    },
+    "humanizer": {
+      "source": {
+        "source": "github",
+        "repo": "blader/humanizer"
+      }
     }
   },
+  "effortLevel": "xhigh",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
-  "preferredNotifChannel": "auto",
-  "effortLevel": "max"
+  "preferredNotifChannel": "auto"
 }
