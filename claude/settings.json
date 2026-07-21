@@ -86,5 +86,6 @@
   "effortLevel": "xhigh",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
-  "preferredNotifChannel": "auto"
+  "preferredNotifChannel": "auto",
+  "model": "opus[1m]"
 }

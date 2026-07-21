@@ -3,21 +3,76 @@ set -euo pipefail
 
 if [[ -z "${1:-}" ]]; then
     echo "Usage: $0 <video> [language]"
+    echo "  LABELS=\"Alice,Bob\"  name the audio tracks (default: T1, T2, ...)"
+    echo "  SHOTS=30            also grab a screenshot every N seconds, output markdown"
     exit 1
 fi
 
 video="$1"
 lang="${2:-fr}"
+models="$(cd "$(dirname "$0")/../models" && pwd)"
 # ponytail: model resolved from this script's dir; override with MODEL=... if symlinked elsewhere
-MODEL="${MODEL:-$(cd "$(dirname "$0")/../models" && pwd)/ggml-large-v3-turbo.bin}"
+MODEL="${MODEL:-$models/ggml-large-v3-turbo.bin}"
+VAD="$models/ggml-silero-v5.1.2.bin"
 
 [[ -f "$video" ]] || { echo "No such file: $video"; exit 1; }
 [[ -f "$MODEL" ]] || { echo "Model not found: $MODEL"; exit 1; }
 
-wav="$(mktemp -t transcribe).wav"
-trap 'rm -f "$wav"' EXIT
+# VAD kills whisper's hallucinations over silence; skipped if the model isn't downloaded
+vad=()
+[[ -f "$VAD" ]] && vad=(--vad -vm "$VAD")
 
-ffmpeg -y -loglevel error -i "$video" -ar 16000 -ac 1 -c:a pcm_s16le "$wav"
-whisper-cli -m "$MODEL" -l "$lang" -otxt -of "${video%.*}" "$wav"
+shots="${SHOTS:-}"
+out="${video%.*}$([[ -n "$shots" ]] && echo .md || echo .txt)"
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
 
-echo "Transcript: ${video%.*}.txt"
+# one transcript per audio track: separate tracks are free speaker separation
+streams=($(ffprobe -v error -select_streams a -show_entries stream=index -of csv=p=0 "$video"))
+[[ ${#streams[@]} -gt 0 ]] || { echo "No audio track in $video"; exit 1; }
+
+i=0
+for s in "${streams[@]}"; do
+    label="$(echo "${LABELS:-}" | cut -d, -f$((i + 1)))"
+    [[ -n "$label" ]] || label="T$((i + 1))"
+    echo "[$((i + 1))/${#streams[@]}] $label"
+
+    ffmpeg -y -loglevel error -i "$video" -map "0:$s" -ar 16000 -ac 1 -c:a pcm_s16le "$tmp/$i.wav"
+    # ggml logs its backend init on stderr regardless of -np; set -e still catches failures
+    whisper-cli -m "$MODEL" -l "$lang" -np -ocsv -of "$tmp/$i" ${vad[@]+"${vad[@]}"} "$tmp/$i.wav" >/dev/null 2>&1
+
+    # csv is start,end,"text" — text may contain commas, so split on the first two only
+    awk -v L="$label" 'NR > 1 {
+        p = index($0, ","); start = substr($0, 1, p - 1); rest = substr($0, p + 1)
+        text = substr(rest, index(rest, ",") + 1)
+        gsub(/^"|"$/, "", text); gsub(/^ +| +$/, "", text)
+        if (text != "") print start "\t" L "\t" text
+    }' "$tmp/$i.csv" >>"$tmp/all"
+
+    i=$((i + 1))
+done
+
+if [[ -n "$shots" ]]; then
+    dir="${video%.*}_shots"
+    rm -rf "$dir" && mkdir -p "$dir"
+    echo "[shots] every ${shots}s"
+    # scene detection is useless on a video call: the webcam tiles move constantly and
+    # drown out the shared screen. Fixed interval needs no tuning and survives layout changes.
+    ffmpeg -y -loglevel error -i "$video" -an -vf "fps=1/$shots" -q:v 4 "$dir/%04d.jpg"
+
+    n=0
+    for f in "$dir"/*.jpg; do
+        printf '%s\t__SHOT__\t%s/%s\n' \
+            $((n * shots * 1000)) "$(basename "$dir")" "$(basename "$f")" >>"$tmp/all"
+        n=$((n + 1))
+    done
+fi
+
+sort -n "$tmp/all" | awk -F'\t' -v n=${#streams[@]} '
+$2 == "__SHOT__" { printf "\n![](%s)\n\n", $3; next }
+{
+    h = int($1 / 3600000); m = int($1 % 3600000 / 60000); s = int($1 % 60000 / 1000)
+    printf "[%02d:%02d:%02d]%s %s\n", h, m, s, (n > 1 ? " " $2 ":" : ""), $3
+}' >"$out"
+
+echo "Transcript: $out"
