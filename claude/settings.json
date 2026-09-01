@@ -3,6 +3,7 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "NPM_CONFIG_REGISTRY": "https://registry.npmjs.org/"
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -83,9 +84,13 @@
       }
     }
   },
-  "effortLevel": "xhigh",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
   "preferredNotifChannel": "auto",
-  "model": "opus[1m]"
+  "effortLevel": "xhigh",
+  "switchModelsOnFlag": true,
+  "remoteControlAtStartup": false,
+  "attribution": {
+    "sessionUrl": false
+  }
 }

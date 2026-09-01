@@ -3,6 +3,7 @@
 ## Important Rules
 
 - Be extremely concise. Sacrifice grammar for the sake of concision.
+- All code and documentation must be written in English. Never use a language other than English.
 
 ## Git Conventions
 
