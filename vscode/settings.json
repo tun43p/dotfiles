@@ -147,6 +147,12 @@
 
   "zig.zls.enabled": "on",
 
+  "[luau]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+  },
+
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
