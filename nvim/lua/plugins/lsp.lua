@@ -27,11 +27,7 @@ function M.config()
 
 	require("mason").setup({})
 
-	local capabilities = require("blink.cmp").get_lsp_capabilities()
-	vim.lsp.config("*", { capabilities = capabilities })
-
 	vim.lsp.config("lua_ls", {
-		capabilities = capabilities,
 		settings = {
 			Lua = {
 				diagnostics = { globals = { "hs", "vim" } },
@@ -40,7 +36,6 @@ function M.config()
 	})
 
 	vim.lsp.config("ts_ls", {
-		capabilities = capabilities,
 		init_options = {
 			preferences = {
 				includeInlayParameterNameHints = "all",

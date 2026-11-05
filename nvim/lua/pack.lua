@@ -17,7 +17,6 @@ local plugin_modules = {
 	"mini",
 	"treesitter",
 	"flash",
-	"blink",
 	"lsp",
 	"conform",
 	"lint",
