@@ -26,7 +26,6 @@ local plugin_modules = {
 	-- "render-markdown",
 	"vimwiki",
 	"image",
-	"himalaya",
 	-- "colorizer", -- needs termguicolors
 }
 
