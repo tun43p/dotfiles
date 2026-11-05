@@ -2,8 +2,15 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
 
--- use the terminal's 16-color palette (theme lives in kitty.conf only)
+-- use the terminal's 16-color palette (theme lives in the terminal only)
 vim.o.termguicolors = false
+
+-- follow terminal light/dark switches: nvim only asks the terminal for its background
+-- color (OSC 11) at startup, so re-ask every 3s; the built-in TermResponse handler
+-- then updates 'background' (setting the same value is a no-op for highlights)
+vim.uv.new_timer():start(3000, 3000, vim.schedule_wrap(function()
+	vim.api.nvim_ui_send("\027]11;?\007")
+end))
 
 -- set highlight on search
 vim.o.hlsearch = true
