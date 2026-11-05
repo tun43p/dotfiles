@@ -3,8 +3,8 @@
   "chat.agentsControl.enabled": "hidden",
 
   "window.nativeTabs": true,
+  "window.autoDetectColorScheme": true,
 
-  "workbench.colorTheme": "Vesper",
   "workbench.editor.empty.hint": "hidden",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
 
