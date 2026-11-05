@@ -32,6 +32,8 @@ function M.config()
 		},
 	})
 
+	-- builds the Rust fuzzy matcher with cargo; no-op once built
+	require("blink.cmp").build():pwait()
 	require("blink.cmp").setup({
 		keymap = {
 			preset = "default",
