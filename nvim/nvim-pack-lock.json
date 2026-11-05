@@ -1,13 +1,5 @@
 {
   "plugins": {
-    "blink.cmp": {
-      "rev": "7b31e1b6497be70f620bbad83a789929248697ac",
-      "src": "https://github.com/saghen/blink.cmp"
-    },
-    "blink.lib": {
-      "rev": "fd9a48ebbe6ec30d5dfcc5b42c243941ccdca1aa",
-      "src": "https://github.com/saghen/blink.lib"
-    },
     "bufferline.nvim": {
       "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
       "src": "https://github.com/akinsho/bufferline.nvim"
@@ -67,10 +59,6 @@
     "mini.surround": {
       "rev": "5357f00aca51a3b43e7775901b1ad9699f8c2678",
       "src": "https://github.com/echasnovski/mini.surround"
-    },
-    "minuet-ai.nvim": {
-      "rev": "50bf63b031c0391e926fdf0b3d044d37846e6e34",
-      "src": "https://github.com/milanglacier/minuet-ai.nvim"
     },
     "neo-tree.nvim": {
       "rev": "1a14083046d96e88e361d1da00761c40d45012f3",
