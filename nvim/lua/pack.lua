@@ -25,7 +25,6 @@ local plugin_modules = {
 	"render-markdown",
 	"vimwiki",
 	"image",
-	-- "colorizer", -- needs termguicolors
 }
 
 function M.setup()
