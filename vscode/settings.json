@@ -83,6 +83,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+
   "js/ts.updateImportsOnFileMove.enabled": "always",
 
   "[dart]": {
@@ -202,6 +206,7 @@
     "https://raw.githubusercontent.com/devcontainers/spec/": true,
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,
+    "https://shadcn-svelte.com": true,
     "https://ui.shadcn.com": true,
     "https://www.schemastore.org/": true,
   },
@@ -222,4 +227,5 @@
     "*.sdb": "${capture}.${extname}-*",
     "*.s3db": "${capture}.${extname}-*",
   },
+  "svelte.enable-ts-plugin": true,
 }
