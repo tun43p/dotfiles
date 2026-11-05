@@ -6,7 +6,7 @@ function M.config()
 	require("bufferline").setup({
 		highlights = {
 			background = { ctermfg = 8 },
-			buffer_selected = { ctermfg = 15, bold = true, italic = false },
+			buffer_selected = { bold = true, italic = false },
 			indicator_selected = { ctermfg = 4 },
 		},
 		options = {

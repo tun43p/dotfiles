@@ -2,23 +2,28 @@ local M = {}
 
 M.spec = { src = "https://github.com/nvim-lualine/lualine.nvim" }
 
--- ANSI indexes -> terminal palette. ponytail: 0-7 only, tmux (tpipeline) rejects fg=8-15
-local function mode(bg)
-	return { a = { fg = 0, bg = bg, gui = "bold" }, b = { fg = 7, bg = 0 }, c = { fg = 7, bg = "NONE" } }
+-- ANSI indexes -> terminal palette, rebuilt when 'background' flips (light/dark).
+-- 0-7 only: vim-tpipeline forwards cterm colors to tmux, which rejects fg=8-15.
+-- Mode blocks: light text (7) on dark hues (blue/magenta/red), dark text (0) on light hues (green/yellow).
+local function theme()
+	local text = { fg = vim.o.background == "dark" and 7 or 0, bg = "NONE" }
+	local function mode(bg, fg)
+		return { a = { fg = fg, bg = bg, gui = "bold" }, b = text, c = text }
+	end
+	return {
+		normal = mode(4, 7),
+		insert = mode(2, 0),
+		visual = mode(5, 7),
+		replace = mode(1, 7),
+		command = mode(3, 0),
+		inactive = { a = text, b = text, c = text },
+	}
 end
-local theme = {
-	normal = mode(4),
-	insert = mode(2),
-	visual = mode(5),
-	replace = mode(1),
-	command = mode(3),
-	inactive = mode(0),
-}
 
 function M.config()
-	require("lualine").setup({
+	local opts = {
 		options = {
-			theme = theme,
+			theme = theme(),
 			icons_enabled = true,
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
@@ -89,6 +94,19 @@ function M.config()
 			lualine_y = {},
 			lualine_z = {},
 		},
+	}
+	require("lualine").setup(opts)
+
+	local bg = vim.o.background
+	vim.api.nvim_create_autocmd("OptionSet", {
+		pattern = "background",
+		callback = function()
+			if vim.o.background ~= bg then
+				bg = vim.o.background
+				opts.options.theme = theme()
+				require("lualine").setup(opts)
+			end
+		end,
 	})
 end
 
