@@ -16,7 +16,6 @@ claude.json
 
 !claude/references/
 !claude/scripts/
-!claude/skills/
 !claude/CLAUDE.md
 !claude/RTK.md
 !claude/settings.json
