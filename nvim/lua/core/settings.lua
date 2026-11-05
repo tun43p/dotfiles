@@ -2,8 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
 
--- enable TrueColor for plugins like vim-tpipeline
-vim.o.termguicolors = true
+-- use the terminal's 16-color palette (theme lives in kitty.conf only)
+vim.o.termguicolors = false
 
 -- set highlight on search
 vim.o.hlsearch = true

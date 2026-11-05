@@ -4,7 +4,11 @@ M.spec = { src = "https://github.com/akinsho/bufferline.nvim" }
 
 function M.config()
 	require("bufferline").setup({
-		highlights = require("vesper").bufferline_highlights,
+		highlights = {
+			background = { ctermfg = 8 },
+			buffer_selected = { ctermfg = 15, bold = true, italic = false },
+			indicator_selected = { ctermfg = 4 },
+		},
 		options = {
 			mode = "buffers",
 			numbers = "none",

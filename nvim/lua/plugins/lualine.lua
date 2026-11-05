@@ -2,10 +2,23 @@ local M = {}
 
 M.spec = { src = "https://github.com/nvim-lualine/lualine.nvim" }
 
+-- ANSI indexes -> terminal palette. ponytail: 0-7 only, tmux (tpipeline) rejects fg=8-15
+local function mode(bg)
+	return { a = { fg = 0, bg = bg, gui = "bold" }, b = { fg = 7, bg = 0 }, c = { fg = 7, bg = "NONE" } }
+end
+local theme = {
+	normal = mode(4),
+	insert = mode(2),
+	visual = mode(5),
+	replace = mode(1),
+	command = mode(3),
+	inactive = mode(0),
+}
+
 function M.config()
 	require("lualine").setup({
 		options = {
-			theme = "vesper",
+			theme = theme,
 			icons_enabled = true,
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
