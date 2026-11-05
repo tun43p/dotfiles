@@ -213,6 +213,7 @@
     "https://raw.githubusercontent.com/microsoft/vscode/": true,
     "https://schemastore.azurewebsites.net/": true,
     "https://shadcn-svelte.com": true,
+    "https://spec.openapis.org/": true,
     "https://ui.shadcn.com": true,
     "https://www.schemastore.org/": true,
   },
