@@ -144,7 +144,8 @@ case "$1" in
         if [ -d "$HOME/ai_overlay_tmp" ]; then rm -rf "$HOME/ai_overlay_tmp"; fi
 
         brew update && brew upgrade && brew cleanup
-        brew upgrade --cask $(brew list --cask)
+        # brew upgrade --cask $(brew list --cask)
+        # brew upgrade --cask $(brew list --cask | grep -vx battle-net)
         sudo softwareupdate -i -a
         ;;
     *)
