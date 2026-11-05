@@ -2,7 +2,10 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "model": "claude-fable-5[1m]",
+  "attribution": {
+    "sessionUrl": false
+  },
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
@@ -83,13 +86,17 @@
       }
     }
   },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
   "preferredNotifChannel": "auto",
-  "effortLevel": "xhigh",
   "switchModelsOnFlag": true,
-  "remoteControlAtStartup": false,
-  "attribution": {
-    "sessionUrl": false
-  }
+  "remoteControlAtStartup": false
 }
