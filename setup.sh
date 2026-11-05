@@ -7,7 +7,6 @@ typeset -A links=(
     "$HOME/.claude.json" "claude.json"
     "$HOME/.gitconfig" "git/gitconfig"
     "$HOME/.hammerspoon" "hammerspoon"
-    "$HOME/Library/Application Support/himalaya" "himalaya"
     "$HOME/.config/kitty" "kitty"
     "$HOME/Library/Application Support/lazygit" "lazygit"
     "$HOME/.config/nvim" "nvim"
