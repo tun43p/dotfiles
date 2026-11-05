@@ -45,12 +45,12 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # ls aliases (eza)
-alias ls='eza --icons'
-alias ll='eza -lh --icons --git'
-alias la='eza -Ah --icons --git'
-alias l='eza -lbF --icons --git'
-alias lt='eza --tree --icons'
-alias lla='eza -lahg --icons --git'
+alias ls='eza --icons=auto'
+alias ll='eza -lh --icons=auto --git'
+alias la='eza -Ah --icons=auto --git'
+alias l='eza -lbF --icons=auto --git'
+alias lt='eza --tree --icons=auto'
+alias lla='eza -lahg --icons=auto --git'
 
 # Safety nets aliases
 alias rm='rm -i'
