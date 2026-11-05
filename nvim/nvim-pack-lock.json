@@ -73,10 +73,6 @@
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
-    "nvim-colorizer.lua": {
-      "rev": "72a05f62c52241bc7441c820eb53946f92b2e6a4",
-      "src": "https://github.com/catgoose/nvim-colorizer.lua"
-    },
     "nvim-lint": {
       "rev": "52107ce2076a27a285af781248e2c59bad817cd0",
       "src": "https://github.com/mfussenegger/nvim-lint"
