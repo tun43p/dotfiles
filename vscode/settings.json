@@ -234,5 +234,7 @@
     "*.sdb": "${capture}.${extname}-*",
     "*.s3db": "${capture}.${extname}-*",
   },
+  "claudeCode.hideOnboarding": true,
+  "window.density.layout": "compact",
   "svelte.enable-ts-plugin": true,
 }
