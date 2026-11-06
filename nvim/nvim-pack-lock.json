@@ -133,6 +133,10 @@
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
     },
+    "vim-dim": {
+      "rev": "e06f4c29f9bd3971dc27882e67d013fbbafe0596",
+      "src": "https://github.com/jeffkreeftmeijer/vim-dim"
+    },
     "vim-tmux-navigator": {
       "rev": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432",
       "src": "https://github.com/christoomey/vim-tmux-navigator"
