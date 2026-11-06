@@ -3,6 +3,7 @@ local M = {}
 
 -- List of plugin modules to load (in order — colorscheme first, then UI, then LSP)
 local plugin_modules = {
+	"dim",
 	"_deps",
 	"which-key",
 	"neo-tree",
