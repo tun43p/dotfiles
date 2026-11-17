@@ -67,7 +67,7 @@
     "context7@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
+    "playwright@claude-plugins-official": false,
     "ponytail@ponytail": true,
     "typescript-lsp@claude-plugins-official": true,
     "humanizer@humanizer": true
@@ -92,6 +92,12 @@
     },
     "claude-sonnet-5-5": {
       "effortLevel": "xhigh"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "medium"
+    },
+    "claude-fable-5-2": {
+      "effortLevel": "medium"
     }
   },
   "skipWorkflowUsageWarning": true,

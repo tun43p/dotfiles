@@ -27,14 +27,14 @@
 	required = true
 
 [includeIf "gitdir:~/Documents/Forge/src/localhost/"]
-	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/tun43p"
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/default"
 
 [includeIf "gitdir:~/Documents/Forge/src/github.com/"]
-	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/tun43p"
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/default"
 
 [includeIf "gitdir:~/Documents/Forge/src/gitlab.com/"]
-	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/tun43p"
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/default"
 
 [includeIf "gitdir:~/Documents/Forge/src/gitlab.innolab.fr/"]
-	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/bytel"
+	path = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/conf.d/bouyguestelecom"
 
