@@ -1,6 +1,6 @@
 [core]
 	editor = nvim 
-  hooks = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/hooks"
+  hooksPath = "~/Documents/Forge/src/github.com/tun43p/dotfiles/git/hooks"
 
 [init]
 	defaultBranch = main
