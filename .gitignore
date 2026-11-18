@@ -9,21 +9,25 @@ local/
 *.bak*
 *-bak/
 
-.playwright-mcp/
 
 claude/*
 claude.json
 
-!claude/references/
-!claude/scripts/
+!claude/settings.json
 !claude/CLAUDE.md
 !claude/RTK.md
-!claude/settings.json
+!claude/*.sh
+!claude/hooks/
+!claude/hooks/**
+!claude/commands/
+!claude/commands/**
+!claude/agents/
+!claude/agents/**
+!claude/scripts/
+!claude/scripts/**
 
 git/conf.d/
 lazygit/state.yml
 models/
-opencode/skills/*
 zsh/zshenv
 
-**/superpowers/

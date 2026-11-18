@@ -10,7 +10,6 @@ typeset -A links=(
     "$HOME/.config/kitty" "kitty"
     "$HOME/Library/Application Support/lazygit" "lazygit"
     "$HOME/.config/nvim" "nvim"
-    "$HOME/.config/opencode" "opencode"
     "$HOME/.tmux.conf" "tmux/tmux.conf"
     "$HOME/Library/Application Support/Code/User/settings.json" "vscode/settings.json"
     "$HOME/.zshrc" "zsh/zshrc"
